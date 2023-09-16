@@ -1,0 +1,574 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		07AF775818D9E10A7E979769 /* Pods_WhatZodiacSignIsThis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98CE360276CB0DF3B948651 /* Pods_WhatZodiacSignIsThis.framework */; };
+		1F032DD12A91227B00D620B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F032DD02A91227B00D620B1 /* AppDelegate.swift */; };
+		1F032DD32A91227B00D620B1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F032DD22A91227B00D620B1 /* SceneDelegate.swift */; };
+		1F032DD52A91227B00D620B1 /* GamePlayOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F032DD42A91227B00D620B1 /* GamePlayOneViewController.swift */; };
+		1F032DD82A91227B00D620B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F032DD62A91227B00D620B1 /* Main.storyboard */; };
+		1F032DDB2A91227B00D620B1 /* WhatZodiacSignIsThis.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F032DD92A91227B00D620B1 /* WhatZodiacSignIsThis.xcdatamodeld */; };
+		1F032DDD2A91227D00D620B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F032DDC2A91227D00D620B1 /* Assets.xcassets */; };
+		1F032DE02A91227D00D620B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F032DDE2A91227D00D620B1 /* LaunchScreen.storyboard */; };
+		1F30E7E12AA4059C00D3AB86 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F30E7E02AA4059C00D3AB86 /* OnboardingViewController.swift */; };
+		1F30E7E32AA459D800D3AB86 /* OnBoardingSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F30E7E22AA459D800D3AB86 /* OnBoardingSlide.swift */; };
+		1F30E7E52AA45EFC00D3AB86 /* OnBoardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F30E7E42AA45EFC00D3AB86 /* OnBoardingCollectionViewCell.swift */; };
+		1F78FD1F2A9B33A200CBCDC2 /* CorrectAnswer5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1F78FD1E2A9B33A200CBCDC2 /* CorrectAnswer5.mp3 */; };
+		1F9697C42A9C2FC4002CFF7B /* HotStreaksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9697C32A9C2FC4002CFF7B /* HotStreaksViewController.swift */; };
+		1FD9E0F32AA96D400099F398 /* LetsPlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD9E0F22AA96D400099F398 /* LetsPlayViewController.swift */; };
+		1FD9E0F52AA9715D0099F398 /* ButtonSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1FD9E0F42AA9715D0099F398 /* ButtonSound.mp3 */; };
+		1FD9E0F72AA974C90099F398 /* LetsPlaySound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1FD9E0F62AA974C90099F398 /* LetsPlaySound.mp3 */; };
+		1FDEC4B52A9990DB00B04808 /* WaitingForAnswerSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1FDEC4B42A9990DA00B04808 /* WaitingForAnswerSound.mp3 */; };
+		1FDEC4BB2A99C11800B04808 /* CorrectAnswer3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1FDEC4B62A99C11800B04808 /* CorrectAnswer3.mp3 */; };
+		1FDEC4BC2A99C11800B04808 /* CorrectAnswer2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1FDEC4B72A99C11800B04808 /* CorrectAnswer2.mp3 */; };
+		1FDEC4BE2A99C11800B04808 /* CorrectAnswer4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1FDEC4B92A99C11800B04808 /* CorrectAnswer4.mp3 */; };
+		1FDEC4BF2A99C11800B04808 /* CorrectAnswer1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1FDEC4BA2A99C11800B04808 /* CorrectAnswer1.mp3 */; };
+		1FDEC4C42A99C12500B04808 /* WrongAnswer1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1FDEC4C02A99C12500B04808 /* WrongAnswer1.mp3 */; };
+		1FDEC4C52A99C12500B04808 /* WrongAnswer2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1FDEC4C12A99C12500B04808 /* WrongAnswer2.mp3 */; };
+		1FDEC4C62A99C12500B04808 /* WrongAnswer3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1FDEC4C22A99C12500B04808 /* WrongAnswer3.mp3 */; };
+		1FDEC4C72A99C12500B04808 /* WrongAnswer4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1FDEC4C32A99C12500B04808 /* WrongAnswer4.mp3 */; };
+		1FDEC4CB2A9AC9C200B04808 /* PopSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1FDEC4CA2A9AC9C200B04808 /* PopSound.mp3 */; };
+		1FED41F72AA02E7E00E64CE1 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FED41F62AA02E7E00E64CE1 /* CoreDataManager.swift */; };
+		1FED41F92AA1651400E64CE1 /* Jokes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FED41F82AA1651400E64CE1 /* Jokes.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1F032DCD2A91227B00D620B1 /* WhatZodiacSignIsThis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatZodiacSignIsThis.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F032DD02A91227B00D620B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1F032DD22A91227B00D620B1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		1F032DD42A91227B00D620B1 /* GamePlayOneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePlayOneViewController.swift; sourceTree = "<group>"; };
+		1F032DD72A91227B00D620B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1F032DDA2A91227B00D620B1 /* WhatZodiacSignIsThis.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WhatZodiacSignIsThis.xcdatamodel; sourceTree = "<group>"; };
+		1F032DDC2A91227D00D620B1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1F032DDF2A91227D00D620B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1F30E7E02AA4059C00D3AB86 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		1F30E7E22AA459D800D3AB86 /* OnBoardingSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingSlide.swift; sourceTree = "<group>"; };
+		1F30E7E42AA45EFC00D3AB86 /* OnBoardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingCollectionViewCell.swift; sourceTree = "<group>"; };
+		1F78FD1E2A9B33A200CBCDC2 /* CorrectAnswer5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = CorrectAnswer5.mp3; sourceTree = "<group>"; };
+		1F9697C32A9C2FC4002CFF7B /* HotStreaksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotStreaksViewController.swift; sourceTree = "<group>"; };
+		1FD9E0F22AA96D400099F398 /* LetsPlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetsPlayViewController.swift; sourceTree = "<group>"; };
+		1FD9E0F42AA9715D0099F398 /* ButtonSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ButtonSound.mp3; sourceTree = "<group>"; };
+		1FD9E0F62AA974C90099F398 /* LetsPlaySound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = LetsPlaySound.mp3; sourceTree = "<group>"; };
+		1FDEC4B42A9990DA00B04808 /* WaitingForAnswerSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = WaitingForAnswerSound.mp3; sourceTree = "<group>"; };
+		1FDEC4B62A99C11800B04808 /* CorrectAnswer3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = CorrectAnswer3.mp3; sourceTree = "<group>"; };
+		1FDEC4B72A99C11800B04808 /* CorrectAnswer2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = CorrectAnswer2.mp3; sourceTree = "<group>"; };
+		1FDEC4B92A99C11800B04808 /* CorrectAnswer4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = CorrectAnswer4.mp3; sourceTree = "<group>"; };
+		1FDEC4BA2A99C11800B04808 /* CorrectAnswer1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = CorrectAnswer1.mp3; sourceTree = "<group>"; };
+		1FDEC4C02A99C12500B04808 /* WrongAnswer1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = WrongAnswer1.mp3; sourceTree = "<group>"; };
+		1FDEC4C12A99C12500B04808 /* WrongAnswer2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = WrongAnswer2.mp3; sourceTree = "<group>"; };
+		1FDEC4C22A99C12500B04808 /* WrongAnswer3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = WrongAnswer3.mp3; sourceTree = "<group>"; };
+		1FDEC4C32A99C12500B04808 /* WrongAnswer4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = WrongAnswer4.mp3; sourceTree = "<group>"; };
+		1FDEC4CA2A9AC9C200B04808 /* PopSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = PopSound.mp3; sourceTree = "<group>"; };
+		1FED41F62AA02E7E00E64CE1 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		1FED41F82AA1651400E64CE1 /* Jokes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jokes.swift; sourceTree = "<group>"; };
+		413E6835D42C40117BF4BE04 /* Pods-WhatZodiacSignIsThis.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatZodiacSignIsThis.release.xcconfig"; path = "Target Support Files/Pods-WhatZodiacSignIsThis/Pods-WhatZodiacSignIsThis.release.xcconfig"; sourceTree = "<group>"; };
+		C98CE360276CB0DF3B948651 /* Pods_WhatZodiacSignIsThis.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhatZodiacSignIsThis.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E69C130CEB443E7F81FD0084 /* Pods-WhatZodiacSignIsThis.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatZodiacSignIsThis.debug.xcconfig"; path = "Target Support Files/Pods-WhatZodiacSignIsThis/Pods-WhatZodiacSignIsThis.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1F032DCA2A91227B00D620B1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				07AF775818D9E10A7E979769 /* Pods_WhatZodiacSignIsThis.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1F032DC42A91227B00D620B1 = {
+			isa = PBXGroup;
+			children = (
+				1F032DCF2A91227B00D620B1 /* WhatZodiacSignIsThis */,
+				1F032DCE2A91227B00D620B1 /* Products */,
+				44386EA9AD9AB95E2061F88F /* Pods */,
+				92CC86E2C5954000E4C9614B /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		1F032DCE2A91227B00D620B1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1F032DCD2A91227B00D620B1 /* WhatZodiacSignIsThis.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1F032DCF2A91227B00D620B1 /* WhatZodiacSignIsThis */ = {
+			isa = PBXGroup;
+			children = (
+				1FED41FA2AA2784B00E64CE1 /* Manager */,
+				1FED41F52A9FCD3900E64CE1 /* Model */,
+				1FED41F42A9FCCF500E64CE1 /* View */,
+				1FED41F32A9FCBD300E64CE1 /* Controller */,
+				1F78FD222A9BDD5C00CBCDC2 /* Supporting Files */,
+			);
+			path = WhatZodiacSignIsThis;
+			sourceTree = "<group>";
+		};
+		1F78FD222A9BDD5C00CBCDC2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1F032DD02A91227B00D620B1 /* AppDelegate.swift */,
+				1F032DD22A91227B00D620B1 /* SceneDelegate.swift */,
+				1F032DDC2A91227D00D620B1 /* Assets.xcassets */,
+				1F032DDE2A91227D00D620B1 /* LaunchScreen.storyboard */,
+				1FDEC4B32A9990BE00B04808 /* Sounds */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1FDEC4B32A9990BE00B04808 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				1FD9E0F42AA9715D0099F398 /* ButtonSound.mp3 */,
+				1FDEC4BA2A99C11800B04808 /* CorrectAnswer1.mp3 */,
+				1FDEC4B72A99C11800B04808 /* CorrectAnswer2.mp3 */,
+				1FD9E0F62AA974C90099F398 /* LetsPlaySound.mp3 */,
+				1FDEC4B62A99C11800B04808 /* CorrectAnswer3.mp3 */,
+				1FDEC4B92A99C11800B04808 /* CorrectAnswer4.mp3 */,
+				1F78FD1E2A9B33A200CBCDC2 /* CorrectAnswer5.mp3 */,
+				1FDEC4C02A99C12500B04808 /* WrongAnswer1.mp3 */,
+				1FDEC4C12A99C12500B04808 /* WrongAnswer2.mp3 */,
+				1FDEC4C22A99C12500B04808 /* WrongAnswer3.mp3 */,
+				1FDEC4C32A99C12500B04808 /* WrongAnswer4.mp3 */,
+				1FDEC4B42A9990DA00B04808 /* WaitingForAnswerSound.mp3 */,
+				1FDEC4CA2A9AC9C200B04808 /* PopSound.mp3 */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
+		1FED41F32A9FCBD300E64CE1 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1FD9E0F22AA96D400099F398 /* LetsPlayViewController.swift */,
+				1F30E7E02AA4059C00D3AB86 /* OnboardingViewController.swift */,
+				1F30E7E42AA45EFC00D3AB86 /* OnBoardingCollectionViewCell.swift */,
+				1F032DD42A91227B00D620B1 /* GamePlayOneViewController.swift */,
+				1F9697C32A9C2FC4002CFF7B /* HotStreaksViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1FED41F42A9FCCF500E64CE1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1F032DD62A91227B00D620B1 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1FED41F52A9FCD3900E64CE1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1F032DD92A91227B00D620B1 /* WhatZodiacSignIsThis.xcdatamodeld */,
+				1FED41F82AA1651400E64CE1 /* Jokes.swift */,
+				1F30E7E22AA459D800D3AB86 /* OnBoardingSlide.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1FED41FA2AA2784B00E64CE1 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				1FED41F62AA02E7E00E64CE1 /* CoreDataManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		44386EA9AD9AB95E2061F88F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E69C130CEB443E7F81FD0084 /* Pods-WhatZodiacSignIsThis.debug.xcconfig */,
+				413E6835D42C40117BF4BE04 /* Pods-WhatZodiacSignIsThis.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		92CC86E2C5954000E4C9614B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C98CE360276CB0DF3B948651 /* Pods_WhatZodiacSignIsThis.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1F032DCC2A91227B00D620B1 /* WhatZodiacSignIsThis */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1F032DE42A91227D00D620B1 /* Build configuration list for PBXNativeTarget "WhatZodiacSignIsThis" */;
+			buildPhases = (
+				C28380BD450DB0E152F9E187 /* [CP] Check Pods Manifest.lock */,
+				1F032DC92A91227B00D620B1 /* Sources */,
+				1F032DCA2A91227B00D620B1 /* Frameworks */,
+				1F032DCB2A91227B00D620B1 /* Resources */,
+				0F1E02A0D39AD3C735D82F25 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WhatZodiacSignIsThis;
+			productName = WhatZodiacSignIsThis;
+			productReference = 1F032DCD2A91227B00D620B1 /* WhatZodiacSignIsThis.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1F032DC52A91227B00D620B1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					1F032DCC2A91227B00D620B1 = {
+						CreatedOnToolsVersion = 14.2;
+					};
+				};
+			};
+			buildConfigurationList = 1F032DC82A91227B00D620B1 /* Build configuration list for PBXProject "WhatZodiacSignIsThis" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1F032DC42A91227B00D620B1;
+			productRefGroup = 1F032DCE2A91227B00D620B1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1F032DCC2A91227B00D620B1 /* WhatZodiacSignIsThis */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1F032DCB2A91227B00D620B1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1FDEC4C72A99C12500B04808 /* WrongAnswer4.mp3 in Resources */,
+				1FDEC4BC2A99C11800B04808 /* CorrectAnswer2.mp3 in Resources */,
+				1F032DE02A91227D00D620B1 /* LaunchScreen.storyboard in Resources */,
+				1F032DDD2A91227D00D620B1 /* Assets.xcassets in Resources */,
+				1FDEC4C52A99C12500B04808 /* WrongAnswer2.mp3 in Resources */,
+				1FDEC4BF2A99C11800B04808 /* CorrectAnswer1.mp3 in Resources */,
+				1FD9E0F72AA974C90099F398 /* LetsPlaySound.mp3 in Resources */,
+				1FDEC4B52A9990DB00B04808 /* WaitingForAnswerSound.mp3 in Resources */,
+				1FDEC4CB2A9AC9C200B04808 /* PopSound.mp3 in Resources */,
+				1FDEC4C42A99C12500B04808 /* WrongAnswer1.mp3 in Resources */,
+				1FDEC4BB2A99C11800B04808 /* CorrectAnswer3.mp3 in Resources */,
+				1FD9E0F52AA9715D0099F398 /* ButtonSound.mp3 in Resources */,
+				1FDEC4BE2A99C11800B04808 /* CorrectAnswer4.mp3 in Resources */,
+				1FDEC4C62A99C12500B04808 /* WrongAnswer3.mp3 in Resources */,
+				1F032DD82A91227B00D620B1 /* Main.storyboard in Resources */,
+				1F78FD1F2A9B33A200CBCDC2 /* CorrectAnswer5.mp3 in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0F1E02A0D39AD3C735D82F25 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WhatZodiacSignIsThis/Pods-WhatZodiacSignIsThis-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WhatZodiacSignIsThis/Pods-WhatZodiacSignIsThis-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WhatZodiacSignIsThis/Pods-WhatZodiacSignIsThis-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C28380BD450DB0E152F9E187 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WhatZodiacSignIsThis-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1F032DC92A91227B00D620B1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F032DDB2A91227B00D620B1 /* WhatZodiacSignIsThis.xcdatamodeld in Sources */,
+				1F9697C42A9C2FC4002CFF7B /* HotStreaksViewController.swift in Sources */,
+				1FED41F92AA1651400E64CE1 /* Jokes.swift in Sources */,
+				1F30E7E52AA45EFC00D3AB86 /* OnBoardingCollectionViewCell.swift in Sources */,
+				1F30E7E12AA4059C00D3AB86 /* OnboardingViewController.swift in Sources */,
+				1F032DD52A91227B00D620B1 /* GamePlayOneViewController.swift in Sources */,
+				1F032DD12A91227B00D620B1 /* AppDelegate.swift in Sources */,
+				1FED41F72AA02E7E00E64CE1 /* CoreDataManager.swift in Sources */,
+				1FD9E0F32AA96D400099F398 /* LetsPlayViewController.swift in Sources */,
+				1F30E7E32AA459D800D3AB86 /* OnBoardingSlide.swift in Sources */,
+				1F032DD32A91227B00D620B1 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		1F032DD62A91227B00D620B1 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F032DD72A91227B00D620B1 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		1F032DDE2A91227D00D620B1 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F032DDF2A91227D00D620B1 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1F032DE22A91227D00D620B1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		1F032DE32A91227D00D620B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1F032DE52A91227D00D620B1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E69C130CEB443E7F81FD0084 /* Pods-WhatZodiacSignIsThis.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 64P89V7T9E;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WhatZodiacSignIsThis/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = AppWithThat.com.WhatZodiacSignIsThis;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1F032DE62A91227D00D620B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 413E6835D42C40117BF4BE04 /* Pods-WhatZodiacSignIsThis.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 64P89V7T9E;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WhatZodiacSignIsThis/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = AppWithThat.com.WhatZodiacSignIsThis;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1F032DC82A91227B00D620B1 /* Build configuration list for PBXProject "WhatZodiacSignIsThis" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F032DE22A91227D00D620B1 /* Debug */,
+				1F032DE32A91227D00D620B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1F032DE42A91227D00D620B1 /* Build configuration list for PBXNativeTarget "WhatZodiacSignIsThis" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F032DE52A91227D00D620B1 /* Debug */,
+				1F032DE62A91227D00D620B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1F032DD92A91227B00D620B1 /* WhatZodiacSignIsThis.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1F032DDA2A91227B00D620B1 /* WhatZodiacSignIsThis.xcdatamodel */,
+			);
+			currentVersion = 1F032DDA2A91227B00D620B1 /* WhatZodiacSignIsThis.xcdatamodel */;
+			path = WhatZodiacSignIsThis.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 1F032DC52A91227B00D620B1 /* Project object */;
+}

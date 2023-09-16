@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "CancerButton.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
