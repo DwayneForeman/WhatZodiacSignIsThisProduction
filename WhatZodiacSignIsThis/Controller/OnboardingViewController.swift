@@ -41,12 +41,9 @@ class OnboardingViewController: UIViewController {
                      
         // If current page equals ast page
         if currentPage == slides.count-1 {
-            // continue to next page
-            // Navigate to GamePlayOneViewControlle
-            if let gamePlayOneVC = storyboard?.instantiateViewController(withIdentifier: "GamePlayOneViewController") as? GamePlayOneViewController {
-                    navigationController?.show(gamePlayOneVC, sender: nil)
-                }
-            
+         
+                performSegue(withIdentifier: "GoToUpgradeScreen", sender: nil)
+           
         } else {
             currentPage += 1
             let indexPath = IndexPath(item: currentPage, section: 0)

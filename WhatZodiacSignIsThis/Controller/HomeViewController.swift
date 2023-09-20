@@ -24,6 +24,9 @@ class HomeViewController: UIViewController {
     
     @IBAction func levelOneButtonPressed(_ sender: UIButton) {
         
+        // Play sound when button pushed
+        GamePlayOneViewController.shared.playSound(soundName: "ButtonSound", shouldLoop: false)
+        
         // Set the segue identfiier in storyboard to GoToGamePlayOneViewController, also, set the segue "kind" to push and non animate
         performSegue(withIdentifier: "GoToGamePlayOneViewController", sender: nil)
         
@@ -32,12 +35,18 @@ class HomeViewController: UIViewController {
     
     @IBAction func levelTwoButtonPressed(_ sender: UIButton) {
         
+        // Play sound when button pushed
+        GamePlayOneViewController.shared.playSound(soundName: "ButtonSound", shouldLoop: false)
+        
         // Set the segue identfiier in storyboard to GoToGamePlayTwoViewController, also, set the segue "kind" to push and non animate
         performSegue(withIdentifier: "GoToGamePlayTwoViewController", sender: nil)
         
     }
     
     @IBAction func levelThreeButtonPressed(_ sender: Any) {
+        
+        // Play sound when button pushed
+        GamePlayOneViewController.shared.playSound(soundName: "ButtonSound", shouldLoop: false)
         
         // Set the segue identfiier in storyboard to GoToGamePlayThreeViewController, also, set the segue "kind" to push and non animate
         performSegue(withIdentifier: "GoToGamePlayThreeViewController", sender: nil)

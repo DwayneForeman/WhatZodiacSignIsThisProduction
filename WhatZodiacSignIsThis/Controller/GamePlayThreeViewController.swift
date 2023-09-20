@@ -435,6 +435,9 @@ class GamePlayThreeViewController: UIViewController {
         
         @IBAction func homeButtonPressed(_ sender: UIButton) {
             
+            // Play sound when button pushed
+            GamePlayOneViewController.shared.playSound(soundName: "ButtonSound", shouldLoop: false)
+            
             performSegue(withIdentifier: "GoToHomeViewController", sender: nil)
             
         }
