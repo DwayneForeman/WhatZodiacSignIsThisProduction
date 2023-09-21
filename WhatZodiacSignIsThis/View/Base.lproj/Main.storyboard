@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jsb-yY-Bqs">
-                                <rect key="frame" x="26" y="418" width="266" height="149"/>
+                                <rect key="frame" x="23" y="418" width="267" height="144"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="LetsPlayButton"/>
@@ -51,46 +51,46 @@
             <objects>
                 <viewController storyboardIdentifier="GamePlayOneViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="GamePlayOneViewController" customModule="WhatZodiacSignIsThis" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="JHd-HE-zEn">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="T9h-JA-Bu1">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                                <rect key="frame" x="0.0" y="44" width="320" height="524"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="84r-Sj-vJP" userLabel="TopView">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="263"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="251"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="GlowingStar" translatesAutoresizingMaskIntoConstraints="NO" id="abr-Li-tR9">
-                                                <rect key="frame" x="133" y="13" width="55" height="45"/>
+                                                <rect key="frame" x="133" y="12" width="55" height="43"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="100" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="od8-ct-XHf" userLabel="ScoreLabel">
-                                                <rect key="frame" x="149" y="27" width="22" height="17"/>
+                                                <rect key="frame" x="149" y="26" width="22" height="16"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="12"/>
                                                 <color key="textColor" systemColor="systemRedColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="JokesCard" translatesAutoresizingMaskIntoConstraints="NO" id="hT2-TM-y6d">
-                                                <rect key="frame" x="4" y="61" width="312" height="207"/>
+                                                <rect key="frame" x="4" y="58" width="312" height="198"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="I need a part time job where I can get paid for sleeping" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="4" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pGX-Av-mJg" userLabel="JokesLabel">
-                                                <rect key="frame" x="38" y="116" width="241" height="99"/>
+                                                <rect key="frame" x="38" y="111" width="241" height="94"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="22"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="LaughButton" translatesAutoresizingMaskIntoConstraints="NO" id="FO9-Jy-Xya">
-                                                <rect key="frame" x="136" y="220" width="49" height="28"/>
+                                                <rect key="frame" x="136" y="210" width="49" height="27"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aNx-3n-b44" userLabel="BaloonButton">
-                                                <rect key="frame" x="8" y="13" width="81" height="57"/>
+                                                <rect key="frame" x="8" y="12" width="81" height="55"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain">
@@ -101,7 +101,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="61f-tT-gNP">
-                                                <rect key="frame" x="248" y="13" width="58" height="43"/>
+                                                <rect key="frame" x="248" y="12" width="58" height="41"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="HomeButton"/>
@@ -114,10 +114,10 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qtM-Nb-fhB" userLabel="BottomView">
-                                        <rect key="frame" x="0.0" y="285" width="320" height="263"/>
+                                        <rect key="frame" x="0.0" y="273" width="320" height="251"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pSW-GQ-Tsn" userLabel="AnswerButtonOne">
-                                                <rect key="frame" x="14" y="0.0" width="135" height="109"/>
+                                                <rect key="frame" x="14" y="0.0" width="135" height="104"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="AriesButton">
@@ -130,7 +130,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UrN-nk-USO" userLabel="AnswerButtonTwo">
-                                                <rect key="frame" x="14" y="126" width="135" height="111"/>
+                                                <rect key="frame" x="14" y="120" width="135" height="106"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="TaurusButton">
@@ -143,7 +143,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FBw-3X-nbX" userLabel="AnswerButtonThree">
-                                                <rect key="frame" x="171" y="0.0" width="134" height="109"/>
+                                                <rect key="frame" x="171" y="0.0" width="134" height="104"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="VirgoButton">
@@ -156,7 +156,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EjE-NZ-2xn" userLabel="AnswerButtonFour">
-                                                <rect key="frame" x="171" y="126" width="134" height="111"/>
+                                                <rect key="frame" x="171" y="120" width="134" height="106"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="LibraButton">
@@ -206,14 +206,14 @@
             <objects>
                 <viewController storyboardIdentifier="HomeViewController" id="eMq-n9-xJe" customClass="HomeViewController" customModule="WhatZodiacSignIsThis" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xn8-7M-pN8">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HomePageBackground" translatesAutoresizingMaskIntoConstraints="NO" id="gcp-da-43z">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U3x-YG-EvK">
-                                <rect key="frame" x="167" y="256" width="138" height="106"/>
+                                <rect key="frame" x="164" y="253" width="140" height="122"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain">
@@ -226,22 +226,8 @@
                                     <segue destination="VPf-wq-vHF" kind="show" identifier="GoToGamePlayTwoViewController" animates="NO" id="4xf-oq-bHg"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MLJ-id-mvM">
-                                <rect key="frame" x="14" y="256" width="138" height="106"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain">
-                                    <backgroundConfiguration key="background" cornerRadius="21" image="Level1Button" imageContentMode="scaleAspectFit">
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.098243561801531459" colorSpace="custom" customColorSpace="displayP3"/>
-                                    </backgroundConfiguration>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="levelOneButtonPressed:" destination="eMq-n9-xJe" eventType="touchUpInside" id="VfZ-lN-ERd"/>
-                                    <segue destination="BYZ-38-t0r" kind="show" identifier="GoToGamePlayOneViewController" animates="NO" id="aq2-wz-Gsc"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kOO-xa-IJE">
-                                <rect key="frame" x="12" y="373" width="297" height="111"/>
+                                <rect key="frame" x="11" y="384" width="297" height="113"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain">
@@ -252,6 +238,20 @@
                                 <connections>
                                     <action selector="levelThreeButtonPressed:" destination="eMq-n9-xJe" eventType="touchUpInside" id="oVG-X2-07w"/>
                                     <segue destination="jNV-LI-jl8" kind="show" identifier="GoToGamePlayThreeViewController" animates="NO" id="bR8-nr-nJo"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MLJ-id-mvM">
+                                <rect key="frame" x="11" y="253" width="140" height="122"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <backgroundConfiguration key="background" cornerRadius="21" image="Level1Button" imageContentMode="scaleAspectFit">
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.098243561801531459" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </backgroundConfiguration>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="levelOneButtonPressed:" destination="eMq-n9-xJe" eventType="touchUpInside" id="VfZ-lN-ERd"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="GoToGamePlayOneViewController" animates="NO" id="aq2-wz-Gsc"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -268,7 +268,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BVg-8L-eQi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5006" y="-998"/>
+            <point key="canvasLocation" x="5004.375" y="-998.23943661971828"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="nLk-jq-CMQ">
@@ -276,7 +276,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Zfw-rK-4Xg" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vg8-qG-fsa">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -300,7 +300,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YOK-Au-Pmf">
-                                <rect key="frame" x="65" y="463" width="186" height="70"/>
+                                <rect key="frame" x="64" y="455" width="182" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="NextButton">
@@ -311,7 +311,7 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zTl-rl-PYc">
-                                <rect key="frame" x="-2" y="67" width="320" height="317"/>
+                                <rect key="frame" x="-8" y="61" width="326" height="322"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="u8U-vP-XxN">
@@ -322,7 +322,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="OnBoardingCollectionViewCell" id="AA5-fl-UYk" customClass="OnBoardingCollectionViewCell" customModule="WhatZodiacSignIsThis" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="-60.5" width="320" height="438"/>
+                                        <rect key="frame" x="0.0" y="-58" width="320" height="438"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="dYI-90-lFV">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="438"/>
@@ -342,7 +342,7 @@
                                 </cells>
                             </collectionView>
                             <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="tFg-ke-zcV">
-                                <rect key="frame" x="101" y="433" width="116" height="26"/>
+                                <rect key="frame" x="98" y="425" width="114" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             </pageControl>
                         </subviews>
@@ -371,46 +371,46 @@
             <objects>
                 <viewController storyboardIdentifier="GamePlayTwoViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VPf-wq-vHF" customClass="GamePlayTwoViewController" customModule="WhatZodiacSignIsThis" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="t7t-C7-TgA">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="K1r-5t-i7T">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="7Es-il-Nbh">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                                <rect key="frame" x="0.0" y="44" width="320" height="524"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HUT-HE-gxT" userLabel="TopView">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="263"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="251"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="GlowingStar" translatesAutoresizingMaskIntoConstraints="NO" id="cpC-SI-Jxm">
-                                                <rect key="frame" x="133" y="13" width="55" height="45"/>
+                                                <rect key="frame" x="133" y="12" width="55" height="43"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="100" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1D5-rI-mb0" userLabel="ScoreLabel">
-                                                <rect key="frame" x="149" y="27" width="22" height="16"/>
+                                                <rect key="frame" x="149" y="26" width="22" height="15"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="12"/>
                                                 <color key="textColor" systemColor="systemRedColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="JokesCard" translatesAutoresizingMaskIntoConstraints="NO" id="C9q-uZ-L86">
-                                                <rect key="frame" x="4" y="61" width="312" height="207"/>
+                                                <rect key="frame" x="4" y="58" width="312" height="198"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="I need a part time job where I can get paid for sleeping" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="4" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lQy-HI-4Fr" userLabel="JokesLabel">
-                                                <rect key="frame" x="38" y="116" width="241" height="99"/>
+                                                <rect key="frame" x="38" y="111" width="241" height="94"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="22"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="LaughButton" translatesAutoresizingMaskIntoConstraints="NO" id="Ixj-21-UoN">
-                                                <rect key="frame" x="136" y="221" width="49" height="27"/>
+                                                <rect key="frame" x="136" y="211" width="49" height="26"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pWb-oJ-kqF" userLabel="BaloonButton">
-                                                <rect key="frame" x="8" y="13" width="81" height="57"/>
+                                                <rect key="frame" x="8" y="12" width="81" height="55"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain">
@@ -421,7 +421,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A1H-YK-idm">
-                                                <rect key="frame" x="248" y="13" width="58" height="43"/>
+                                                <rect key="frame" x="248" y="12" width="58" height="41"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="HomeButton"/>
@@ -434,10 +434,10 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DGJ-7R-fej" userLabel="BottomView">
-                                        <rect key="frame" x="0.0" y="285" width="320" height="263"/>
+                                        <rect key="frame" x="0.0" y="273" width="320" height="251"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OFi-qH-dlp" userLabel="AnswerButtonOne">
-                                                <rect key="frame" x="8" y="4" width="80" height="71"/>
+                                                <rect key="frame" x="8" y="4" width="80" height="68"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="SmallAriesButton">
@@ -450,7 +450,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jmg-cJ-ZjA" userLabel="AnswerButtonTwo">
-                                                <rect key="frame" x="120" y="4" width="80" height="71"/>
+                                                <rect key="frame" x="120" y="4" width="80" height="68"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="SmallCancerButton">
@@ -463,7 +463,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Lm-O6-rkG" userLabel="AnswerButtonThree">
-                                                <rect key="frame" x="225" y="4" width="80" height="71"/>
+                                                <rect key="frame" x="225" y="4" width="80" height="68"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="SmallLeoButton">
@@ -476,7 +476,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zug-cC-L23" userLabel="AnswerButtonSix">
-                                                <rect key="frame" x="8" y="177" width="80" height="72"/>
+                                                <rect key="frame" x="8" y="169" width="80" height="69"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="SmallTaurusButton">
@@ -489,7 +489,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="buE-4M-KrD" userLabel="AnswerButtonSeven">
-                                                <rect key="frame" x="120" y="177" width="80" height="72"/>
+                                                <rect key="frame" x="120" y="169" width="80" height="69"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="SmallVirgoButton">
@@ -502,7 +502,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gKG-Rb-fdw" userLabel="AnswerButtonEight">
-                                                <rect key="frame" x="225" y="177" width="80" height="72"/>
+                                                <rect key="frame" x="225" y="169" width="80" height="69"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="SmallScorpioButton">
@@ -515,7 +515,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b7A-VH-wPc" userLabel="AnswerButtonFour">
-                                                <rect key="frame" x="65" y="91" width="80" height="71"/>
+                                                <rect key="frame" x="65" y="87" width="80" height="68"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="SmallPiscesButton">
@@ -528,7 +528,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A6G-JH-Ssc" userLabel="AnswerButtonFive">
-                                                <rect key="frame" x="170" y="91" width="80" height="71"/>
+                                                <rect key="frame" x="170" y="87" width="80" height="68"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="SmallLibraButton">
@@ -582,46 +582,46 @@
             <objects>
                 <viewController storyboardIdentifier="GamePlayThreeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jNV-LI-jl8" customClass="GamePlayThreeViewController" customModule="WhatZodiacSignIsThis" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VHf-ih-DDS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="a6u-LN-E7I">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="K8c-kh-nj2">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                                <rect key="frame" x="0.0" y="44" width="320" height="524"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j9b-ni-MXK" userLabel="TopView">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="263"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="251"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="GlowingStar" translatesAutoresizingMaskIntoConstraints="NO" id="F8J-Yl-Mmm">
-                                                <rect key="frame" x="133" y="13" width="55" height="45"/>
+                                                <rect key="frame" x="133" y="12" width="55" height="43"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="100" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OKa-CQ-Xg7" userLabel="ScoreLabel">
-                                                <rect key="frame" x="149" y="27" width="22" height="16"/>
+                                                <rect key="frame" x="149" y="26" width="22" height="15"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="12"/>
                                                 <color key="textColor" systemColor="systemRedColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="JokesCard" translatesAutoresizingMaskIntoConstraints="NO" id="coJ-N9-WLn">
-                                                <rect key="frame" x="4" y="61" width="312" height="207"/>
+                                                <rect key="frame" x="4" y="58" width="312" height="198"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="I need a part time job where I can get paid for sleeping" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="4" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YDm-uJ-Fb4" userLabel="JokesLabel">
-                                                <rect key="frame" x="38" y="116" width="241" height="99"/>
+                                                <rect key="frame" x="38" y="111" width="241" height="94"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="22"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="LaughButton" translatesAutoresizingMaskIntoConstraints="NO" id="IWT-6Y-pc5">
-                                                <rect key="frame" x="136" y="221" width="49" height="27"/>
+                                                <rect key="frame" x="136" y="211" width="49" height="26"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IgX-EH-drN" userLabel="BaloonButton">
-                                                <rect key="frame" x="8" y="13" width="81" height="57"/>
+                                                <rect key="frame" x="8" y="12" width="81" height="55"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain">
@@ -632,7 +632,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HBF-Wr-0xB">
-                                                <rect key="frame" x="248" y="13" width="58" height="43"/>
+                                                <rect key="frame" x="248" y="12" width="58" height="41"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="HomeButton"/>
@@ -645,10 +645,10 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="syl-yX-Nxz" userLabel="BottomView">
-                                        <rect key="frame" x="0.0" y="285" width="320" height="263"/>
+                                        <rect key="frame" x="0.0" y="273" width="320" height="251"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="otg-P6-URe" userLabel="AnswerButtonOne">
-                                                <rect key="frame" x="8" y="0.0" width="70" height="70"/>
+                                                <rect key="frame" x="8" y="0.0" width="70" height="67"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="SmallAriesButton">
@@ -661,7 +661,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SIc-pC-0Gd" userLabel="AnswerButtonTwo">
-                                                <rect key="frame" x="86" y="1" width="70" height="70"/>
+                                                <rect key="frame" x="86" y="1" width="70" height="67"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="SmallCancerButton">
@@ -674,7 +674,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l01-ec-bfN" userLabel="AnswerButtonThree">
-                                                <rect key="frame" x="164" y="0.0" width="70" height="70"/>
+                                                <rect key="frame" x="164" y="0.0" width="70" height="67"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="SmallLeoButton">
@@ -687,7 +687,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hPY-JV-Q4H" userLabel="AnswerButtonFour">
-                                                <rect key="frame" x="242" y="0.0" width="70" height="70"/>
+                                                <rect key="frame" x="242" y="0.0" width="70" height="67"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="SmallPiscesButton">
@@ -700,7 +700,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7qb-Es-nOG" userLabel="AnswerButtonFive">
-                                                <rect key="frame" x="8" y="79" width="70" height="70"/>
+                                                <rect key="frame" x="8" y="75" width="70" height="67"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="SmallCapricornButton">
@@ -713,7 +713,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dTa-yB-Ruj" userLabel="AnswerButtonSix">
-                                                <rect key="frame" x="86" y="80" width="70" height="70"/>
+                                                <rect key="frame" x="86" y="76" width="70" height="67"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="SmallGeminiButton">
@@ -726,7 +726,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V5A-9O-lMA" userLabel="AnswerButtonSeven">
-                                                <rect key="frame" x="164" y="79" width="70" height="70"/>
+                                                <rect key="frame" x="164" y="75" width="70" height="67"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="SmallLibraButton">
@@ -739,7 +739,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KEB-bE-MxD" userLabel="AnswerButtonEight">
-                                                <rect key="frame" x="242" y="79" width="70" height="70"/>
+                                                <rect key="frame" x="242" y="75" width="70" height="67"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="SmallScorpioButton">
@@ -752,7 +752,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yNG-ig-geV" userLabel="AnswerButtonNine">
-                                                <rect key="frame" x="8" y="157" width="70" height="70"/>
+                                                <rect key="frame" x="8" y="150" width="70" height="67"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="SmallSagittariusButton">
@@ -765,7 +765,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aft-yx-NbH" userLabel="AnswerButtonTen">
-                                                <rect key="frame" x="86" y="158" width="70" height="70"/>
+                                                <rect key="frame" x="86" y="151" width="70" height="67"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="SmallTaurusButton">
@@ -778,7 +778,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PEN-OG-UsT" userLabel="AnswerButtonEleven">
-                                                <rect key="frame" x="164" y="157" width="70" height="70"/>
+                                                <rect key="frame" x="164" y="150" width="70" height="67"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="SmallVirgoButton">
@@ -791,7 +791,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WnK-hD-kJv" userLabel="AnswerButtonTwelve">
-                                                <rect key="frame" x="242" y="157" width="70" height="70"/>
+                                                <rect key="frame" x="242" y="150" width="70" height="67"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="SmallAquariusButton">
@@ -856,18 +856,15 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NSP-2y-ZBx">
-                                <rect key="frame" x="20" y="436" width="281" height="71"/>
+                                <rect key="frame" x="27" y="440" width="266" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain">
                                     <backgroundConfiguration key="background" cornerRadius="21" image="MonthlyButton" imageContentMode="scaleAspectFit"/>
                                 </buttonConfiguration>
-                                <connections>
-                                    <action selector="levelOneButtonPressed:" destination="TBj-ac-BXj" eventType="touchUpInside" id="fOA-1P-Hsb"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DFy-JX-6vj">
-                                <rect key="frame" x="16" y="536" width="97" height="29"/>
+                                <rect key="frame" x="14" y="530" width="97" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="KohinoorDevanagari-Regular" family="Kohinoor Devanagari" pointSize="7"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -877,11 +874,11 @@
                                 <buttonConfiguration key="configuration" style="plain" image="Terms of Service"/>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="UpgradeScreenBodyText" translatesAutoresizingMaskIntoConstraints="NO" id="Glh-W2-qsq">
-                                <rect key="frame" x="26" y="30" width="271" height="323"/>
+                                <rect key="frame" x="18" y="26" width="271" height="331"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AYO-qp-fek">
-                                <rect key="frame" x="208" y="537" width="96" height="29"/>
+                                <rect key="frame" x="200" y="530" width="102" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="KohinoorDevanagari-Regular" family="Kohinoor Devanagari" pointSize="7"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -890,19 +887,8 @@
                                 </state>
                                 <buttonConfiguration key="configuration" style="plain" image="Privacy Policy"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hu2-wN-ngj">
-                                <rect key="frame" x="20" y="369" width="281" height="69"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain">
-                                    <backgroundConfiguration key="background" cornerRadius="21" image="WeeklyButton" imageContentMode="scaleAspectFit"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="levelOneButtonPressed:" destination="TBj-ac-BXj" eventType="touchUpInside" id="Nrc-Za-vO8"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ll4-mP-T92">
-                                <rect key="frame" x="263" y="41" width="34" height="24"/>
+                                <rect key="frame" x="255" y="39" width="34" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="XCloseButton"/>
@@ -911,7 +897,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nD1-6k-dsV" userLabel="Restore Purchases">
-                                <rect key="frame" x="93" y="507" width="135" height="25"/>
+                                <rect key="frame" x="90" y="507" width="131" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="KohinoorDevanagari-Regular" family="Kohinoor Devanagari" pointSize="7"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -919,6 +905,14 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <buttonConfiguration key="configuration" style="plain" image="Restore Purchases"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hu2-wN-ngj">
+                                <rect key="frame" x="28" y="377" width="264" height="63"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <backgroundConfiguration key="background" cornerRadius="21" image="WeeklyButton" imageContentMode="scaleAspectFit"/>
+                                </buttonConfiguration>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="r1N-8p-Cke"/>
@@ -937,12 +931,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q9N-Eb-EK5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3204" y="-35"/>
+            <point key="canvasLocation" x="3202.5" y="-35.91549295774648"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="6k6-B6-0WX"/>
-        <segue reference="aq2-wz-Gsc"/>
+        <segue reference="oTS-cY-x7b"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="AriesButton" width="113" height="122"/>
