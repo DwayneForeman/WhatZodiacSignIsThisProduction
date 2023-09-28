@@ -35,7 +35,7 @@ class OnboardingViewController: UIViewController {
     @IBAction func nextButtonPressed(_ sender: UIButton) {
         
         // Play sound when button pushed
-        GamePlayOneViewController.shared.playSound(soundName: "ButtonSound", shouldLoop: false)
+        AudioManager.shared.playSound(soundName: "ButtonSound", shouldLoop: false)
         
         
                      

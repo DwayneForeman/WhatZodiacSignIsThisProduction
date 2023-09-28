@@ -18,7 +18,7 @@ class UpgradeViewController: UIViewController {
 
     @IBAction func xButtonPressed(_ sender: UIButton) {
         // Play sound when button pushed
-        GamePlayOneViewController.shared.playSound(soundName: "ButtonSound", shouldLoop: false)
+        AudioManager.shared.playSound(soundName: "ButtonSound", shouldLoop: false)
         
         performSegue(withIdentifier: "GoToGamePlayOneViewController", sender: nil)
         

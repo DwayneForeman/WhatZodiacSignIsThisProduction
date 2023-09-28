@@ -18,12 +18,16 @@
 		1F30E7E12AA4059C00D3AB86 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F30E7E02AA4059C00D3AB86 /* OnboardingViewController.swift */; };
 		1F30E7E32AA459D800D3AB86 /* OnBoardingSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F30E7E22AA459D800D3AB86 /* OnBoardingSlide.swift */; };
 		1F30E7E52AA45EFC00D3AB86 /* OnBoardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F30E7E42AA45EFC00D3AB86 /* OnBoardingCollectionViewCell.swift */; };
+		1F63B6C92AC0F6F200954D54 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F63B6C82AC0F6F200954D54 /* AudioManager.swift */; };
+		1F63B6CB2AC1151D00954D54 /* GameSetupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F63B6CA2AC1151D00954D54 /* GameSetupManager.swift */; };
 		1F6760022AB66DB500CC6C88 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6760012AB66DB500CC6C88 /* HomeViewController.swift */; };
 		1F6760042AB68A3D00CC6C88 /* GamePlayTwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6760032AB68A3D00CC6C88 /* GamePlayTwoViewController.swift */; };
 		1F6760062AB7E8BD00CC6C88 /* GamePlayThreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6760052AB7E8BD00CC6C88 /* GamePlayThreeViewController.swift */; };
 		1F6760082AB94D8A00CC6C88 /* UpgradeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6760072AB94D8900CC6C88 /* UpgradeViewController.swift */; };
 		1F78FD1F2A9B33A200CBCDC2 /* CorrectAnswer5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1F78FD1E2A9B33A200CBCDC2 /* CorrectAnswer5.mp3 */; };
 		1F9697C42A9C2FC4002CFF7B /* HotStreaksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9697C32A9C2FC4002CFF7B /* HotStreaksViewController.swift */; };
+		1FC5BB4C2ABE659700C830D6 /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC5BB4B2ABE659700C830D6 /* GameOverViewController.swift */; };
+		1FC5BB4E2ABEA6FB00C830D6 /* GameOverSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1FC5BB4D2ABEA6FB00C830D6 /* GameOverSound.mp3 */; };
 		1FD9E0F32AA96D400099F398 /* LetsPlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD9E0F22AA96D400099F398 /* LetsPlayViewController.swift */; };
 		1FD9E0F52AA9715D0099F398 /* ButtonSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1FD9E0F42AA9715D0099F398 /* ButtonSound.mp3 */; };
 		1FD9E0F72AA974C90099F398 /* LetsPlaySound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1FD9E0F62AA974C90099F398 /* LetsPlaySound.mp3 */; };
@@ -53,12 +57,16 @@
 		1F30E7E02AA4059C00D3AB86 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		1F30E7E22AA459D800D3AB86 /* OnBoardingSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingSlide.swift; sourceTree = "<group>"; };
 		1F30E7E42AA45EFC00D3AB86 /* OnBoardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingCollectionViewCell.swift; sourceTree = "<group>"; };
+		1F63B6C82AC0F6F200954D54 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
+		1F63B6CA2AC1151D00954D54 /* GameSetupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSetupManager.swift; sourceTree = "<group>"; };
 		1F6760012AB66DB500CC6C88 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		1F6760032AB68A3D00CC6C88 /* GamePlayTwoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePlayTwoViewController.swift; sourceTree = "<group>"; };
 		1F6760052AB7E8BD00CC6C88 /* GamePlayThreeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePlayThreeViewController.swift; sourceTree = "<group>"; };
 		1F6760072AB94D8900CC6C88 /* UpgradeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradeViewController.swift; sourceTree = "<group>"; };
 		1F78FD1E2A9B33A200CBCDC2 /* CorrectAnswer5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = CorrectAnswer5.mp3; sourceTree = "<group>"; };
 		1F9697C32A9C2FC4002CFF7B /* HotStreaksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotStreaksViewController.swift; sourceTree = "<group>"; };
+		1FC5BB4B2ABE659700C830D6 /* GameOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
+		1FC5BB4D2ABEA6FB00C830D6 /* GameOverSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = GameOverSound.mp3; sourceTree = "<group>"; };
 		1FD9E0F22AA96D400099F398 /* LetsPlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetsPlayViewController.swift; sourceTree = "<group>"; };
 		1FD9E0F42AA9715D0099F398 /* ButtonSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ButtonSound.mp3; sourceTree = "<group>"; };
 		1FD9E0F62AA974C90099F398 /* LetsPlaySound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = LetsPlaySound.mp3; sourceTree = "<group>"; };
@@ -139,6 +147,7 @@
 				1FD9E0F42AA9715D0099F398 /* ButtonSound.mp3 */,
 				1FDEC4BA2A99C11800B04808 /* CorrectAnswer1.mp3 */,
 				1FDEC4B72A99C11800B04808 /* CorrectAnswer2.mp3 */,
+				1FC5BB4D2ABEA6FB00C830D6 /* GameOverSound.mp3 */,
 				1FD9E0F62AA974C90099F398 /* LetsPlaySound.mp3 */,
 				1FDEC4B62A99C11800B04808 /* CorrectAnswer3.mp3 */,
 				1FDEC4B92A99C11800B04808 /* CorrectAnswer4.mp3 */,
@@ -165,6 +174,7 @@
 				1F9697C32A9C2FC4002CFF7B /* HotStreaksViewController.swift */,
 				1F6760012AB66DB500CC6C88 /* HomeViewController.swift */,
 				1F6760072AB94D8900CC6C88 /* UpgradeViewController.swift */,
+				1FC5BB4B2ABE659700C830D6 /* GameOverViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -191,6 +201,8 @@
 			isa = PBXGroup;
 			children = (
 				1FED41F62AA02E7E00E64CE1 /* CoreDataManager.swift */,
+				1F63B6C82AC0F6F200954D54 /* AudioManager.swift */,
+				1F63B6CA2AC1151D00954D54 /* GameSetupManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -282,6 +294,7 @@
 				1FDEC4B52A9990DB00B04808 /* WaitingForAnswerSound.mp3 in Resources */,
 				1FDEC4CB2A9AC9C200B04808 /* PopSound.mp3 in Resources */,
 				1FDEC4C42A99C12500B04808 /* WrongAnswer1.mp3 in Resources */,
+				1FC5BB4E2ABEA6FB00C830D6 /* GameOverSound.mp3 in Resources */,
 				1FDEC4BB2A99C11800B04808 /* CorrectAnswer3.mp3 in Resources */,
 				1FD9E0F52AA9715D0099F398 /* ButtonSound.mp3 in Resources */,
 				1FDEC4BE2A99C11800B04808 /* CorrectAnswer4.mp3 in Resources */,
@@ -343,7 +356,9 @@
 				1F032DDB2A91227B00D620B1 /* WhatZodiacSignIsThis.xcdatamodeld in Sources */,
 				1F9697C42A9C2FC4002CFF7B /* HotStreaksViewController.swift in Sources */,
 				1FED41F92AA1651400E64CE1 /* Jokes.swift in Sources */,
+				1F63B6C92AC0F6F200954D54 /* AudioManager.swift in Sources */,
 				1F30E7E52AA45EFC00D3AB86 /* OnBoardingCollectionViewCell.swift in Sources */,
+				1F63B6CB2AC1151D00954D54 /* GameSetupManager.swift in Sources */,
 				1F30E7E12AA4059C00D3AB86 /* OnboardingViewController.swift in Sources */,
 				1F032DD52A91227B00D620B1 /* GamePlayOneViewController.swift in Sources */,
 				1F032DD12A91227B00D620B1 /* AppDelegate.swift in Sources */,
@@ -352,6 +367,7 @@
 				1FD9E0F32AA96D400099F398 /* LetsPlayViewController.swift in Sources */,
 				1F6760082AB94D8A00CC6C88 /* UpgradeViewController.swift in Sources */,
 				1F6760042AB68A3D00CC6C88 /* GamePlayTwoViewController.swift in Sources */,
+				1FC5BB4C2ABE659700C830D6 /* GameOverViewController.swift in Sources */,
 				1F30E7E32AA459D800D3AB86 /* OnBoardingSlide.swift in Sources */,
 				1F032DD32A91227B00D620B1 /* SceneDelegate.swift in Sources */,
 				1F6760022AB66DB500CC6C88 /* HomeViewController.swift in Sources */,

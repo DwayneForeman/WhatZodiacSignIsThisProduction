@@ -24,10 +24,6 @@ class GamePlayOneViewController: UIViewController {
     
     var correctAnswer: String = ""
     
-    // Creating var of AVAudioPlayer type so we can use its features
-    // AVAudioPlay is a data type from the AVFoundation
-    var player: AVAudioPlayer!
-    
     var streaks = [String]()
     
     var currentHotStreak = 0
@@ -41,7 +37,7 @@ class GamePlayOneViewController: UIViewController {
     
     @IBOutlet weak var scoreLabel: UILabel!
     
-    var scoreLabelInt = 100
+    var scoreLabelInt = GameSetupManager.shared.scoreLabelInt
     
     var answerButtonNames = ["AquariusButton", "AriesButton", "CancerButton", "CapricornButton", "GeminiButton", "LeoButton", "LibraButton", "PiscesButton", "SagittariusButton", "ScorpioButton", "TaurusButton", "VirgoButton"]
     
@@ -50,13 +46,11 @@ class GamePlayOneViewController: UIViewController {
     
     
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
+     
         // Hideing the navigation bar
-            navigationController?.setNavigationBarHidden(true, animated: false)
+        navigationController?.setNavigationBarHidden(true, animated: false)
         
         // Capture, Filter and Assign to our components of this ViewController from CoreData fetch reults when teh view loads
         captureAndFilterFetchResults()
@@ -70,77 +64,26 @@ class GamePlayOneViewController: UIViewController {
     }
     
     
-
-  
+    override func viewWillDisappear(_ animated: Bool) {
+        AudioManager.shared.player.stop()
+    }
     
-    // Fetch random joke from the jokes array of Jokes singleton Model
-    func getRandomJoke() {
-        
-        // Grab a randon Sign/Key from the jokes array
-        // IF we can grab a random key THEN
-        if let randomSignKey = Jokes.shared.jokesArray.randomElement() {
-            // Let's tap into the value of that random key. Value are teh arrays assicated with each key and then we grab a random one and grab a random joke. Aka let randomJoke
-            
-            // Capturing the random key so I can use in the getAnswers function below
-            correctSignKeyFromJokesArray = randomSignKey.key
-            
-            let randomJoke = randomSignKey.value.randomElement()
-            // Now let's let the text of that random joke equal our jokes label so we can display the randomJoke on the screen
-            jokesLabel.text = randomJoke
-        }
+    
+    // Save before view dissapears
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        //AudioManager.shared.player.stop()
+        print(scoreLabelInt)
+        print(currentHotStreakHelper)
+        // Save score and streak to core data when we leave the screen
+        CoreDataManager.shared.addScoreAndStreak(score: scoreLabelInt, streak: currentHotStreakHelper)
         
     }
     
     
-    func getAnswers(totalAnswersToDisplay: Int) {
-        
-        // OUR GOAL HERE:
-        // Clear the current images assigned to the buttons
-        // Clear the background color previously selected
-        // Setting all buttons to be enabled since 2 will be disabled when we us the baloon 50/50
-        for button in answerButtons {
-            button.setTitle("", for: .normal)
-            button.backgroundColor = nil
-            button.isEnabled = true
-        }
-        
-        
-        var createAnswers: [String] = []
-        
-        // Add the correct answer to the list from the auto generated correctSignKeyFromJokesArray
-        createAnswers.append(correctSignKeyFromJokesArray)
-        
-        // Creating a WHILE LOOP to Add 3 random wrong answers to the list
-        // WHILE the count of our createAnswers array is NOT more than 4
-        while createAnswers.count < totalAnswersToDisplay {
-            // Grabbing/capturing a random button name from our answerButtonNames array
-            let randomAnswerButtonName = answerButtonNames.randomElement()!
-            // Making sure that:
-            // 1. Our random button name is NOT the correctSignKeyFromJokesArray
-            // 2. Our createAnswer array DOES NOT ALREADY contain the randomAnswerButtonName
-            if randomAnswerButtonName != correctSignKeyFromJokesArray && !createAnswers.contains(randomAnswerButtonName) {
-                // If the conditons above are MET THEN we can append to the randomAnswerButtonName to our createAnswers array
-                createAnswers.append(randomAnswerButtonName)
-            }
-        }
-        
-        // Checking the make sure our loop worked and that we only retuen 4 answers 1 of which is correct and 3 are incorrect with NO DUPLICATES
-        print(createAnswers)
-        
-        // Shaking up the answer order to make sure they are in random order
-        createAnswers.shuffle()
-        
-        // Assign the images to the buttons
-        for (button, answerName) in zip(answerButtons, createAnswers) {
-            if let addButtonImage = UIImage(named: answerName) {
-                button.setImage(addButtonImage, for: .normal)
-                // Setting the accessibilityIdentifier to each button name so we can access it within the highlightSelectedButton functions
-                button.accessibilityIdentifier = answerName
-            }
-        }
-        
-        
-    }
+    
+    
+    
     
     
     @IBAction func highlightSelectedButton(_ sender: UIButton) {
@@ -163,7 +106,7 @@ class GamePlayOneViewController: UIViewController {
             let randomCorrectAnswerSound = correctAnswerSoundArray.randomElement()!
             print(randomCorrectAnswerSound)
             
-            self.playSound(soundName: randomCorrectAnswerSound, shouldLoop: false)
+            AudioManager.shared.playSound(soundName: randomCorrectAnswerSound, shouldLoop: false)
             
             
             
@@ -181,7 +124,7 @@ class GamePlayOneViewController: UIViewController {
             self.view.addSubview(confettiView)
             
             // Show correct answer prompt
-            answerPrompt(userAnswer: usersSelectedAnswer, correctOrIncorrectPopUp: "CorrectPopUp")
+            GameSetupManager.shared.answerPrompt(userAnswer: usersSelectedAnswer, correctOrIncorrectPopUp: "CorrectPopUp", viewController: self)
             
             // Start the confetti animation
             confettiView.startConfetti()
@@ -223,7 +166,7 @@ class GamePlayOneViewController: UIViewController {
             let randomWrongAnswerSound = wrongAnswerSoundArray.randomElement()!
             
             DispatchQueue.main.async {
-                self.playSound(soundName: randomWrongAnswerSound, shouldLoop: false)
+                AudioManager.shared.playSound(soundName: randomWrongAnswerSound, shouldLoop: false)
                 let customeHighlightColor = UIColor(named: "OrangeHighlightGradient")
                 sender.backgroundColor = customeHighlightColor
                 sender.layer.cornerRadius = 18
@@ -243,7 +186,7 @@ class GamePlayOneViewController: UIViewController {
             
             
             // Show incorrect answer prompt
-            answerPrompt(userAnswer: usersSelectedAnswer, correctOrIncorrectPopUp: "IncorrectPopUp")
+            GameSetupManager.shared.answerPrompt(userAnswer: usersSelectedAnswer, correctOrIncorrectPopUp: "IncorrectPopUp", viewController: self)
             
             /* ---------- LOSE UI ALERT CONTROLLER PROMPT ---------------
             
@@ -253,7 +196,7 @@ class GamePlayOneViewController: UIViewController {
             present(losePrompt, animated: true)
              */
             
-            scoreLabelInt -= 10
+            scoreLabelInt -= 100
             scoreLabel.text = String(scoreLabelInt)
             print("Wrong answer bud!!")
             
@@ -262,11 +205,15 @@ class GamePlayOneViewController: UIViewController {
     }
     
     
+    
+    
     func newRound() {
         self.view.bringSubviewToFront(self.view)
-        playSound(soundName: "WaitingForAnswerSound", shouldLoop: true)
-        getRandomJoke()
-        getAnswers(totalAnswersToDisplay: 4)
+        AudioManager.shared.playSound(soundName: "WaitingForAnswerSound", shouldLoop: true)
+        GameSetupManager.shared.getRandomJoke()
+        correctSignKeyFromJokesArray = GameSetupManager.shared.correctSignKeyFromJokesArray
+        jokesLabel.text = GameSetupManager.shared.jokesLabelText
+        GameSetupManager.shared.getAnswers(totalAnswersToDisplay: 4, answerButtons: answerButtons, answerButtonNames: answerButtonNames, typeSmall: false)
         scoreLabelInt = Int(scoreLabel.text!)!
         getHotStreaks(streak: streaks)
         gameOver(score: scoreLabel.text!)
@@ -274,93 +221,14 @@ class GamePlayOneViewController: UIViewController {
     }
     
     
-    // Creating a function with code needed to play the file
-    func playSound(soundName: String, shouldLoop: Bool) {
-        
-        DispatchQueue.main.async {
-            // Stop prervious sound
-            self.player?.stop()
-            
-            // Setting are URL to equal the location of where our sound file is held
-            let url = Bundle.main.url(forResource: soundName, withExtension: "mp3")
-            print(url!)
-            
-            // Then we put the url file into our player
-            self.player = try! AVAudioPlayer(contentsOf: url!)
-            // Then we play the sound
-            self.player.play()
-            
-            // Then we loop it
-            if shouldLoop {
-                self.player.numberOfLoops = -1
-            }
-        }
-        
-    }
+
     
     
     
     @IBAction func ballonPressed(_ sender: UIButton) {
-        
-        scoreLabelInt = Int(scoreLabel.text!)!
-        
-        // BALLOON WILL REMOVE TWO INCORRECT ANSWERS TO HELP USER
-        // BALLOON COSTS 5 POINTS
-        
-        // If the user has enough points (5 or more), then proceed
-        if scoreLabelInt >= 10 {
-            
-            
-            // Play baloon pop sound
-            playSound(soundName: "PopSound", shouldLoop: false)
-            
-            
-            // Remove 10 points
-            scoreLabelInt -= 10
-            
-            
-            // Update score label via String
-            scoreLabel.text = String(scoreLabelInt)
-            
-            
-            // Count th number of incorrect answers to remove
-            var incorrectAnswersToRemove = 2
-            
-            
-            // Loop throug the answerButtons and remove image for incorrect buttons
-            for button in answerButtons {
-                if button.accessibilityIdentifier != correctSignKeyFromJokesArray {
-                    print("Removing image for button: \(button.accessibilityIdentifier ?? "Unknown")")
-                    // Setting the image to my "X.pdf" asset
-                    button.setImage(UIImage(named: "X.pdf"), for: .normal)
-                    
-                    // Settinh the accessibilityIdentifier
-                    button.accessibilityIdentifier = "X.pdf"
-                    
-                    // Now disabiling the 2 buttons associated with the X button so user cannot click on them
-                    if button.accessibilityIdentifier == "X.pdf" {
-                        button.isEnabled = false
-                    }
-                    
-                    print(button)
-                    
-                    // Decrement count of incorrectAnswersToRemove
-                    incorrectAnswersToRemove -= 1
-                    
-                    // If we have removed the required number of incorrect buttons, break out ofthe loop
-                    if incorrectAnswersToRemove == 0 {
-                        break
-                    }
-                }
-            }
-            
-            
-        } else {
-            let notEnoughPointsAlert = UIAlertController(title: "Whoops! Not enough points", message: "The balloon button will remove two incorrect answers. You need at least 10 points to use this lifeline.", preferredStyle: .alert)
-            let okay = UIAlertAction(title: "Okay", style: .default)
-            notEnoughPointsAlert.addAction(okay)
-            present(notEnoughPointsAlert, animated: true)
-        }
+       
+        GameSetupManager.shared.ballonHelper(numOfIncorrectAnswersToRemove: 2, answerButtons: answerButtons, scoreLabelText: scoreLabel, smallOrRegCorrectSignKeyFromJokesArray: correctSignKeyFromJokesArray, scoreLabelIntFromVC: scoreLabelInt)
+       
     }
     
     
@@ -372,13 +240,17 @@ class GamePlayOneViewController: UIViewController {
         if score <= "0" {
             
             DispatchQueue.main.async {
-                let gameOverAlert = UIAlertController(title: "GAME OVER", message: "Get em again next time tiger!", preferredStyle: .alert)
-                let okay = UIAlertAction(title: "Okay", style: .default)
-                gameOverAlert.addAction(okay)
-                self.present(gameOverAlert, animated: true)
+                
+                //let gameOverAlert = UIAlertController(title: "GAME OVER", message: "Get em again next time tiger!", preferredStyle: .alert)
+                //let okay = UIAlertAction(title: "Okay", style: .default)
+                //gameOverAlert.addAction(okay)
+                //self.present(gameOverAlert, animated: true)
                 // set score back to 100
                 self.scoreLabelInt = 100
                 self.scoreLabel.text = String(100)
+                self.performSegue(withIdentifier: "GoToGameOverViewController", sender: nil)
+                
+                
             }
         }
     }
@@ -425,17 +297,12 @@ class GamePlayOneViewController: UIViewController {
     }
     
     
+
     
-    // Save before view dissapears
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        player.stop()
-        print(scoreLabelInt)
-        print(currentHotStreakHelper)
-        // Save score and streak to core data when we leave the screen
-        CoreDataManager.shared.addScoreAndStreak(score: scoreLabelInt, streak: currentHotStreakHelper)
-        
-    }
+    
+    
+
+ 
     
     
     func captureAndFilterFetchResults() {
@@ -465,49 +332,16 @@ class GamePlayOneViewController: UIViewController {
         }
     }
     
-    // Answer Prompt Pop Up
-    func answerPrompt(userAnswer: String, correctOrIncorrectPopUp: String) {
-       
-        // Create UIView to serve as  background
-        let backgroundView = UIView(frame: view.bounds)
-        backgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-
-        // Create string with same name as asset
-        let popUp = userAnswer + correctOrIncorrectPopUp
-        //  Create UIImageView with image or UIimage named of our asset
-        let popUpUIImage = UIImageView(image: UIImage(named: popUp))
-        // Give it a frame
-        popUpUIImage.frame = CGRect(x: 0, y: 0, width: 300, height: 360)
-        // Center it. The center property of our UIImageView should equal the center of the view (akak view.center
-        popUpUIImage.center = view.center
-        // Setting content mode to scaleAspectFit to maintain aspect ratio
-        popUpUIImage.contentMode = .scaleAspectFit
-        // Add the background view as subview first
-        view.addSubview(backgroundView)
-        // add it as a subview to the current view on top
-        view.addSubview(popUpUIImage)
-        
-        // add timer for subview to dissapear
-        Timer.scheduledTimer(withTimeInterval: 4, repeats: false) { timer in
-            popUpUIImage.removeFromSuperview()
-            backgroundView.removeFromSuperview()
-        }
-    }
+   
     
     
     @IBAction func homeButtonPressed(_ sender: UIButton) {
         
         // Play sound when button pushed
-        playSound(soundName: "ButtonSound", shouldLoop: false)
+        AudioManager.shared.playSound(soundName: "ButtonSound", shouldLoop: false)
         
        performSegue(withIdentifier: "GoToHomeViewController", sender: nil)
     }
-    
-    
-    
-    
-    
-    
     
     
 }

@@ -13,13 +13,13 @@ class LetsPlayViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        GamePlayOneViewController.shared.playSound(soundName: "LetsPlaySound", shouldLoop: false)
+        AudioManager.shared.playSound(soundName: "LetsPlaySound", shouldLoop: false)
         
     }
     
     @IBAction func letsPlayButtonPressed(_ sender: UIButton) {
         
-        GamePlayOneViewController.shared.playSound(soundName: "ButtonSound", shouldLoop: false)
+        AudioManager.shared.playSound(soundName: "ButtonSound", shouldLoop: false)
         
     }
     
