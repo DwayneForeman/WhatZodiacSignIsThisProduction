@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import StoreKit
 
 // We will use this class to
 // 1. Get a Random Jokes
@@ -24,7 +25,9 @@ class GameSetupManager: UIViewController {
     
     var scoreLabelInt = 100
     
-   
+    var hasShownStreakPrompt = false
+    
+    var currentHotStreakHelper = CoreDataManager.shared.fetchLatestStreak() ?? 0
     
     
     
@@ -109,14 +112,14 @@ class GameSetupManager: UIViewController {
     }
     
     
-    func ballonHelper(numOfIncorrectAnswersToRemove: Int, answerButtons: [UIButton], scoreLabelText: UILabel, smallOrRegCorrectSignKeyFromJokesArray: String, scoreLabelIntFromVC: Int) {
+    func ballonHelper(numOfIncorrectAnswersToRemove: Int, answerButtons: [UIButton], scoreLabelText: UILabel, smallOrRegCorrectSignKeyFromJokesArray: String) {
         
         
         
         var incorrectAnswersToRemove = numOfIncorrectAnswersToRemove
         
         
-        scoreLabelInt = scoreLabelIntFromVC
+     
         
         if scoreLabelInt >= 5 {
             
@@ -127,10 +130,12 @@ class GameSetupManager: UIViewController {
             
             // Remove 5 points
             scoreLabelInt -= 5
+            print(scoreLabelInt)
             
             
             // Update score label via String
             scoreLabelText.text = String(scoreLabelInt)
+            print(scoreLabelText.text!)
             
             
          
@@ -220,6 +225,121 @@ class GameSetupManager: UIViewController {
     }
     
     
+    
+    
+    // Cretaing function to call when user reaches 0 points - we will pass in the scoreLabel
+    func gameOver(scoreLabel: UILabel, viewController: UIViewController) {
+        
+        if scoreLabel.text! <= "0" {
+            
+            DispatchQueue.main.async {
+                // let gameOverAlert = UIAlertController(title: "GAME OVER", message: "Get em again next time tiger!", preferredStyle: .alert)
+                // let okay = UIAlertAction(title: "Okay", style: .default)
+                // gameOverAlert.addAction(okay)
+                // self.present(gameOverAlert, animated: true)
+                // set score back to 100
+                self.scoreLabelInt = 100
+                scoreLabel.text = String(100)
+                //viewController.performSegue(withIdentifier: "GoToGameOverViewController", sender: nil)
+            }
+        }
+    }
+    
+    
+    func getHotStreaks(streak: [String], viewController: UIViewController) {
+        var consideredAHotStreak = 0
+
+        if !streak.contains("Lose") && streak.count > 1 {
+            consideredAHotStreak = streak.count
+            
+            // Save the new high to core data
+                CoreDataManager.shared.addScoreAndStreak(score: GameSetupManager.shared.scoreLabelInt, streak: currentHotStreakHelper)
+
+            if consideredAHotStreak > currentHotStreakHelper {
+                print("Current hot streak: \(currentHotStreakHelper)")
+                print("New hot streak: \(consideredAHotStreak)")
+                
+                
+                currentHotStreakHelper = consideredAHotStreak
+                
+                
+                    
+                // Save the new high to core data
+                CoreDataManager.shared.addScoreAndStreak(score: GameSetupManager.shared.scoreLabelInt, streak: currentHotStreakHelper)
+                print("Chiking to see of currentHotStreak updated after being saved and fetch: \(CoreDataManager.shared.fetchLatestStreak()!)")
+                 
+                        
+                        if !hasShownStreakPrompt {
+                            print("New high streak achieved and prompt not shown yet.")
+                            
+                            //CoreDataManager.shared.addScoreAndStreak(score: GameSetupManager.shared.scoreLabelInt, streak: currentHotStreakHelper)
+
+                            let alarmEmoji = "🚨" // You can copy and paste this emoji
+                            let hotStreakTitle = "HOT STREAK ALERT \(alarmEmoji)"
+
+                            let newHotStreakPrompt = UIAlertController(title: hotStreakTitle, message: "Coming in hot with a new hot streak of \(currentHotStreakHelper) correct answers in a row!", preferredStyle: .alert)
+
+                            let okay = UIAlertAction(title: "Duh, I'm awesome", style: .default) { _ in
+                                // Set the flag to true after showing the prompt
+                                self.hasShownStreakPrompt = true
+                                print("Streak prompt shown.")
+                            }
+                            newHotStreakPrompt.addAction(okay)
+
+                            // Present the alert on the provided view controller
+                            viewController.present(newHotStreakPrompt, animated: true, completion: nil)
+
+                            // Request a review when the user achieves a new high streak for this round
+                            requestAppReview(from: viewController)
+                        }
+                    }
+                
+            
+        }
+    }
+    
+    
+    
+    func captureAndFilterFetchResults(scoreLabel: UILabel) {
+        
+        // ---------- CAPTURE AND FILTER FECTH RESULTS CODE ----------------
+        
+        // Create fetchedScores object from our core data manager singleton fetchScores function
+      
+        let fetchedScores = CoreDataManager.shared.fetchScores()
+        
+        
+        // Tap into our fetchedSocres and map out points then covert to integers since they are orginally Int64 as created in CoreData
+        let pointsNumbers = fetchedScores.map { Int($0.pointsNumber) }
+        print(pointsNumbers)
+        
+        // Grab the last point saved in our poimysNumbers array by using .last which us an optional so we unwrap using if let
+        if let lastPointsNumberInArray = pointsNumbers.last {
+            print(lastPointsNumberInArray)
+            // Equal out score labels text to be equal to the lastPointsNumberInArray aka pointsNumbers.last so it will appear upon load up as this function will be called in viewDidLoad
+            scoreLabel.text = String(lastPointsNumberInArray)
+            
+            
+          
+            
+            // ---------- CAPTURE AND FILTER FECTH RESULTS CODE ----------------
+            
+        }
+        
+            currentHotStreakHelper = CoreDataManager.shared.fetchLatestStreak() ?? 0
+    }
+    
+    
+    
+    @available(iOS 14.0, *)
+    func requestAppReview(from viewController: UIViewController) {
+        if let windowScene = viewController.view.window?.windowScene {
+            SKStoreReviewController.requestReview(in: windowScene)
+        } else {
+            // Fallback for older iOS versions where requestReview is not available
+            // You can implement your custom review prompt here if needed
+        }
+    }
     
     
     

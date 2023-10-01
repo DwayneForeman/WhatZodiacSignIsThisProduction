@@ -438,11 +438,11 @@
                                         <rect key="frame" x="0.0" y="285" width="320" height="263"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OFi-qH-dlp" userLabel="AnswerButtonOne">
-                                                <rect key="frame" x="8" y="4" width="80" height="71"/>
+                                                <rect key="frame" x="12" y="4" width="80" height="71"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="SmallAriesButton">
-                                                    <backgroundConfiguration key="background">
+                                                    <backgroundConfiguration key="background" cornerRadius="11">
                                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.10003298323675497" colorSpace="custom" customColorSpace="displayP3"/>
                                                     </backgroundConfiguration>
                                                 </buttonConfiguration>
@@ -464,7 +464,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Lm-O6-rkG" userLabel="AnswerButtonThree">
-                                                <rect key="frame" x="225" y="4" width="80" height="71"/>
+                                                <rect key="frame" x="229" y="4" width="80" height="71"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="SmallLeoButton">
@@ -477,7 +477,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zug-cC-L23" userLabel="AnswerButtonSix">
-                                                <rect key="frame" x="8" y="177" width="80" height="72"/>
+                                                <rect key="frame" x="12" y="177" width="80" height="72"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="SmallTaurusButton">
@@ -489,21 +489,8 @@
                                                     <action selector="highlightSelectedButton:" destination="VPf-wq-vHF" eventType="touchUpInside" id="rGO-Sn-hUF"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="buE-4M-KrD" userLabel="AnswerButtonSeven">
-                                                <rect key="frame" x="120" y="177" width="80" height="72"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="SmallVirgoButton">
-                                                    <backgroundConfiguration key="background" cornerRadius="11">
-                                                        <color key="backgroundColor" white="1" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </backgroundConfiguration>
-                                                </buttonConfiguration>
-                                                <connections>
-                                                    <action selector="highlightSelectedButton:" destination="VPf-wq-vHF" eventType="touchUpInside" id="TeJ-x2-5db"/>
-                                                </connections>
-                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gKG-Rb-fdw" userLabel="AnswerButtonEight">
-                                                <rect key="frame" x="225" y="177" width="80" height="72"/>
+                                                <rect key="frame" x="229" y="177" width="80" height="72"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="SmallScorpioButton">
@@ -541,6 +528,19 @@
                                                     <action selector="highlightSelectedButton:" destination="VPf-wq-vHF" eventType="touchUpInside" id="5ec-do-im5"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="buE-4M-KrD" userLabel="AnswerButtonSeven">
+                                                <rect key="frame" x="120" y="177" width="80" height="72"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="SmallVirgoButton">
+                                                    <backgroundConfiguration key="background" cornerRadius="11">
+                                                        <color key="backgroundColor" white="1" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </backgroundConfiguration>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="highlightSelectedButton:" destination="VPf-wq-vHF" eventType="touchUpInside" id="TeJ-x2-5db"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
@@ -572,6 +572,7 @@
                         <outletCollection property="answerButtons" destination="buE-4M-KrD" collectionClass="NSMutableArray" id="fs3-ud-eAc"/>
                         <outletCollection property="answerButtons" destination="zug-cC-L23" collectionClass="NSMutableArray" id="0nA-Wg-GSI"/>
                         <outletCollection property="answerButtons" destination="gKG-Rb-fdw" collectionClass="NSMutableArray" id="8VD-QW-e6H"/>
+                        <segue destination="hEw-WM-4J6" kind="show" identifier="GoToGameOverViewController" id="3Hf-5R-eoZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0m8-z9-n7g" sceneMemberID="firstResponder"/>
@@ -649,11 +650,11 @@
                                         <rect key="frame" x="0.0" y="285" width="320" height="263"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="otg-P6-URe" userLabel="AnswerButtonOne">
-                                                <rect key="frame" x="8" y="0.0" width="70" height="70"/>
+                                                <rect key="frame" x="8" y="1" width="70" height="70"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="SmallAriesButton">
-                                                    <backgroundConfiguration key="background">
+                                                    <backgroundConfiguration key="background" cornerRadius="11">
                                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.10003298319999999" colorSpace="custom" customColorSpace="displayP3"/>
                                                     </backgroundConfiguration>
                                                 </buttonConfiguration>
@@ -675,7 +676,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l01-ec-bfN" userLabel="AnswerButtonThree">
-                                                <rect key="frame" x="164" y="0.0" width="70" height="70"/>
+                                                <rect key="frame" x="164" y="1" width="70" height="70"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="SmallLeoButton">
@@ -688,7 +689,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hPY-JV-Q4H" userLabel="AnswerButtonFour">
-                                                <rect key="frame" x="242" y="0.0" width="70" height="70"/>
+                                                <rect key="frame" x="242" y="1" width="70" height="70"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="SmallPiscesButton">
@@ -701,11 +702,11 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7qb-Es-nOG" userLabel="AnswerButtonFive">
-                                                <rect key="frame" x="8" y="79" width="70" height="70"/>
+                                                <rect key="frame" x="8" y="80" width="70" height="70"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="SmallCapricornButton">
-                                                    <backgroundConfiguration key="background">
+                                                    <backgroundConfiguration key="background" cornerRadius="11">
                                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.10003298319999999" colorSpace="custom" customColorSpace="displayP3"/>
                                                     </backgroundConfiguration>
                                                 </buttonConfiguration>
@@ -727,7 +728,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V5A-9O-lMA" userLabel="AnswerButtonSeven">
-                                                <rect key="frame" x="164" y="79" width="70" height="70"/>
+                                                <rect key="frame" x="164" y="80" width="70" height="70"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="SmallLibraButton">
@@ -740,7 +741,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KEB-bE-MxD" userLabel="AnswerButtonEight">
-                                                <rect key="frame" x="242" y="79" width="70" height="70"/>
+                                                <rect key="frame" x="242" y="80" width="70" height="70"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="SmallScorpioButton">
@@ -753,11 +754,11 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yNG-ig-geV" userLabel="AnswerButtonNine">
-                                                <rect key="frame" x="8" y="157" width="70" height="70"/>
+                                                <rect key="frame" x="8" y="158" width="70" height="70"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="SmallSagittariusButton">
-                                                    <backgroundConfiguration key="background">
+                                                    <backgroundConfiguration key="background" cornerRadius="11">
                                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.10003298319999999" colorSpace="custom" customColorSpace="displayP3"/>
                                                     </backgroundConfiguration>
                                                 </buttonConfiguration>
@@ -779,7 +780,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PEN-OG-UsT" userLabel="AnswerButtonEleven">
-                                                <rect key="frame" x="164" y="157" width="70" height="70"/>
+                                                <rect key="frame" x="164" y="158" width="70" height="70"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="SmallVirgoButton">
@@ -792,7 +793,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WnK-hD-kJv" userLabel="AnswerButtonTwelve">
-                                                <rect key="frame" x="242" y="157" width="70" height="70"/>
+                                                <rect key="frame" x="242" y="158" width="70" height="70"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="SmallAquariusButton">
@@ -839,6 +840,7 @@
                         <outletCollection property="answerButtons" destination="aft-yx-NbH" collectionClass="NSMutableArray" id="Kqi-Bb-fE1"/>
                         <outletCollection property="answerButtons" destination="PEN-OG-UsT" collectionClass="NSMutableArray" id="uk0-1e-MFk"/>
                         <outletCollection property="answerButtons" destination="WnK-hD-kJv" collectionClass="NSMutableArray" id="3vO-ut-Tdj"/>
+                        <segue destination="hEw-WM-4J6" kind="show" identifier="GoToGameOverViewController" id="96P-yP-FjL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tdx-CH-a6P" sceneMemberID="firstResponder"/>
@@ -945,10 +947,6 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UpgradeScreenBackground" translatesAutoresizingMaskIntoConstraints="NO" id="wti-D4-cJL">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="GameOverText" translatesAutoresizingMaskIntoConstraints="NO" id="oKB-QN-46E">
-                                <rect key="frame" x="62" y="39" width="195" height="122"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZDU-CK-Mly">
                                 <rect key="frame" x="167" y="365" width="141" height="112"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -988,6 +986,10 @@
                                     <action selector="levelThreeButtonPressed:" destination="hEw-WM-4J6" eventType="touchUpInside" id="sOb-Zs-R9L"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="GameOverText" translatesAutoresizingMaskIntoConstraints="NO" id="oKB-QN-46E">
+                                <rect key="frame" x="63" y="27" width="195" height="122"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Vy1-Qv-krE"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1006,7 +1008,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="fWA-xV-4lc"/>
+        <segue reference="3Hf-5R-eoZ"/>
+        <segue reference="hev-IK-wm8"/>
         <segue reference="aq2-wz-Gsc"/>
     </inferredMetricsTieBreakers>
     <resources>

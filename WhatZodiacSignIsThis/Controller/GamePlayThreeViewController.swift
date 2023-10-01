@@ -13,41 +13,33 @@ import CoreData
 
 class GamePlayThreeViewController: UIViewController {
 
- 
-   
+    //MARK: - Variables
+    
         @IBOutlet weak var jokesLabel: UILabel!
         
         @IBOutlet var answerButtons: [UIButton]!
         
-        var usersSelectedAnswer: String = ""
-        
-        var correctAnswer: String = ""
-        
-        var smallCorrectSignKeyFromJokesArray = ""
-        
-        var streaks = [String]()
-        
-        var currentHotStreak = 0
-        
-        var currentHotStreakHelper = 0
-        
-        var newHotStreak = 0
-        
-        // To Capture all hot streaks and display them in table view
-        var hotStreaksCountTableViewArray = [Int]()
-        
         @IBOutlet weak var scoreLabel: UILabel!
-        
-        var scoreLabelInt = GameSetupManager.shared.scoreLabelInt
-        
-        
+    
+        var usersSelectedAnswer: String = ""
+    
+        var correctAnswer: String = ""
+    
+        var smallCorrectSignKeyFromJokesArray = ""
+    
+        var streaks = [String]()
+    
+        var currentHotStreakHelper = GameSetupManager.shared.currentHotStreakHelper
+    
         var answerButtonNames = ["SmallAquariusButton", "SmallAriesButton", "SmallCancerButton", "SmallCapricornButton", "SmallGeminiButton", "SmallLeoButton", "SmallLibraButton", "SmallPiscesButton", "SmallSagittariusButton", "SmallScorpioButton", "SmallTaurusButton", "SmallVirgoButton"]
         
         
-        
-        override func viewDidLoad() {
+    
+    //MARK: - LifeCycle Functions
+    
+    override func viewDidLoad() {
             // Capture, Filter and Assign to our components of this ViewController from CoreData fetch reults when teh view loads
-            captureAndFilterFetchResults()
+            GameSetupManager.shared.captureAndFilterFetchResults(scoreLabel: scoreLabel)
           
             // Start new round
             newRound()
@@ -56,18 +48,26 @@ class GamePlayThreeViewController: UIViewController {
             print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         }
         
-      
-        
-        
-        
-        
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        AudioManager.shared.player.stop()
+    }
     
         
-        
-        
-       
     
-    
+    // Save before view dissapears
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        //AudioManager.shared.player.stop()
+        print(GameSetupManager.shared.scoreLabelInt)
+        print(currentHotStreakHelper)
+        // Save score and streak to core data when we leave the screen
+        CoreDataManager.shared.addScoreAndStreak(score: GameSetupManager.shared.scoreLabelInt, streak: CoreDataManager.shared.fetchLatestStreak()!)
+        print(currentHotStreakHelper)
+        
+    }
+
+        
     func newRound() {
         self.view.bringSubviewToFront(self.view)
         // Play waiting for answer sound
@@ -76,11 +76,15 @@ class GamePlayThreeViewController: UIViewController {
         smallCorrectSignKeyFromJokesArray = GameSetupManager.shared.smallCorrectSignKeyFromJokesArray
         jokesLabel.text = GameSetupManager.shared.jokesLabelText
         GameSetupManager.shared.getAnswers(totalAnswersToDisplay: 12, answerButtons: answerButtons, answerButtonNames: answerButtonNames, typeSmall: true)
-        scoreLabelInt = Int(scoreLabel.text!)!
-        gameOver(score: scoreLabel.text!)
+        GameSetupManager.shared.scoreLabelInt = Int(scoreLabel.text!)!
+        GameSetupManager.shared.getHotStreaks(streak: streaks, viewController: self)
+        GameSetupManager.shared.gameOver(scoreLabel: scoreLabel, viewController: self)
+        CoreDataManager.shared.addScoreAndStreak(score: GameSetupManager.shared.scoreLabelInt, streak: currentHotStreakHelper)
     }
     
 
+    
+    //MARK: - Action Functions
     
 
         @IBAction func highlightSelectedButton(_ sender: UIButton) {
@@ -149,8 +153,8 @@ class GamePlayThreeViewController: UIViewController {
                 
                 */
                 
-                scoreLabelInt += 10
-                scoreLabel.text = String(scoreLabelInt)
+                GameSetupManager.shared.scoreLabelInt += 10
+                scoreLabel.text = String(GameSetupManager.shared.scoreLabelInt)
                 print("Horray, you win!")
                 
                 
@@ -195,88 +199,19 @@ class GamePlayThreeViewController: UIViewController {
                 present(losePrompt, animated: true)
                  */
                 
-                scoreLabelInt -= 10
-                scoreLabel.text = String(scoreLabelInt)
+                GameSetupManager.shared.scoreLabelInt -= 10
+                scoreLabel.text = String(GameSetupManager.shared.scoreLabelInt)
                 print("Wrong answer bud!!")
                 
             }
             
         }
         
-        
-        
-        
-        
+    
         
         @IBAction func ballonPressed(_ sender: UIButton) {
             
-            GameSetupManager.shared.ballonHelper(numOfIncorrectAnswersToRemove: 6, answerButtons: answerButtons, scoreLabelText: scoreLabel, smallOrRegCorrectSignKeyFromJokesArray: smallCorrectSignKeyFromJokesArray, scoreLabelIntFromVC: scoreLabelInt)
-        }
-        
-        
-
-        
-        
-        // Save before view dissapears
-        override func viewDidDisappear(_ animated: Bool) {
-            super.viewDidDisappear(animated)
-            print(scoreLabelInt)
-            print(currentHotStreakHelper)
-            // Save score and streak to core data when we leave the screen
-            CoreDataManager.shared.addScoreAndStreak(score: scoreLabelInt, streak: currentHotStreakHelper)
-            
-        }
-    
-    
- 
-        
-        
-        func captureAndFilterFetchResults() {
-            
-            // ---------- CAPTURE AND FILTER FECTH RESULTS CODE ----------------
-            
-            // Create fetchedScores object from our core data manager singleton fetchScores function
-            // Populate the arrays to show on screen - remeber the array is then passed to our HotStreaksViewcontroller with the TableView
-            let fetchedScores = CoreDataManager.shared.fetchScores()
-            // Filter (using closure) out streaks greater than 1 where $0 is the plcaeholder of each element and map/create a new array out streaks (using closure) then covert to integers since they are orginally Int64 as created in CoreData
-            hotStreaksCountTableViewArray = fetchedScores
-                .filter { $0.streaksNumber > 1 }
-                .map { Int($0.streaksNumber) }
-            
-            // Tap into our fetchedSocres and map out points then covert to integers since they are orginally Int64 as created in CoreData
-            let pointsNumbers = fetchedScores.map { Int($0.pointsNumber) }
-            print(pointsNumbers)
-            
-            // Grab the last point saved in our poimysNumbers array by using .last which us an optional so we unwrap using if let
-            if let lastPointsNumberInArray = pointsNumbers.last {
-                print(lastPointsNumberInArray)
-                // Equal out score labels text to be equal to the lastPointsNumberInArray aka pointsNumbers.last so it will appear upon load up as this function will be called in viewDidLoad
-                scoreLabel.text = String(lastPointsNumberInArray)
-                
-                // ---------- CAPTURE AND FILTER FECTH RESULTS CODE ----------------
-                
-            }
-        }
-        
-       
-        
-        
-        
-        // Cretaing function to call when user reaches 0 points - we will pass in the scoreLabel
-        func gameOver(score: String) {
-            
-            if score <= "0" {
-                
-                DispatchQueue.main.async {
-                    let gameOverAlert = UIAlertController(title: "GAME OVER", message: "Get em again next time tiger!", preferredStyle: .alert)
-                    let okay = UIAlertAction(title: "Okay", style: .default)
-                    gameOverAlert.addAction(okay)
-                    self.present(gameOverAlert, animated: true)
-                    // set score back to 100
-                    self.scoreLabelInt = 100
-                    self.scoreLabel.text = String(100)
-                }
-            }
+            GameSetupManager.shared.ballonHelper(numOfIncorrectAnswersToRemove: 6, answerButtons: answerButtons, scoreLabelText: scoreLabel, smallOrRegCorrectSignKeyFromJokesArray: smallCorrectSignKeyFromJokesArray)
         }
         
         
