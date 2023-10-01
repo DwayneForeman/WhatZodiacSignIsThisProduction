@@ -6,7 +6,12 @@
 //
 
 import UIKit
+import SAConfettiView
+import AVFoundation
+import CoreData
 import StoreKit
+
+
 
 // We will use this class to
 // 1. Get a Random Jokes
@@ -20,6 +25,8 @@ class GameSetupManager: UIViewController {
     
     var smallCorrectSignKeyFromJokesArray: String = ""
     
+    var usersSelectedAnswer: String = ""
+    
     // We will set this value equal to JokesLabel.text when initiaing our GamePlayViewControllers
     var jokesLabelText: String = ""
     
@@ -28,6 +35,11 @@ class GameSetupManager: UIViewController {
     var hasShownStreakPrompt = false
     
     var currentHotStreakHelper = CoreDataManager.shared.fetchLatestStreak() ?? 0
+    
+    var streaks = [String]()
+    
+    var newRoundCallback: (() -> Void)?
+    
     
     
     
@@ -72,11 +84,12 @@ class GameSetupManager: UIViewController {
             
             // Add the correct answer to the list from the auto generated correctSignKeyFromJokesArray
             createAnswers.append(correctSignKeyFromJokesArray)
+            print("This is appending correctSignKeyFromJokesArray: \(correctSignKeyFromJokesArray)")
             
         } else {
             
             createAnswers.append(smallCorrectSignKeyFromJokesArray)
-            
+            print("This is appending smallCorrectSignKeyFromJokesArray: \(smallCorrectSignKeyFromJokesArray)")
         }
         
         // Creating a WHILE LOOP to Add 3 random wrong answers to the list
@@ -108,6 +121,134 @@ class GameSetupManager: UIViewController {
             }
         }
         
+        
+    }
+    
+    
+    
+    
+    func highlightSelectedButtonHelper(sender: UIButton, theUsersSelectedAnswer: String, regOrSmallCorrectSignKeyFromJokesArray: String, answerButtons: [UIButton], myStreaks: [String], scoreLabel: UILabel, viewController: UIViewController) {
+        
+        usersSelectedAnswer = theUsersSelectedAnswer
+        
+        if let imageNameOfButton = sender.accessibilityIdentifier {
+            usersSelectedAnswer = imageNameOfButton
+            print("You selected \(usersSelectedAnswer)")
+            print("The correct answer is \(correctSignKeyFromJokesArray)")
+        }
+        
+        
+        streaks = myStreaks
+        
+        // IF USER WINS
+        if usersSelectedAnswer == regOrSmallCorrectSignKeyFromJokesArray {
+            
+            
+            
+            // Append every win to streaks
+            streaks.append("Win")
+            
+            let correctAnswerSoundArray = ["CorrectAnswer1", "CorrectAnswer2", "CorrectAnswer3", "CorrectAnswer4", "CorrectAnswer5"]
+            
+            let randomCorrectAnswerSound = correctAnswerSoundArray.randomElement()!
+            print(randomCorrectAnswerSound)
+            
+            AudioManager.shared.playSound(soundName: randomCorrectAnswerSound, shouldLoop: false)
+            
+            
+            
+            // Once we get the correct answer, disable all buttons so users cannot click on mutiple buttons within the same round
+            for button in answerButtons {
+                button.isEnabled = false
+            }
+            
+            
+            let customeHighlightColor = UIColor(named: "OrangeHighlightGradient")
+            sender.backgroundColor = customeHighlightColor
+            sender.layer.cornerRadius = 18
+            
+            let confettiView = SAConfettiView(frame: self.view.bounds)
+            viewController.view.addSubview(confettiView)
+            
+            // Show correct answer prompt
+            GameSetupManager.shared.answerPrompt(userAnswer: usersSelectedAnswer, correctOrIncorrectPopUp: "CorrectPopUp", viewController: viewController)
+            
+            // Start the confetti animation
+            confettiView.startConfetti()
+            
+            // Tap into the main Disoatch Queue and update UI
+            DispatchQueue.main.asyncAfter(deadline: .now() + 4.5) {
+                // Stop confetti
+                confettiView.stopConfetti()
+                // Hide confetti
+                confettiView.isHidden = true
+                // Bring main vuew to front
+                viewController.view.bringSubviewToFront(self.view)
+                // Start new round
+                self.newRoundCallback?()
+            }
+            
+            /* ---------- LOSE UI ALERT CONTROLLER PROMPT ---------------
+            
+            let winPrompt = UIAlertController(title: "Niceee Work!!!",                  message: "", preferredStyle: .alert)
+            let okayButton = UIAlertAction(title: "Okay", style: .default)
+            winPrompt.addAction(okayButton)
+            present(winPrompt, animated: true)
+            
+            */
+            
+            GameSetupManager.shared.scoreLabelInt += 10
+            print("\(GameSetupManager.shared.scoreLabelInt) from VC")
+            scoreLabel.text = String(GameSetupManager.shared.scoreLabelInt)
+            print("Horray, you win!")
+            
+            
+            // IF USER LOOSES
+        } else {
+            
+            // Append every win to streaks
+            streaks.append("Lose")
+            
+            let wrongAnswerSoundArray = ["WrongAnswer1", "WrongAnswer2", "WrongAnswer3", "WrongAnswer4"]
+            
+            let randomWrongAnswerSound = wrongAnswerSoundArray.randomElement()!
+            
+            DispatchQueue.main.async {
+                AudioManager.shared.playSound(soundName: randomWrongAnswerSound, shouldLoop: false)
+                let customeHighlightColor = UIColor(named: "OrangeHighlightGradient")
+                sender.backgroundColor = customeHighlightColor
+                sender.layer.cornerRadius = 18
+            }
+            
+            
+            // Once we get the INcorrect answer, disable all buttons so users cannot click on mutiple buttons within the same round
+            for button in answerButtons {
+                button.isEnabled = false
+            }
+            
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+                
+                self.newRoundCallback?()
+            }
+            
+            
+            // Show incorrect answer prompt
+            GameSetupManager.shared.answerPrompt(userAnswer: usersSelectedAnswer, correctOrIncorrectPopUp: "IncorrectPopUp", viewController: viewController)
+            
+            /* ---------- LOSE UI ALERT CONTROLLER PROMPT ---------------
+            
+            let losePrompt = UIAlertController(title: "Wrong! Step your game up", message: "", preferredStyle: .alert)
+            let okay = UIAlertAction(title: "Okay", style: .default)
+            losePrompt.addAction(okay)
+            present(losePrompt, animated: true)
+             */
+            
+            GameSetupManager.shared.scoreLabelInt -= 10
+            scoreLabel.text = String(GameSetupManager.shared.scoreLabelInt)
+            print("Wrong answer bud!!")
+            
+        }
         
     }
     
@@ -184,6 +325,8 @@ class GameSetupManager: UIViewController {
         
         
     }
+    
+    
     
     
     // Answer Prompt Pop Up
