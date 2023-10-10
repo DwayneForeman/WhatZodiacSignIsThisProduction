@@ -75,8 +75,6 @@ class GamePlayOneViewController: UIViewController {
     }
     
     
-    
-    
     func newRound() {
         self.view.bringSubviewToFront(self.view)
         AudioManager.shared.playSound(soundName: "WaitingForAnswerSound", shouldLoop: true)
@@ -91,14 +89,9 @@ class GamePlayOneViewController: UIViewController {
     }
     
     
-    
-    
-    
     //MARK: - Action Functions
     
-    
     @IBAction func highlightSelectedButton(_ sender: UIButton) {
-        
         
         GameSetupManager.shared.highlightSelectedButtonHelper(sender: sender, theUsersSelectedAnswer: usersSelectedAnswer, regOrSmallCorrectSignKeyFromJokesArray: correctSignKeyFromJokesArray, answerButtons: answerButtons, myStreaks: streaks, scoreLabel: scoreLabel, viewController: self)
         
@@ -108,17 +101,14 @@ class GamePlayOneViewController: UIViewController {
         GameSetupManager.shared.newRoundCallback = { [weak self] in
                    self?.newRound()
                }
-        
-    }
     
-
+    }
     
     @IBAction func ballonPressed(_ sender: UIButton) {
        
         GameSetupManager.shared.ballonHelper(numOfIncorrectAnswersToRemove: 2, answerButtons: answerButtons, scoreLabelText: scoreLabel, smallOrRegCorrectSignKeyFromJokesArray: correctSignKeyFromJokesArray)
         print("\(GameSetupManager.shared.scoreLabelInt) from VC")
     }
-    
     
     
     @IBAction func homeButtonPressed(_ sender: UIButton) {

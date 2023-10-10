@@ -11,15 +11,12 @@ import AVFoundation
 import CoreData
 import StoreKit
 
-
-
-// We will use this class to
-// 1. Get a Random Jokes
-// 2. Get Random Answers w/one of those Answers being the correct one for the joke displayed
-
 class GameSetupManager: UIViewController {
     
+    // Createing a singleton to use through GamePlayOneViewController, Two and Three
     static let shared = GameSetupManager()
+    
+    //MARK: - Variables
     
     var correctSignKeyFromJokesArray: String = ""
     
@@ -40,8 +37,10 @@ class GameSetupManager: UIViewController {
     
     var newRoundCallback: (() -> Void)?
     
+    var isUpgraded: Bool = false
     
     
+    //MARK: - Get Jokes Function
     
     // Fetch random joke from the jokes array of Jokes singleton Model
     func getRandomJoke() {
@@ -64,6 +63,10 @@ class GameSetupManager: UIViewController {
         
     }
     
+    
+    
+    
+    //MARK: - Get Answers Function
     
     func getAnswers(totalAnswersToDisplay: Int, answerButtons: [UIButton], answerButtonNames: [String], typeSmall: Bool) {
         
@@ -126,6 +129,7 @@ class GameSetupManager: UIViewController {
     
     
     
+    //MARK: - Highlight Selected Button Helpher Function
     
     func highlightSelectedButtonHelper(sender: UIButton, theUsersSelectedAnswer: String, regOrSmallCorrectSignKeyFromJokesArray: String, answerButtons: [UIButton], myStreaks: [String], scoreLabel: UILabel, viewController: UIViewController) {
         
@@ -253,14 +257,11 @@ class GameSetupManager: UIViewController {
     }
     
     
+    //MARK: - Ballom Helpher Function
+    
     func ballonHelper(numOfIncorrectAnswersToRemove: Int, answerButtons: [UIButton], scoreLabelText: UILabel, smallOrRegCorrectSignKeyFromJokesArray: String) {
         
-        
-        
         var incorrectAnswersToRemove = numOfIncorrectAnswersToRemove
-        
-        
-     
         
         if scoreLabelInt >= 5 {
             
@@ -369,6 +370,7 @@ class GameSetupManager: UIViewController {
     
     
     
+    //MARK: - Game Over Function
     
     // Cretaing function to call when user reaches 0 points - we will pass in the scoreLabel
     func gameOver(scoreLabel: UILabel, viewController: UIViewController) {
@@ -388,6 +390,10 @@ class GameSetupManager: UIViewController {
         }
     }
     
+    
+    
+    
+    //MARK: - Get Hot Streaks Function
     
     func getHotStreaks(streak: [String], viewController: UIViewController) {
         var consideredAHotStreak = 0
@@ -442,6 +448,10 @@ class GameSetupManager: UIViewController {
     }
     
     
+
+    
+    
+    //MARK: - Core Data Capture and Filter Helpher Function
     
     func captureAndFilterFetchResults(scoreLabel: UILabel) {
         
@@ -462,9 +472,6 @@ class GameSetupManager: UIViewController {
             // Equal out score labels text to be equal to the lastPointsNumberInArray aka pointsNumbers.last so it will appear upon load up as this function will be called in viewDidLoad
             scoreLabel.text = String(lastPointsNumberInArray)
             
-            
-          
-            
             // ---------- CAPTURE AND FILTER FECTH RESULTS CODE ----------------
             
         }
@@ -473,6 +480,9 @@ class GameSetupManager: UIViewController {
     }
     
     
+    
+    
+    //MARK: - Request A Review Function
     
     @available(iOS 14.0, *)
     func requestAppReview(from viewController: UIViewController) {
@@ -485,5 +495,11 @@ class GameSetupManager: UIViewController {
     }
     
     
+    func showAds(isUpgraded: Bool) {
+        // fasle by default set above in varaibles section
+        if isUpgraded {
+            print("Show ads")
+        }
+    }
     
 }

@@ -24,6 +24,20 @@ class LetsPlayViewController: UIViewController {
     }
     
     
+    @IBAction func termsLinkPressed(_ sender: UIButton) {
+        
+        if let termsURL = URL(string: "http://www.WhatZodiacSignIsThis.com/terms") {
+            UIApplication.shared.open(termsURL)
+        }
+    }
     
+    
+    @IBAction func privacyLinkPressed(_ sender: UIButton) {
+        
+        if let privacyURL = URL(string: "http://www.WhatZodiacSignIsThis.com/privacy") {
+            UIApplication.shared.open(privacyURL)
+        }
+        
+    }
     
 }

@@ -18,8 +18,11 @@
 		1F30E7E12AA4059C00D3AB86 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F30E7E02AA4059C00D3AB86 /* OnboardingViewController.swift */; };
 		1F30E7E32AA459D800D3AB86 /* OnBoardingSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F30E7E22AA459D800D3AB86 /* OnBoardingSlide.swift */; };
 		1F30E7E52AA45EFC00D3AB86 /* OnBoardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F30E7E42AA45EFC00D3AB86 /* OnBoardingCollectionViewCell.swift */; };
+		1F4199202AD32BD40029DC53 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F41991F2AD32BD40029DC53 /* StoreKit.framework */; };
+		1F4199222AD3A9720029DC53 /* HowToPlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4199212AD3A9710029DC53 /* HowToPlayViewController.swift */; };
 		1F63B6C92AC0F6F200954D54 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F63B6C82AC0F6F200954D54 /* AudioManager.swift */; };
 		1F63B6CB2AC1151D00954D54 /* GameSetupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F63B6CA2AC1151D00954D54 /* GameSetupManager.swift */; };
+		1F63FBCB2ACA604800DB95EF /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F63FBCA2ACA604700DB95EF /* MenuViewController.swift */; };
 		1F6760022AB66DB500CC6C88 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6760012AB66DB500CC6C88 /* HomeViewController.swift */; };
 		1F6760042AB68A3D00CC6C88 /* GamePlayTwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6760032AB68A3D00CC6C88 /* GamePlayTwoViewController.swift */; };
 		1F6760062AB7E8BD00CC6C88 /* GamePlayThreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6760052AB7E8BD00CC6C88 /* GamePlayThreeViewController.swift */; };
@@ -57,8 +60,11 @@
 		1F30E7E02AA4059C00D3AB86 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		1F30E7E22AA459D800D3AB86 /* OnBoardingSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingSlide.swift; sourceTree = "<group>"; };
 		1F30E7E42AA45EFC00D3AB86 /* OnBoardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingCollectionViewCell.swift; sourceTree = "<group>"; };
+		1F41991F2AD32BD40029DC53 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		1F4199212AD3A9710029DC53 /* HowToPlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayViewController.swift; sourceTree = "<group>"; };
 		1F63B6C82AC0F6F200954D54 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
 		1F63B6CA2AC1151D00954D54 /* GameSetupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSetupManager.swift; sourceTree = "<group>"; };
+		1F63FBCA2ACA604700DB95EF /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		1F6760012AB66DB500CC6C88 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		1F6760032AB68A3D00CC6C88 /* GamePlayTwoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePlayTwoViewController.swift; sourceTree = "<group>"; };
 		1F6760052AB7E8BD00CC6C88 /* GamePlayThreeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePlayThreeViewController.swift; sourceTree = "<group>"; };
@@ -93,6 +99,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				07AF775818D9E10A7E979769 /* Pods_WhatZodiacSignIsThis.framework in Frameworks */,
+				1F4199202AD32BD40029DC53 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,6 +182,8 @@
 				1F6760012AB66DB500CC6C88 /* HomeViewController.swift */,
 				1F6760072AB94D8900CC6C88 /* UpgradeViewController.swift */,
 				1FC5BB4B2ABE659700C830D6 /* GameOverViewController.swift */,
+				1F63FBCA2ACA604700DB95EF /* MenuViewController.swift */,
+				1F4199212AD3A9710029DC53 /* HowToPlayViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -219,6 +228,7 @@
 		92CC86E2C5954000E4C9614B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1F41991F2AD32BD40029DC53 /* StoreKit.framework */,
 				C98CE360276CB0DF3B948651 /* Pods_WhatZodiacSignIsThis.framework */,
 			);
 			name = Frameworks;
@@ -367,6 +377,8 @@
 				1FD9E0F32AA96D400099F398 /* LetsPlayViewController.swift in Sources */,
 				1F6760082AB94D8A00CC6C88 /* UpgradeViewController.swift in Sources */,
 				1F6760042AB68A3D00CC6C88 /* GamePlayTwoViewController.swift in Sources */,
+				1F4199222AD3A9720029DC53 /* HowToPlayViewController.swift in Sources */,
+				1F63FBCB2ACA604800DB95EF /* MenuViewController.swift in Sources */,
 				1FC5BB4C2ABE659700C830D6 /* GameOverViewController.swift in Sources */,
 				1F30E7E32AA459D800D3AB86 /* OnBoardingSlide.swift in Sources */,
 				1F032DD32A91227B00D620B1 /* SceneDelegate.swift in Sources */,
@@ -521,6 +533,7 @@
 				DEVELOPMENT_TEAM = 8Q66646RFC;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WhatZodiacSignIsThis/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "What Zodiac Sign Is This? - Meme Trivia Quiz";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.trivia-games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -531,7 +544,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = AppWithThat.com.WhatZodiacSignIsThis;
+				PRODUCT_BUNDLE_IDENTIFIER = com.AppWithThat.WhatZodiacSignIsThis;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -550,6 +563,7 @@
 				DEVELOPMENT_TEAM = 8Q66646RFC;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WhatZodiacSignIsThis/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "What Zodiac Sign Is This? - Meme Trivia Quiz";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.trivia-games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -560,7 +574,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = AppWithThat.com.WhatZodiacSignIsThis;
+				PRODUCT_BUNDLE_IDENTIFIER = com.AppWithThat.WhatZodiacSignIsThis;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

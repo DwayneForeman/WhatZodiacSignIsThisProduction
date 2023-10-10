@@ -83,28 +83,27 @@ class GamePlayThreeViewController: UIViewController {
     }
     
 
-    
-    //MARK: - Action Functions
-    
 
-        @IBAction func highlightSelectedButton(_ sender: UIButton) {
-            
-            GameSetupManager.shared.highlightSelectedButtonHelper(sender: sender, theUsersSelectedAnswer: usersSelectedAnswer, regOrSmallCorrectSignKeyFromJokesArray: smallCorrectSignKeyFromJokesArray, answerButtons: answerButtons, myStreaks: streaks, scoreLabel: scoreLabel, viewController: self)
-            
-            // Set the newRoundCallback in GameSetupManager to start a new round
-            // Weak catptures self to make it a weak refernce to avoid memeory leaks and then it is used again in the body as an optional to call newRound()
-            // We are using the function we created in GameSteupManager to equal it to a closure function which will run this View Controllers current newRound, hence self.newRound()
-            GameSetupManager.shared.newRoundCallback = { [weak self] in
-                       self?.newRound()
-                   }
-            
-        }
+
+    //MARK: - Action Functions
+
+    @IBAction func highlightSelectedButton(_ sender: UIButton) {
         
+        
+        GameSetupManager.shared.highlightSelectedButtonHelper(sender: sender, theUsersSelectedAnswer: usersSelectedAnswer, regOrSmallCorrectSignKeyFromJokesArray: smallCorrectSignKeyFromJokesArray, answerButtons: answerButtons, myStreaks: streaks, scoreLabel: scoreLabel, viewController: self)
+        
+        // Set the newRoundCallback in GameSetupManager to start a new round
+        // Weak catptures self to make it a weak refernce to avoid memeory leaks and then it is used again in the body as an optional to call newRound()
+        // We are using the function we created in GameSteupManager to equal it to a closure function which will run this View Controllers current newRound, hence self.newRound()
+        GameSetupManager.shared.newRoundCallback = { [weak self] in
+                   self?.newRound()
+               }
+    }
     
-        
+    
     @IBAction func ballonPressed(_ sender: UIButton) {
         
-        GameSetupManager.shared.ballonHelper(numOfIncorrectAnswersToRemove: 4, answerButtons: answerButtons, scoreLabelText: scoreLabel, smallOrRegCorrectSignKeyFromJokesArray: smallCorrectSignKeyFromJokesArray)
+        GameSetupManager.shared.ballonHelper(numOfIncorrectAnswersToRemove: 6, answerButtons: answerButtons, scoreLabelText: scoreLabel, smallOrRegCorrectSignKeyFromJokesArray: smallCorrectSignKeyFromJokesArray)
 
     }
 
