@@ -24,5 +24,19 @@ class UpgradeViewController: UIViewController {
         
     }
     
-
+    
+    @IBAction func termsOfServicePressed(_ sender: UIButton) {
+        if let termsOfServiceURL = URL(string: "http://www.WhatSignIsThis.com/terms") {
+            UIApplication.shared.open(termsOfServiceURL)
+        }
+    }
+    
+    @IBAction func privacyPolicyPressed(_ sender: UIButton) {
+        if let privacyPolicyURL = URL(string: "http://www.WhatSignIsThis.com/privacy"){
+            UIApplication.shared.open(privacyPolicyURL)
+        }
+    }
 }
+
+
+

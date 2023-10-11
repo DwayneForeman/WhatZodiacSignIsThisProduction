@@ -20,11 +20,21 @@ class MenuViewController: UIViewController {
         homeButton.tintColor = .black
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        homeButton.tintColor = .black
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        homeButton.tintColor = .black
+    }
+    
     
     @IBAction func transparentButtonTapped(_ sender: Any) {
         
         self.dismiss(animated: true)
     }
+    
+    
     
     
     
@@ -46,53 +56,65 @@ class MenuViewController: UIViewController {
             }
         }
         
-        if sender.tag == 1 {
-            print("HomeButtonTapped")
+      
+            if sender.tag == 1 {
+                print("HomeButtonTapped")
+                
+                
+            } else if sender.tag == 2 {
+                // Grab a hold of this current app
+                if let bundleIdentifier = Bundle.main.bundleIdentifier,
+                // This is the detination
+              let settingsURL = URL(string: UIApplication.openSettingsURLString + bundleIdentifier) {
+                    // Here's us opening the destination
+                    UIApplication.shared.open(settingsURL)
+                }
+            }
             
             
-        } else if sender.tag == 2 {
-            // Grab a hold of this current app
-            if let bundleIdentifier = Bundle.main.bundleIdentifier,
-            // This is the detination
-          let settingsURL = URL(string: UIApplication.openSettingsURLString + bundleIdentifier) {
-                // Here's us opening the destination
-                UIApplication.shared.open(settingsURL)
+            else if sender.tag == 4 {
+                // Create URL
+                if let rateUsURL = URL(string: "App Link goes here") {
+                    // Open URL
+                    UIApplication.shared.open(rateUsURL)
+                }
+            }
+            
+            else if sender.tag == 5 {
+                // Share the app
+                        let text = "LMFAOO! This app is JOKES!!"
+                if let appURL = URL(string: "https://www.yourappstorelink.com") {
+                    let activityViewController = UIActivityViewController(activityItems: [text, appURL], applicationActivities: nil)
+                    present(activityViewController, animated: true, completion: nil)
+                }
+            }
+            
+            else if sender.tag == 6 {
+                // Create URL
+                if let howToPlayURL = URL(string: "https://www.WhatZodiacSignIsThis.com") {
+                    // Open URL
+                    UIApplication.shared.open(howToPlayURL)
+                    print(sender.tintColor!)
+                }
+            }
+            
+            else if sender.tag == 7 {
+                // Go to terms webpage
+                if let termsURL = URL(string: "https://www.WhatZodiacSignIsThis.com/terms") {
+                    // Open URL
+                    UIApplication.shared.open(termsURL)
+                    print(sender.tintColor!)
+                }
+            }
+            
+            else {
+                
+                if sender.tag == 8 {
+                    if let contactUsURL = URL(string: "https://www.WhatZodiacSignIsThis.com/contact") {
+                        UIApplication.shared.open(contactUsURL)
+                        print(sender.tintColor!)
+                    }
+                }
             }
         }
-        
-        
-        else if sender.tag == 4 {
-            // Create URL
-            if let rateUsURL = URL(string: "App Link goes here") {
-                // Open URL
-                UIApplication.shared.open(rateUsURL)
-            }
-        }
-        
-        else if sender.tag == 5 {
-            // Share the app
-                    let text = "LMFAOO! This app is JOKES!!"
-            if let appURL = URL(string: "https://www.yourappstorelink.com") {
-                let activityViewController = UIActivityViewController(activityItems: [text, appURL], applicationActivities: nil)
-                present(activityViewController, animated: true, completion: nil)
-            }
-        }
-        
-        else if sender.tag == 6 {
-            // Create URL
-            if let howToPlayURL = URL(string: "https://www.WhatZodiacSignIsThis.com") {
-                // Open URL
-                UIApplication.shared.open(howToPlayURL)
-            }
-        }
-        
-        else if sender.tag == 7 {
-            // Go to terms webpage
-            if let termsURL = URL(string: "https://www.WhatZodiacSignIsThis.com/terms") {
-                // Open URL
-                UIApplication.shared.open(termsURL)
-            }
-        }
-        
-    }
 }

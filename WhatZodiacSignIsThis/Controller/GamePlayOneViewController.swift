@@ -58,7 +58,8 @@ class GamePlayOneViewController: UIViewController {
     
     
     override func viewWillDisappear(_ animated: Bool) {
-        AudioManager.shared.player.stop()
+        AudioManager.shared.player?.stop()
+
     }
     
     
