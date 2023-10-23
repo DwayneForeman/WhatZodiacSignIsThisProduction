@@ -33,7 +33,7 @@ class GamePlayOneViewController: UIViewController {
     
     var answerButtonNames = ["AquariusButton", "AriesButton", "CancerButton", "CapricornButton", "GeminiButton", "LeoButton", "LibraButton", "PiscesButton", "SagittariusButton", "ScorpioButton", "TaurusButton", "VirgoButton"]
     
-    
+    static let shared = GamePlayOneViewController()
 
     
     //MARK: - LifeCycle Functions
@@ -41,6 +41,34 @@ class GamePlayOneViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
      
+        GameOverViewController.shared.checkForPremiumUser(viewController: self)
+        
+        print("GAMMMMMMMEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE ONNEEEEEEE VIEWWWW DIDDDD LOAD")
+        
+        // Retrieve losses from UserDefaults
+        if let losses = UserDefaults.standard.value(forKey: "losses") as? Int {
+            GameSetupManager.shared.losses = losses
+            print("Losses from ViewDidLoad: \(losses)")
+        }
+
+        // Retrieve isUpgraded from UserDefaults
+        if let isUpgraded = UserDefaults.standard.value(forKey: "IsUpgraded") as? Bool {
+            GameSetupManager.shared.isUpgraded = isUpgraded
+            print("IsUpgraded from ViewDidLoad: \(isUpgraded)")
+        } else {
+            // Default to false if the key doesn't exist in UserDefaults
+            GameSetupManager.shared.isUpgraded = false
+            print("IsUpgraded not found in UserDefaults. Setting to false.")
+        }
+
+        // For THIS GamePlayOneVC, If the user is NOT upgraded and their losses equal 1, then we need to pop up the UpGradeWithDismissVC
+        if GameSetupManager.shared.isUpgraded == false && GameSetupManager.shared.losses == 1 {
+            print("Losses equal 1. Showing UpgradeWithDismissVC.")
+            self.performSegue(withIdentifier: "GoToGameOverViewController", sender: nil)
+        }
+
+        
+        
         // Hideing the navigation bar
         navigationController?.setNavigationBarHidden(true, animated: false)
         
@@ -76,6 +104,12 @@ class GamePlayOneViewController: UIViewController {
     }
     
     
+    override func viewWillAppear(_ animated: Bool) {
+        GameOverViewController.shared.checkForPremiumUser()
+    }
+    
+  
+    
     func newRound() {
         self.view.bringSubviewToFront(self.view)
         AudioManager.shared.playSound(soundName: "WaitingForAnswerSound", shouldLoop: true)
@@ -85,8 +119,9 @@ class GamePlayOneViewController: UIViewController {
         GameSetupManager.shared.getAnswers(totalAnswersToDisplay: 4, answerButtons: answerButtons, answerButtonNames: answerButtonNames, typeSmall: false)
         GameSetupManager.shared.scoreLabelInt = Int(scoreLabel.text!)!
         GameSetupManager.shared.getHotStreaks(streak: streaks, viewController: self)
-        GameSetupManager.shared.gameOver(scoreLabel: scoreLabel, viewController: self)
+        GameSetupManager.shared.gameOver(scoreLabel: scoreLabel, viewController: self, answerButtons: answerButtons)
         CoreDataManager.shared.addScoreAndStreak(score: GameSetupManager.shared.scoreLabelInt, streak: currentHotStreakHelper)
+        GameSetupManager.shared.ballonPressed = false
     }
     
     
@@ -107,10 +142,25 @@ class GamePlayOneViewController: UIViewController {
     
     @IBAction func ballonPressed(_ sender: UIButton) {
        
-        GameSetupManager.shared.ballonHelper(numOfIncorrectAnswersToRemove: 2, answerButtons: answerButtons, scoreLabelText: scoreLabel, smallOrRegCorrectSignKeyFromJokesArray: correctSignKeyFromJokesArray)
-        print("\(GameSetupManager.shared.scoreLabelInt) from VC")
-    }
-    
+        // Print a message
+         print("Ballon button Tapped")
+        
+        // Check if the user has just upgraded
+        GameOverViewController.shared.checkForPremiumUser()
+
+        print(GameSetupManager.shared.isUpgraded)
+         // Check if the user is upgraded or hasn't incurred any losses
+         if GameSetupManager.shared.isUpgraded == true || GameSetupManager.shared.losses == 0 {
+             // Call the balloon helper function to use the lifeline
+             GameSetupManager.shared.ballonHelper(numOfIncorrectAnswersToRemove: 2, answerButtons: answerButtons, scoreLabelText: scoreLabel, smallOrRegCorrectSignKeyFromJokesArray: correctSignKeyFromJokesArray, viewController: self)
+             print("\(GameSetupManager.shared.scoreLabelInt) from VC")
+         }
+
+
+     }
+     
+
+
     
     @IBAction func homeButtonPressed(_ sender: UIButton) {
         
@@ -119,6 +169,4 @@ class GamePlayOneViewController: UIViewController {
         
        performSegue(withIdentifier: "GoToHomeViewController", sender: nil)
     }
-    
-    
 }

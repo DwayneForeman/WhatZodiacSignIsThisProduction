@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RevenueCat
 
 class LetsPlayViewController: UIViewController {
 
@@ -17,10 +18,33 @@ class LetsPlayViewController: UIViewController {
         
     }
     
+    
+  
+    
+    
     @IBAction func letsPlayButtonPressed(_ sender: UIButton) {
         
         AudioManager.shared.playSound(soundName: "ButtonSound", shouldLoop: false)
         
+        // Check if the user has already upgraded.
+        
+                Purchases.shared.getCustomerInfo { [weak self] info, error in
+                    if let error = error {
+                        print("Error fetching customer info: \(error.localizedDescription)")
+                    } else if let info = info {
+                        if info.entitlements.all["premium"]?.isActive == true {
+                            print("User has premium entitlement. Dismissing.")
+                            
+                            DispatchQueue.main.async {
+                                self?.performSegue(withIdentifier: "GoToMainScreen", sender: nil)
+                            }
+                            
+                        } else {
+                            print("User does not have premium entitlement.")
+                            self?.performSegue(withIdentifier: "GoToOnboarding", sender: nil)
+                        }
+                    }
+                }
     }
     
     

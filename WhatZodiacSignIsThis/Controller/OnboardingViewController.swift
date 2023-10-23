@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RevenueCat
 
 class OnboardingViewController: UIViewController {
 
@@ -21,13 +22,15 @@ class OnboardingViewController: UIViewController {
         super.viewDidLoad()
         
         slides = [OnBoardingSlide(image: UIImage(named: "OnboardingImage1") ?? UIImage()), OnBoardingSlide(image: UIImage(named: "OnboardingImage2") ?? UIImage()), OnBoardingSlide(image: UIImage(named: "OnboardingImage3") ?? UIImage())]
-
+        
         collectionView.delegate = self
         collectionView.dataSource = self
         
         navigationController?.setNavigationBarHidden(true, animated: true)
-        // Do any additional setup after loading the view
+        
+        
     }
+
     
     
 

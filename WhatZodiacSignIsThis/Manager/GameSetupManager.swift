@@ -10,6 +10,7 @@ import SAConfettiView
 import AVFoundation
 import CoreData
 import StoreKit
+import RevenueCat
 
 class GameSetupManager: UIViewController {
     
@@ -39,7 +40,14 @@ class GameSetupManager: UIViewController {
     
     var isUpgraded: Bool = false
     
+    var gameCenterHighestScoreAbove100 = 0
     
+    //var shouldHighlightAnswerButtons = true
+    
+    var losses = 0
+
+    var ballonPressed = false
+   
     //MARK: - Get Jokes Function
     
     // Fetch random joke from the jokes array of Jokes singleton Model
@@ -133,200 +141,324 @@ class GameSetupManager: UIViewController {
     
     func highlightSelectedButtonHelper(sender: UIButton, theUsersSelectedAnswer: String, regOrSmallCorrectSignKeyFromJokesArray: String, answerButtons: [UIButton], myStreaks: [String], scoreLabel: UILabel, viewController: UIViewController) {
         
+        // TIf you are uograded OR your loos doesnt equal 1 you can continue
+        if isUpgraded == true || losses != 1 {
+            
+            usersSelectedAnswer = theUsersSelectedAnswer
+            
+            if let imageNameOfButton = sender.accessibilityIdentifier {
+                usersSelectedAnswer = imageNameOfButton
+                print("You selected \(usersSelectedAnswer)")
+                print("The correct answer is \(correctSignKeyFromJokesArray)")
+            }
+            
+            
+            streaks = myStreaks
+            
+            // IF USER WINS
+            if usersSelectedAnswer == regOrSmallCorrectSignKeyFromJokesArray {
+                
+                
+                
+                // Append every win to streaks
+                streaks.append("Win")
+                
+                let correctAnswerSoundArray = ["CorrectAnswer1", "CorrectAnswer2", "CorrectAnswer3", "CorrectAnswer4", "CorrectAnswer5"]
+                
+                let randomCorrectAnswerSound = correctAnswerSoundArray.randomElement()!
+                print(randomCorrectAnswerSound)
+                
+                AudioManager.shared.playSound(soundName: randomCorrectAnswerSound, shouldLoop: false)
+                
+                
+                
+                // Once we get the correct answer, disable all buttons so users cannot click on mutiple buttons within the same round
+                for button in answerButtons {
+                    button.isEnabled = false
+                }
+                
+                
+                let customeHighlightColor = UIColor(named: "OrangeHighlightGradient")
+                sender.backgroundColor = customeHighlightColor
+                sender.layer.cornerRadius = 18
+                
+                let confettiView = SAConfettiView(frame: self.view.bounds)
+                viewController.view.addSubview(confettiView)
+                
+                // Show correct answer prompt
+                GameSetupManager.shared.answerPrompt(userAnswer: usersSelectedAnswer, correctOrIncorrectPopUp: "CorrectPopUp", viewController: viewController)
+                
+                // Start the confetti animation
+                confettiView.startConfetti()
+                
+                // Tap into the main Disoatch Queue and update UI
+                DispatchQueue.main.asyncAfter(deadline: .now() + 4.5) {
+                    // Stop confetti
+                    confettiView.stopConfetti()
+                    // Hide confetti
+                    confettiView.isHidden = true
+                    // Bring main vuew to front
+                    viewController.view.bringSubviewToFront(self.view)
+                    // Start new round
+                    self.newRoundCallback?()
+                }
+                
+                /* ---------- LOSE UI ALERT CONTROLLER PROMPT ---------------
+                 
+                 let winPrompt = UIAlertController(title: "Niceee Work!!!",                  message: "", preferredStyle: .alert)
+                 let okayButton = UIAlertAction(title: "Okay", style: .default)
+                 winPrompt.addAction(okayButton)
+                 present(winPrompt, animated: true)
+                 
+                 */
+                
+                GameSetupManager.shared.scoreLabelInt += 10
+                print("\(GameSetupManager.shared.scoreLabelInt) from VC")
+                scoreLabel.text = String(GameSetupManager.shared.scoreLabelInt)
+                print("Horray, you win!")
+                
+                
+                // IF USER LOOSES
+            } else {
+                
+                // Append every win to streaks
+                streaks.append("Lose")
+                
+                let wrongAnswerSoundArray = ["WrongAnswer1", "WrongAnswer2", "WrongAnswer3", "WrongAnswer4"]
+                
+                let randomWrongAnswerSound = wrongAnswerSoundArray.randomElement()!
+                
+                DispatchQueue.main.async {
+                    AudioManager.shared.playSound(soundName: randomWrongAnswerSound, shouldLoop: false)
+                    let customeHighlightColor = UIColor(named: "OrangeHighlightGradient")
+                    sender.backgroundColor = customeHighlightColor
+                    sender.layer.cornerRadius = 18
+                }
+                
+                
+                // Once we get the INcorrect answer, disable all buttons so users cannot click on mutiple buttons within the same round
+                for button in answerButtons {
+                    button.isEnabled = false
+                }
+                
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+                    
+                    self.newRoundCallback?()
+                }
+                
+                
+                // Show incorrect answer prompt
+                GameSetupManager.shared.answerPrompt(userAnswer: usersSelectedAnswer, correctOrIncorrectPopUp: "IncorrectPopUp", viewController: viewController)
+                
+                /* ---------- LOSE UI ALERT CONTROLLER PROMPT ---------------
+                 
+                 let losePrompt = UIAlertController(title: "Wrong! Step your game up", message: "", preferredStyle: .alert)
+                 let okay = UIAlertAction(title: "Okay", style: .default)
+                 losePrompt.addAction(okay)
+                 present(losePrompt, animated: true)
+                 */
+                
+                GameSetupManager.shared.scoreLabelInt -= 100
+                scoreLabel.text = String(GameSetupManager.shared.scoreLabelInt)
+                print("Wrong answer bud!!")
+                
+            }
+            // If shouldHighlightAnswerButtons is false this will run where is user gets 0 and clicks on button GoToGameOverViewController pops up
+        } else {
+            
+            // If shouldHighlightAnswerButtons is false this will run where if the user gets 0 points and clicks on a button, it will redirect to the "GoToGameOverViewController."
+            if isUpgraded == false && losses == 1 {
+                for button in answerButtons {
+                    if button.isTouchInside {
+                        // Check the user's status again because they could have upgraded
+                        Purchases.shared.getCustomerInfo { (customerInfo, error) in
+                            if let error = error {
+                                print("Error fetching customer info: \(error.localizedDescription)")
+                            } else if let customerInfo = customerInfo {
+                                if customerInfo.entitlements.all["premium"]?.isActive == true {
+                                    print("User has a premium entitlement. Dismissing.")
+                                    
+                                    self.isUpgraded = true
+                                    UserDefaults.standard.set(true, forKey: "IsUpgraded")
+                                    self.losses = 0
+                                    UserDefaults.standard.set(self.losses, forKey: "losses")
+                                    self.handleUpgradedUser(button, theUsersSelectedAnswer: self.usersSelectedAnswer, regOrSmallCorrectSignKeyFromJokesArray: regOrSmallCorrectSignKeyFromJokesArray, answerButtons: answerButtons, myStreaks: myStreaks, scoreLabel: scoreLabel, viewController: viewController)
+//
+                                    
+                                } else {
+                                    print("User does not have a premium entitlement.")
+                                    viewController.performSegue(withIdentifier: "GoToGameOverViewController", sender: nil)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    
+    
+    
+    func handleUpgradedUser(_ sender: UIButton, theUsersSelectedAnswer: String, regOrSmallCorrectSignKeyFromJokesArray: String, answerButtons: [UIButton], myStreaks: [String], scoreLabel: UILabel, viewController: UIViewController) {
         usersSelectedAnswer = theUsersSelectedAnswer
-        
+
         if let imageNameOfButton = sender.accessibilityIdentifier {
             usersSelectedAnswer = imageNameOfButton
             print("You selected \(usersSelectedAnswer)")
             print("The correct answer is \(correctSignKeyFromJokesArray)")
         }
-        
-        
+
         streaks = myStreaks
-        
+
         // IF USER WINS
         if usersSelectedAnswer == regOrSmallCorrectSignKeyFromJokesArray {
-            
-            
-            
+            // Your win logic here
+            // For example, handle a win, play sounds, and update UI
             // Append every win to streaks
             streaks.append("Win")
-            
+
             let correctAnswerSoundArray = ["CorrectAnswer1", "CorrectAnswer2", "CorrectAnswer3", "CorrectAnswer4", "CorrectAnswer5"]
-            
             let randomCorrectAnswerSound = correctAnswerSoundArray.randomElement()!
             print(randomCorrectAnswerSound)
-            
             AudioManager.shared.playSound(soundName: randomCorrectAnswerSound, shouldLoop: false)
-            
-            
-            
-            // Once we get the correct answer, disable all buttons so users cannot click on mutiple buttons within the same round
+
+            // Once you get the correct answer, disable all buttons so users cannot click multiple buttons within the same round
             for button in answerButtons {
                 button.isEnabled = false
             }
-            
-            
-            let customeHighlightColor = UIColor(named: "OrangeHighlightGradient")
-            sender.backgroundColor = customeHighlightColor
+
+            let customHighlightColor = UIColor(named: "OrangeHighlightGradient")
+            sender.backgroundColor = customHighlightColor
             sender.layer.cornerRadius = 18
-            
+
             let confettiView = SAConfettiView(frame: self.view.bounds)
             viewController.view.addSubview(confettiView)
-            
-            // Show correct answer prompt
+
+            // Show the correct answer prompt
             GameSetupManager.shared.answerPrompt(userAnswer: usersSelectedAnswer, correctOrIncorrectPopUp: "CorrectPopUp", viewController: viewController)
-            
+
             // Start the confetti animation
             confettiView.startConfetti()
-            
-            // Tap into the main Disoatch Queue and update UI
+
+            // Tap into the main Dispatch Queue and update UI
             DispatchQueue.main.asyncAfter(deadline: .now() + 4.5) {
                 // Stop confetti
                 confettiView.stopConfetti()
                 // Hide confetti
                 confettiView.isHidden = true
-                // Bring main vuew to front
+                // Bring the main view to the front
                 viewController.view.bringSubviewToFront(self.view)
-                // Start new round
+                // Start a new round
                 self.newRoundCallback?()
             }
-            
-            /* ---------- LOSE UI ALERT CONTROLLER PROMPT ---------------
-            
-            let winPrompt = UIAlertController(title: "Niceee Work!!!",                  message: "", preferredStyle: .alert)
-            let okayButton = UIAlertAction(title: "Okay", style: .default)
-            winPrompt.addAction(okayButton)
-            present(winPrompt, animated: true)
-            
-            */
-            
+
             GameSetupManager.shared.scoreLabelInt += 10
             print("\(GameSetupManager.shared.scoreLabelInt) from VC")
             scoreLabel.text = String(GameSetupManager.shared.scoreLabelInt)
-            print("Horray, you win!")
-            
-            
-            // IF USER LOOSES
+            print("Hooray, you win!")
         } else {
-            
-            // Append every win to streaks
+            // Handle the logic when the user loses
+            // Append every loss to streaks
             streaks.append("Lose")
-            
+
             let wrongAnswerSoundArray = ["WrongAnswer1", "WrongAnswer2", "WrongAnswer3", "WrongAnswer4"]
-            
             let randomWrongAnswerSound = wrongAnswerSoundArray.randomElement()!
-            
+
             DispatchQueue.main.async {
                 AudioManager.shared.playSound(soundName: randomWrongAnswerSound, shouldLoop: false)
-                let customeHighlightColor = UIColor(named: "OrangeHighlightGradient")
-                sender.backgroundColor = customeHighlightColor
+                let customHighlightColor = UIColor(named: "OrangeHighlightGradient")
+                sender.backgroundColor = customHighlightColor
                 sender.layer.cornerRadius = 18
             }
-            
-            
-            // Once we get the INcorrect answer, disable all buttons so users cannot click on mutiple buttons within the same round
+
+            // Once you get an incorrect answer, disable all buttons so users cannot click multiple buttons within the same round
             for button in answerButtons {
                 button.isEnabled = false
             }
-            
-            
+
             DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
-                
+                // Handle the logic for a loss and start a new round
                 self.newRoundCallback?()
             }
-            
-            
-            // Show incorrect answer prompt
+
+            // Show the incorrect answer prompt
             GameSetupManager.shared.answerPrompt(userAnswer: usersSelectedAnswer, correctOrIncorrectPopUp: "IncorrectPopUp", viewController: viewController)
-            
-            /* ---------- LOSE UI ALERT CONTROLLER PROMPT ---------------
-            
-            let losePrompt = UIAlertController(title: "Wrong! Step your game up", message: "", preferredStyle: .alert)
-            let okay = UIAlertAction(title: "Okay", style: .default)
-            losePrompt.addAction(okay)
-            present(losePrompt, animated: true)
-             */
-            
-            GameSetupManager.shared.scoreLabelInt -= 10
+
+            GameSetupManager.shared.scoreLabelInt -= 100
             scoreLabel.text = String(GameSetupManager.shared.scoreLabelInt)
-            print("Wrong answer bud!!")
-            
+            print("Wrong answer, bud!")
         }
-        
     }
+
     
+  
+    //MARK: - Ballon Helpher Function
     
-    //MARK: - Ballom Helpher Function
-    
-    func ballonHelper(numOfIncorrectAnswersToRemove: Int, answerButtons: [UIButton], scoreLabelText: UILabel, smallOrRegCorrectSignKeyFromJokesArray: String) {
+    func ballonHelper(numOfIncorrectAnswersToRemove: Int, answerButtons: [UIButton], scoreLabelText: UILabel, smallOrRegCorrectSignKeyFromJokesArray: String, viewController: UIViewController) {
+        
         
         var incorrectAnswersToRemove = numOfIncorrectAnswersToRemove
         
+        // Check if the balloon has already been pressed in this round
+        if ballonPressed == true {
+            
+            
+            
+            // Display a message indicating that the balloon can only be used once per round
+            let alreadyUsedAlert = UIAlertController(title: "Balloon Already Used", message: "You can only use the balloon lifeline once per round.", preferredStyle: .alert)
+            let okay = UIAlertAction(title: "Okay", style: .default)
+            alreadyUsedAlert.addAction(okay)
+            viewController.present(alreadyUsedAlert, animated: true)
+            return
+        }
+
+        // Continue with the rest of the function
+        
+        // Check if the user has enough points to use the balloon
         if scoreLabelInt >= 5 {
-            
-            
-            // Play baloon pop sound
+            // Play balloon pop sound
             AudioManager.shared.playSound(soundName: "PopSound", shouldLoop: false)
-            
-            
+
             // Remove 5 points
             scoreLabelInt -= 5
-            print(scoreLabelInt)
-            
-            
-            // Update score label via String
             scoreLabelText.text = String(scoreLabelInt)
-            print(scoreLabelText.text!)
-            
-            
-         
+
             // Shuffle the answerButtons array before entering the loop
             var shuffledAnswerButtons = answerButtons
             shuffledAnswerButtons.shuffle()
-            
-            // Loop throug the answerButtons and remove image for incorrect buttons
+
+            // Loop through the answerButtons and remove image for incorrect buttons
             for button in shuffledAnswerButtons {
-                
-                //answerButtons.shuffle()
-                
                 if button.accessibilityIdentifier != smallOrRegCorrectSignKeyFromJokesArray {
-                    print("Removing image for button: \(button.accessibilityIdentifier ?? "Unknown")")
-                    // Setting the image to my "X.pdf" asset
+                    // Removing image for incorrect buttons
                     button.setImage(UIImage(named: "X.pdf"), for: .normal)
-                    
-                    // Settinh the accessibilityIdentifier
                     button.accessibilityIdentifier = "X.pdf"
-                    
-                    // Now disabiling the 2 buttons associated with the X button so user cannot click on them
-                    if button.accessibilityIdentifier == "X.pdf" {
-                        button.isEnabled = false
-                    }
-                    
-                    print(button)
-                    
+                    button.isEnabled = false
+
                     // Decrement count of incorrectAnswersToRemove
                     incorrectAnswersToRemove -= 1
-                    
-                    // If we have removed the required number of incorrect buttons, break out ofthe loop
+
+                    // If we have removed the required number of incorrect buttons, break out of the loop
                     if incorrectAnswersToRemove == 0 {
                         break
                     }
-                   
                 }
             }
-            
+
+            // Set ballonPressed to true after the balloon has been used
+            ballonPressed = true
             
         } else {
-            let notEnoughPointsAlert = UIAlertController(title: "Whoops! Not enough points", message: "The balloon button will remove two incorrect answers. You need at least 5 points to use this lifeline.", preferredStyle: .alert)
+            // Display a message indicating that the user doesn't have enough points
+            let notEnoughPointsAlert = UIAlertController(title: "Not Enough Points", message: "You need at least 5 points to use the balloon lifeline.", preferredStyle: .alert)
             let okay = UIAlertAction(title: "Okay", style: .default)
             notEnoughPointsAlert.addAction(okay)
             present(notEnoughPointsAlert, animated: true)
         }
-        
-        
     }
-    
+
     
     
     
@@ -370,24 +502,95 @@ class GameSetupManager: UIViewController {
     
     
     
+ 
+
+    
+    
     //MARK: - Game Over Function
     
     // Cretaing function to call when user reaches 0 points - we will pass in the scoreLabel
-    func gameOver(scoreLabel: UILabel, viewController: UIViewController) {
+    func gameOver(scoreLabel: UILabel, viewController: UIViewController, answerButtons: [UIButton]) {
+        
+        
+        
+        
+        //MARK: - GameOver function helpers
+        func upgradedGameOverPopUp(){
+            
+            DispatchQueue.main.async {
+                let gameOverAlert = UIAlertController(title: "GAME OVER", message: "Not you going out sad again LMFAO Step it up!", preferredStyle: .alert)
+                let okay = UIAlertAction(title: "Okay", style: .default)
+                gameOverAlert.addAction(okay)
+                viewController.present(gameOverAlert, animated: true)
+               //set score back to 100
+               self.scoreLabelInt = 100
+               scoreLabel.text = String(100)
+            }
+           
+        }
+        
+        func notUpgradedGameOverOverPopup(){
+
+            self.scoreLabelInt = 100
+            scoreLabel.text = String(100)
+
+            isUpgraded = false
+
+            viewController.performSegue(withIdentifier: "GoToGameOverViewController", sender: nil)
+
+
+    }
+        
+        
+        // When game is over check if use is upgraded or not
+        Purchases.shared.getCustomerInfo { (customerInfo, error) in
+            if let error = error {
+                print("Error fetching customer info: \(error.localizedDescription)")
+            } else if let customerInfo = customerInfo {
+                if customerInfo.entitlements.all["premium"]?.isActive == true {
+                    print("User has premium entitlement. Dismissing.")
+                    
+               
+
+                    // Save the isUpgraded value in UserDefaults
+                    UserDefaults.standard.set(true, forKey: "IsUpgraded")
+                    
+                    if scoreLabel.text! <= "0" && viewController is GamePlayOneViewController && self.isUpgraded == true {
+                        upgradedGameOverPopUp()
+                        
+                    }
+                   
+                } else {
+                    print("User does not have premium entitlement.")
+                    
+                    self.isUpgraded = false
+                    // Save the isUpgraded value in UserDefaults
+                    UserDefaults.standard.set(false, forKey: "IsUpgraded")
+                }
+            }
+        }
+          
+               
         
         if scoreLabel.text! <= "0" {
             
+            
+            
             DispatchQueue.main.async {
-                // let gameOverAlert = UIAlertController(title: "GAME OVER", message: "Get em again next time tiger!", preferredStyle: .alert)
-                // let okay = UIAlertAction(title: "Okay", style: .default)
-                // gameOverAlert.addAction(okay)
-                // self.present(gameOverAlert, animated: true)
-                // set score back to 100
-                self.scoreLabelInt = 100
-                scoreLabel.text = String(100)
-                //viewController.performSegue(withIdentifier: "GoToGameOverViewController", sender: nil)
+                
+                if viewController is GamePlayOneViewController && self.isUpgraded == false {
+                    
+                    self.losses = 1
+                    UserDefaults.standard.set(self.losses, forKey: "losses")
+                    
+                    notUpgradedGameOverOverPopup()
+                    
+                } else if viewController is GamePlayOneViewController || viewController is GamePlayTwoViewController || viewController is GamePlayThreeViewController && self.isUpgraded == true {
+                    upgradedGameOverPopUp()
+                }
             }
         }
+
     }
     
     
@@ -471,6 +674,15 @@ class GameSetupManager: UIViewController {
             print(lastPointsNumberInArray)
             // Equal out score labels text to be equal to the lastPointsNumberInArray aka pointsNumbers.last so it will appear upon load up as this function will be called in viewDidLoad
             scoreLabel.text = String(lastPointsNumberInArray)
+            
+            
+            // We need to also capture teh highest pointsNumber above 100 so we can use for GameCnter leaderboard
+            // In this code, we first use the max() function to find the highest value in the pointsNumbers array. Then, we check if it's greater than 100 before assigning it to HomeViewController.shared.scoreReporter
+            if let highestScoreAbove100 = pointsNumbers.max(), highestScoreAbove100 > 100 {
+                gameCenterHighestScoreAbove100 = highestScoreAbove100
+                
+        
+            }
             
             // ---------- CAPTURE AND FILTER FECTH RESULTS CODE ----------------
             

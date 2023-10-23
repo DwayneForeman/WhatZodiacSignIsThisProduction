@@ -1,2 +1,3 @@
 ${PODS_ROOT}/Target Support Files/Pods-WhatZodiacSignIsThis/Pods-WhatZodiacSignIsThis-frameworks.sh
+${BUILT_PRODUCTS_DIR}/RevenueCat/RevenueCat.framework
 ${BUILT_PRODUCTS_DIR}/SAConfettiView/SAConfettiView.framework

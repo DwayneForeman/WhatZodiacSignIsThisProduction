@@ -1,16 +1,20 @@
 PODS:
+  - RevenueCat (4.28.0)
   - SAConfettiView (0.1.8)
 
 DEPENDENCIES:
+  - RevenueCat
   - SAConfettiView
 
 SPEC REPOS:
   trunk:
+    - RevenueCat
     - SAConfettiView
 
 SPEC CHECKSUMS:
+  RevenueCat: 211ea3859e2ed3008152ea666054d1843355ce2f
   SAConfettiView: c87031a2280659261b730fce3669fb10e73636ee
 
-PODFILE CHECKSUM: bee26ee7a95d15e162524b39f6b682bf51991a6a
+PODFILE CHECKSUM: 8ec4d0d6ab9ab024d2be6dcfe8bfc0afb860ba98
 
 COCOAPODS: 1.12.1

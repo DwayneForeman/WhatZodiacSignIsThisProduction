@@ -51,7 +51,9 @@ class GamePlayTwoViewController: UIViewController {
     
     
     override func viewWillDisappear(_ animated: Bool) {
-        AudioManager.shared.player.stop()
+        
+            AudioManager.shared.player?.stop()
+    
     }
     
     // Save before view dissapears
@@ -77,8 +79,9 @@ class GamePlayTwoViewController: UIViewController {
         GameSetupManager.shared.getAnswers(totalAnswersToDisplay: 8, answerButtons: answerButtons, answerButtonNames: answerButtonNames, typeSmall: true)
         GameSetupManager.shared.scoreLabelInt = Int(scoreLabel.text!)!
         GameSetupManager.shared.getHotStreaks(streak: streaks, viewController: self)
-        GameSetupManager.shared.gameOver(scoreLabel: scoreLabel, viewController: self)
+        GameSetupManager.shared.gameOver(scoreLabel: scoreLabel, viewController: self, answerButtons: answerButtons)
         CoreDataManager.shared.addScoreAndStreak(score: GameSetupManager.shared.scoreLabelInt, streak: currentHotStreakHelper)
+        GameSetupManager.shared.ballonPressed = false
     }
     
 
@@ -103,7 +106,7 @@ class GamePlayTwoViewController: UIViewController {
     
     @IBAction func ballonPressed(_ sender: UIButton) {
         
-        GameSetupManager.shared.ballonHelper(numOfIncorrectAnswersToRemove: 4, answerButtons: answerButtons, scoreLabelText: scoreLabel, smallOrRegCorrectSignKeyFromJokesArray: smallCorrectSignKeyFromJokesArray)
+        GameSetupManager.shared.ballonHelper(numOfIncorrectAnswersToRemove: 4, answerButtons: answerButtons, scoreLabelText: scoreLabel, smallOrRegCorrectSignKeyFromJokesArray: smallCorrectSignKeyFromJokesArray, viewController: self)
 
     }
 
