@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RevenueCat
 
 class MenuViewController: UIViewController {
     
@@ -17,6 +18,7 @@ class MenuViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        UpgradeManager.shared.checkForPremiumUser()
         homeButton.tintColor = .black
     }
     
@@ -33,9 +35,6 @@ class MenuViewController: UIViewController {
         
         self.dismiss(animated: true)
     }
-    
-    
-    
     
     
     @IBAction func menuButtonPressed(_ sender: UIButton) {
@@ -82,7 +81,7 @@ class MenuViewController: UIViewController {
             
             else if sender.tag == 5 {
                 // Share the app
-                        let text = "LMFAOO! This app is JOKES!!"
+                        let text = "LMFAO! This app is JOKES!!"
                 if let appURL = URL(string: "https://www.yourappstorelink.com") {
                     let activityViewController = UIActivityViewController(activityItems: [text, appURL], applicationActivities: nil)
                     present(activityViewController, animated: true, completion: nil)
@@ -90,12 +89,9 @@ class MenuViewController: UIViewController {
             }
             
             else if sender.tag == 6 {
-                // Create URL
-                if let howToPlayURL = URL(string: "https://www.WhatZodiacSignIsThis.com") {
-                    // Open URL
-                    UIApplication.shared.open(howToPlayURL)
-                    print(sender.tintColor!)
-                }
+                // Restore Purchases
+                UpgradeManager.shared.restorePurchases(viewController: self)
+                
             }
             
             else if sender.tag == 7 {

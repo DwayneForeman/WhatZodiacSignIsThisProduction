@@ -28,6 +28,7 @@ class OnboardingViewController: UIViewController {
         
         navigationController?.setNavigationBarHidden(true, animated: true)
         
+        UpgradeManager.shared.checkForPremiumUser()
         
     }
 

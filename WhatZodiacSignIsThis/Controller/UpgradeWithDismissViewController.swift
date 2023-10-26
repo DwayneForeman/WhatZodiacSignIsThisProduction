@@ -11,10 +11,6 @@ import StoreKit
 import SAConfettiView
 
 class UpgradeWithDismissViewController: UIViewController {
-
-    var packagesAvailableForPurchase = [Package]()
-    
-    static let shared = UpgradeWithDismissViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,149 +23,49 @@ class UpgradeWithDismissViewController: UIViewController {
             GameSetupManager.shared.isUpgraded = false
         }
         
-        print("View did load")
-        
+       
         // Check to see if this is a premium user
-       checkForPremiumUser()
+        UpgradeManager.shared.checkForPremiumUser()
         
-        // Fetch available offerings when the view loads.
-        fetchOfferings()
+       // Fetch available offerings when the view loads.
+        UpgradeManager.shared.fetchOfferings()
+        
+    }
+    
+    
+    // Check to see if this is a premium user before appearing
+    override func viewWillAppear(_ animated: Bool) {
+        UpgradeManager.shared.checkForPremiumUser()
     }
     
 
     override func viewWillDisappear(_ animated: Bool) {
-        checkForPremiumUser()
-        
+        // Check to see if this is a premium user
+        UpgradeManager.shared.checkForPremiumUser()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        checkForPremiumUser()
-        
+        // Check to see if this is a premium user
+        UpgradeManager.shared.checkForPremiumUser()
     }
     
-    
-    
-    
-    func checkForPremiumUser(viewController: UIViewController? = nil){
-        
-        Purchases.shared.getCustomerInfo { (customerInfo, error) in
-            if let error = error {
-                print("Error fetching customer info: \(error.localizedDescription)")
-            } else if let customerInfo = customerInfo {
-                if customerInfo.entitlements.all["premium"]?.isActive == true {
-                    print("User has premium entitlement. Dismissing.")
-                    
-                    GameSetupManager.shared.isUpgraded = true
-                    UserDefaults.standard.set(true, forKey: "isUpgraded")
-                    
-                    if let vc = viewController {
-                        vc.dismiss(animated: true)
-                    }
-                } else {
-                    print("User does not have premium entitlement.")
-                    
-                    GameSetupManager.shared.isUpgraded = false
-                }
-            }
-        }
-    }
-    
-    
-    
+
     
     @IBAction func weeklySubscriptionPressed(_ sender: UIButton) {
-        initiateSubscription(packageIdentifier: "$rc_weekly")
+        UpgradeManager.shared.initiateSubscription(packageIdentifier: "$rc_weekly", viewController: self)
 
         print("Weekly tapped")
     }
     
     
     @IBAction func monthlySubscriptionPressed(_ sender: UIButton) {
-        initiateSubscription(packageIdentifier: "$rc_monthly")
+        UpgradeManager.shared.initiateSubscription(packageIdentifier: "$rc_monthly", viewController: self)
         print("Monthly tapped")
     }
     
     
-    func fetchOfferings() {
-        Purchases.shared.getOfferings { [weak self] (offerings, error) in
-            if let currentOffering = offerings?.current {
-                let packages = currentOffering.availablePackages
-
-                // Clear the existing packagesAvailableForPurchase array
-                self?.packagesAvailableForPurchase = packages
-
-                for package in packages {
-                    print("Available package: \(self?.convertPackageToString(package) ?? "N/A")")
-                }
-            }
-        }
-    }
-
-    func convertPackageToString(_ package: Package) -> String {
-        return "Package: \(package.storeProduct.localizedTitle) (Identifier: \(package.identifier))"
-    }
-
-    private func initiateSubscription(packageIdentifier: String) {
-        if let package = packagesAvailableForPurchase.first(where: { $0.identifier == packageIdentifier }) {
-            Purchases.shared.purchase(package: package) { (transaction, purchaserInfo, error, userCancelled) in
-                if userCancelled {
-                    print("User cancelled the purchase")
-                } else if let error = error {
-                    print("Purchase error: \(error.localizedDescription)")
-                } else {
-                    print("Purchase successful")
-                    
-                    GameSetupManager.shared.isUpgraded = true
-                    UserDefaults.standard.set(true, forKey: "isUpgraded")
-                    
-                    if let premiumEntitlement = purchaserInfo?.entitlements["premium"], premiumEntitlement.isActive {
-                        
-                        let confettiView = SAConfettiView(frame: self.view.bounds)
-                        self.view.addSubview(confettiView)
-
-                        // Start the confetti animation
-                        confettiView.startConfetti()
-
-                        // Calculate the duration of the confetti animation
-                        let confettiDuration: TimeInterval = 4.5
-
-                        // Schedule dismissal after the confetti animation
-                        DispatchQueue.main.asyncAfter(deadline: .now() + confettiDuration) {
-                            // Stop confetti
-                            confettiView.stopConfetti()
-                            // Hide confetti
-                            confettiView.isHidden = true
-                            // Bring the main view to the front
-                            self.view.bringSubviewToFront(self.view)
-
-                            // Dismiss the view controller
-                            self.dismiss(animated: true)
-                            
-                        }
-                    }
-                }
-            }
-        } else {
-            print("Package not found for identifier: \(packageIdentifier)")
-        }
-    }
-    
-    
-    
-     func restorePurchases() {
-         Purchases.shared.restorePurchases { (purchaserInfo, error) in
-             if let purchaserInfo = purchaserInfo {
-                 print("Purchases restored: \(purchaserInfo)")
-             } else if let error = error {
-                 print("Restore error: \(error.localizedDescription)")
-             }
-         }
-     }
-    
-    
-    
     @IBAction func restorePurchasesPressed(_ sender: UIButton) {
-        restorePurchases()
+        UpgradeManager.shared.restorePurchases(viewController: self)
     }
     
 

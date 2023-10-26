@@ -8,6 +8,7 @@
 import UIKit
 import CoreData
 import RevenueCat
+import GoogleMobileAds
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,6 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Purchases.logLevel = .debug
         Purchases.configure(withAPIKey: "appl_mJjFXpPRWeGRojbyBgdUMGJzACq")
+        
+        GADMobileAds.sharedInstance().start(completionHandler: nil)
         
         return true
     }

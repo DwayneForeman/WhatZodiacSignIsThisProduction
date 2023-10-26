@@ -95,18 +95,11 @@ class HomeViewController: UIViewController {
                     
                     self.performSegue(withIdentifier: "GoToUpgradeWithDismissViewController", sender: nil)
                     
-                    UpgradeWithDismissViewController.shared.checkForPremiumUser()
-                    
-                    let gamePlayThreeViewController = GamePlayThreeViewController()
-                    if GameSetupManager.shared.isUpgraded == true {
-                        self.performSegue(withIdentifier: "GoToGamePlayThreeViewController", sender: nil)
                     }
                 }
             }
         }
-        
-    }
-    
+
     
     
     

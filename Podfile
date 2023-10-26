@@ -5,6 +5,6 @@ target 'WhatZodiacSignIsThis' do
 
   pod "SAConfettiView"
   pod 'RevenueCat'
-
+  pod 'Google-Mobile-Ads-SDK' 
 
 end

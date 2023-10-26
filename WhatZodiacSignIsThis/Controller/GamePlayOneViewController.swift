@@ -10,8 +10,9 @@ import SAConfettiView
 import AVFoundation
 import CoreData
 import StoreKit
+import GoogleMobileAds
 
-class GamePlayOneViewController: UIViewController {
+class GamePlayOneViewController: UIViewController, GADFullScreenContentDelegate {
     
     //MARK: - Variables
     
@@ -41,9 +42,15 @@ class GamePlayOneViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
      
-        GameOverViewController.shared.checkForPremiumUser(viewController: self)
+        // Load an interstitial ad
+        loadInterstitialAd()
         
-        print("GAMMMMMMMEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE ONNEEEEEEE VIEWWWW DIDDDD LOAD")
+        // Show ads based on upgade status
+        showAdsBasedOnUpgradeStatus()
+        
+        // Check for upgrade status
+        UpgradeManager.shared.checkForPremiumUser()
+        
         
         // Retrieve losses from UserDefaults
         if let losses = UserDefaults.standard.value(forKey: "losses") as? Int {
@@ -59,6 +66,7 @@ class GamePlayOneViewController: UIViewController {
             // Default to false if the key doesn't exist in UserDefaults
             GameSetupManager.shared.isUpgraded = false
             print("IsUpgraded not found in UserDefaults. Setting to false.")
+        
         }
 
         // For THIS GamePlayOneVC, If the user is NOT upgraded and their losses equal 1, then we need to pop up the UpGradeWithDismissVC
@@ -105,7 +113,7 @@ class GamePlayOneViewController: UIViewController {
     
     
     override func viewWillAppear(_ animated: Bool) {
-        GameOverViewController.shared.checkForPremiumUser()
+        UpgradeManager.shared.checkForPremiumUser()
     }
     
   
@@ -146,7 +154,7 @@ class GamePlayOneViewController: UIViewController {
          print("Ballon button Tapped")
         
         // Check if the user has just upgraded
-        GameOverViewController.shared.checkForPremiumUser()
+        UpgradeManager.shared.checkForPremiumUser()
 
         print(GameSetupManager.shared.isUpgraded)
          // Check if the user is upgraded or hasn't incurred any losses
@@ -158,9 +166,7 @@ class GamePlayOneViewController: UIViewController {
 
 
      }
-     
-
-
+    
     
     @IBAction func homeButtonPressed(_ sender: UIButton) {
         
@@ -169,4 +175,86 @@ class GamePlayOneViewController: UIViewController {
         
        performSegue(withIdentifier: "GoToHomeViewController", sender: nil)
     }
+    
+    
+    
+    //MARK: - Setup Interstitial Ads to diplay every 3 min
+    
+    let testAds = "ca-app-pub-3940256099942544/4411468910"
+    let wsitInterstitialAdOct2023Ads = "ca-app-pub-2471263905843170/4011229361"
+    private var interstitialAd: GADInterstitialAd?
+    private var timer: Timer?
+
+    // Function to load an interstitial ad
+        func loadInterstitialAd() {
+            // Replace with your interstitial ad unit ID
+            let adUnitID = testAds
+            let request = GADRequest()
+
+            GADInterstitialAd.load(withAdUnitID: adUnitID, request: request) { [weak self] ad, error in
+                if let error = error {
+                    print("Failed to load interstitial ad: \(error.localizedDescription)")
+                    return
+                }
+
+                self?.interstitialAd = ad
+                self?.interstitialAd?.fullScreenContentDelegate = self
+            }
+        }
+
+        // Function to display the interstitial ad
+        func showInterstitialAd() {
+            if let interstitialAd = interstitialAd {
+                interstitialAd.present(fromRootViewController: self)
+            } else {
+                print("Interstitial ad is not ready yet.")
+            }
+        }
+
+        // Function to start the timer for displaying ads every 3 minutes
+        func startAdTimer() {
+            // Timer to display the ad every 3 minutes
+            timer = Timer.scheduledTimer(timeInterval: 180.0, target: self, selector: #selector(displayAd), userInfo: nil, repeats: true)
+        }
+
+        // Selector for displaying the ad
+        @objc func displayAd() {
+            showInterstitialAd()
+        }
+
+     
+    func showAdsBasedOnUpgradeStatus() {
+
+        if GameSetupManager.shared.isUpgraded == false {
+            // Start the timer to display the ad every 3 minutes
+            startAdTimer()
+        }
+    }
 }
+
+
+//MARK: - Handle Interstitial Ad Events
+
+extension GamePlayOneViewController {
+    func adDidPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+               // Called when the interstitial ad is presented full-screen.
+           }
+
+           func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+               // Called when the interstitial ad is dismissed.
+               // Load another ad or perform other actions here.
+               
+               // Resume Audio
+               AudioManager.shared.playSound(soundName: "WaitingForAnswerSound", shouldLoop: true)
+               
+               // Automatically load another ad
+               loadInterstitialAd()
+           }
+
+           func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
+               // Called when there's an error presenting the interstitial ad.
+               print("Failed to present interstitial ad: \(error.localizedDescription)")
+           }
+       
+}
+

@@ -39,6 +39,9 @@ class GamePlayTwoViewController: UIViewController {
     //MARK: - LifeCycle Functions
     
     override func viewDidLoad() {
+        
+        UpgradeManager.shared.checkForPremiumUser()
+        
         // Capture, Filter and Assign to our components of this ViewController from CoreData fetch reults when teh view loads
         GameSetupManager.shared.captureAndFilterFetchResults(scoreLabel: scoreLabel)
       

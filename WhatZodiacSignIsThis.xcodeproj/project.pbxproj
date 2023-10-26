@@ -45,6 +45,7 @@
 		1FDEC4C62A99C12500B04808 /* WrongAnswer3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1FDEC4C22A99C12500B04808 /* WrongAnswer3.mp3 */; };
 		1FDEC4C72A99C12500B04808 /* WrongAnswer4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1FDEC4C32A99C12500B04808 /* WrongAnswer4.mp3 */; };
 		1FDEC4CB2A9AC9C200B04808 /* PopSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1FDEC4CA2A9AC9C200B04808 /* PopSound.mp3 */; };
+		1FDFCF512AE760F800FD8704 /* UpgradeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDFCF502AE760F800FD8704 /* UpgradeManager.swift */; };
 		1FED41F72AA02E7E00E64CE1 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FED41F62AA02E7E00E64CE1 /* CoreDataManager.swift */; };
 		1FED41F92AA1651400E64CE1 /* Jokes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FED41F82AA1651400E64CE1 /* Jokes.swift */; };
 /* End PBXBuildFile section */
@@ -89,6 +90,7 @@
 		1FDEC4C22A99C12500B04808 /* WrongAnswer3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = WrongAnswer3.mp3; sourceTree = "<group>"; };
 		1FDEC4C32A99C12500B04808 /* WrongAnswer4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = WrongAnswer4.mp3; sourceTree = "<group>"; };
 		1FDEC4CA2A9AC9C200B04808 /* PopSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = PopSound.mp3; sourceTree = "<group>"; };
+		1FDFCF502AE760F800FD8704 /* UpgradeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradeManager.swift; sourceTree = "<group>"; };
 		1FED41F62AA02E7E00E64CE1 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		1FED41F82AA1651400E64CE1 /* Jokes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jokes.swift; sourceTree = "<group>"; };
 		413E6835D42C40117BF4BE04 /* Pods-WhatZodiacSignIsThis.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatZodiacSignIsThis.release.xcconfig"; path = "Target Support Files/Pods-WhatZodiacSignIsThis/Pods-WhatZodiacSignIsThis.release.xcconfig"; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 				1FED41F62AA02E7E00E64CE1 /* CoreDataManager.swift */,
 				1F63B6C82AC0F6F200954D54 /* AudioManager.swift */,
 				1F63B6CA2AC1151D00954D54 /* GameSetupManager.swift */,
+				1FDFCF502AE760F800FD8704 /* UpgradeManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 				1F4199222AD3A9720029DC53 /* HowToPlayViewController.swift in Sources */,
 				1F63FBCB2ACA604800DB95EF /* MenuViewController.swift in Sources */,
 				1FC522862ADC6FB500570BC8 /* UpgradeWithDismissViewController.swift in Sources */,
+				1FDFCF512AE760F800FD8704 /* UpgradeManager.swift in Sources */,
 				1F30E7E32AA459D800D3AB86 /* OnBoardingSlide.swift in Sources */,
 				1F032DD32A91227B00D620B1 /* SceneDelegate.swift in Sources */,
 				1F6760022AB66DB500CC6C88 /* HomeViewController.swift in Sources */,
