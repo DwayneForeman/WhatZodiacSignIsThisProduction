@@ -12,6 +12,8 @@ import SAConfettiView
 
 class UpgradeViewController: UIViewController {
     
+    let gameOverViewController = GameOverViewController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,30 +37,28 @@ class UpgradeViewController: UIViewController {
     // Check to see if this is a premium user before navigating to next view controller
     override func viewWillDisappear(_ animated: Bool) {
         
-        if let isUpgraded = UserDefaults.standard.value(forKey: "IsUpgraded") as? Bool {
-            GameSetupManager.shared.isUpgraded = isUpgraded
-        }
-        else {
-            // Default to false if the key doesn't exist in UserDefaults
-            GameSetupManager.shared.isUpgraded = false
-        }
-        
-        // Check to see if this is a premium user
-        UpgradeManager.shared.checkForPremiumUser()
-        
+            if let isUpgraded = UserDefaults.standard.value(forKey: "IsUpgraded") as? Bool {
+                GameSetupManager.shared.isUpgraded = isUpgraded
+            }
+            else {
+                // Default to false if the key doesn't exist in UserDefaults
+                GameSetupManager.shared.isUpgraded = false
+            }
+            
     }
     
     
     
     @IBAction func weeklySubscriptionPressed(_ sender: UIButton) {
-        UpgradeManager.shared.initiateSubscription(packageIdentifier: "$rc_weekly", viewController: self)
+        UpgradeManager.shared.initiateSubscription(packageIdentifier: "$rc_weekly", viewController: self, gameOverViewController: gameOverViewController)
 
         print("Weekly tapped")
     }
     
     
     @IBAction func monthlySubscriptionPressed(_ sender: UIButton) {
-        UpgradeManager.shared.initiateSubscription(packageIdentifier: "$rc_monthly", viewController: self)
+        UpgradeManager.shared.initiateSubscription(packageIdentifier: "$rc_weekly", viewController: self, gameOverViewController: gameOverViewController)
+        
         print("Monthly tapped")
     }
     

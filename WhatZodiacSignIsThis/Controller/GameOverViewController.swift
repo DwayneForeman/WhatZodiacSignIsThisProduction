@@ -33,6 +33,12 @@ class GameOverViewController: UIViewController {
     }
     
 
+    override func viewWillAppear(_ animated: Bool) {
+        // Check to see if this is a premium user
+        UpgradeManager.shared.checkForPremiumUser(viewController: self)
+        
+    }
+    
     
     
     override func viewWillDisappear(_ animated: Bool) {

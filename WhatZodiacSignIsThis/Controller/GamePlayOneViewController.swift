@@ -41,7 +41,10 @@ class GamePlayOneViewController: UIViewController, GADFullScreenContentDelegate 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-     
+        
+        // Firbase Function
+        //fetchInitialJoke()
+        
         // Load an interstitial ad
         loadInterstitialAd()
         
@@ -84,11 +87,15 @@ class GamePlayOneViewController: UIViewController, GADFullScreenContentDelegate 
         GameSetupManager.shared.captureAndFilterFetchResults(scoreLabel: scoreLabel)
         
         print("view did load \(currentHotStreakHelper)")
+        
         // Start new round
         newRound()
         
         // Grab file to run/see our SQL Lite datbase in action
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+        
+        // Set the flag to false so the a new prompt can be shown when the user gets another high score
+        UserDefaults.standard.set(false, forKey: "PromptWasShown")
         
     }
     
@@ -109,35 +116,103 @@ class GamePlayOneViewController: UIViewController, GADFullScreenContentDelegate 
         CoreDataManager.shared.addScoreAndStreak(score: GameSetupManager.shared.scoreLabelInt, streak: CoreDataManager.shared.fetchLatestStreak()!)
         print(currentHotStreakHelper)
         
+        // Retrieve isUpgraded from UserDefaults
+        if let isUpgraded = UserDefaults.standard.value(forKey: "IsUpgraded") as? Bool {
+            GameSetupManager.shared.isUpgraded = isUpgraded
+            print("IsUpgraded from ViewDidLoad: \(isUpgraded)")
+        } else {
+            // Default to false if the key doesn't exist in UserDefaults
+            GameSetupManager.shared.isUpgraded = false
+            print("IsUpgraded not found in UserDefaults. Setting to false.")
+        
+        }
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         UpgradeManager.shared.checkForPremiumUser()
+        
+      
     }
     
+    func newRound() {
+            self.view.bringSubviewToFront(self.view)
+            AudioManager.shared.playSound(soundName: "WaitingForAnswerSound", shouldLoop: true)
+            GameSetupManager.shared.getRandomJoke()
+            correctSignKeyFromJokesArray = GameSetupManager.shared.correctSignKeyFromJokesArray
+            jokesLabel.text = GameSetupManager.shared.jokesLabelText
+            GameSetupManager.shared.getAnswers(totalAnswersToDisplay: 4, answerButtons: answerButtons, answerButtonNames: answerButtonNames, typeSmall: false)
+            GameSetupManager.shared.scoreLabelInt = Int(scoreLabel.text!)!
+            GameSetupManager.shared.getHotStreaks(streak: streaks, viewController: self)
+            GameSetupManager.shared.gameOver(scoreLabel: scoreLabel, viewController: self, answerButtons: answerButtons)
+            CoreDataManager.shared.addScoreAndStreak(score: GameSetupManager.shared.scoreLabelInt, streak: currentHotStreakHelper)
+            GameSetupManager.shared.ballonPressed = false
+            GameSetupManager.shared.highScoreAlert(viewController: self, scoreLabel: scoreLabel)
+            
+        }
+    
+    
+    
+
+    
+    
+    
+    
+    //MARK: - Firebase FireStore Functions
   
+    /*
     
     func newRound() {
         self.view.bringSubviewToFront(self.view)
         AudioManager.shared.playSound(soundName: "WaitingForAnswerSound", shouldLoop: true)
-        GameSetupManager.shared.getRandomJoke()
-        correctSignKeyFromJokesArray = GameSetupManager.shared.correctSignKeyFromJokesArray
-        jokesLabel.text = GameSetupManager.shared.jokesLabelText
-        GameSetupManager.shared.getAnswers(totalAnswersToDisplay: 4, answerButtons: answerButtons, answerButtonNames: answerButtonNames, typeSmall: false)
-        GameSetupManager.shared.scoreLabelInt = Int(scoreLabel.text!)!
-        GameSetupManager.shared.getHotStreaks(streak: streaks, viewController: self)
-        GameSetupManager.shared.gameOver(scoreLabel: scoreLabel, viewController: self, answerButtons: answerButtons)
-        CoreDataManager.shared.addScoreAndStreak(score: GameSetupManager.shared.scoreLabelInt, streak: currentHotStreakHelper)
-        GameSetupManager.shared.ballonPressed = false
+        
+        // Fetch the initial joke
+        GameSetupManager.shared.getRandomJoke { [self] randomJoke in
+            if let randomJoke = randomJoke {
+                self.correctSignKeyFromJokesArray = GameSetupManager.shared.correctSignKeyFromJokesArray
+                self.jokesLabel.text = randomJoke
+                
+                // Continue with other actions related to the new round
+                GameSetupManager.shared.getAnswers(totalAnswersToDisplay: 4, answerButtons: self.answerButtons, answerButtonNames: self.answerButtonNames, typeSmall: false)
+                GameSetupManager.shared.scoreLabelInt = Int(scoreLabel.text!)!
+                GameSetupManager.shared.getHotStreaks(streak: streaks, viewController: self)
+                GameSetupManager.shared.gameOver(scoreLabel: scoreLabel, viewController: self, answerButtons: answerButtons)
+                CoreDataManager.shared.addScoreAndStreak(score: GameSetupManager.shared.scoreLabelInt, streak: currentHotStreakHelper)
+                GameSetupManager.shared.ballonPressed = false
+            } else {
+                // Handle the case where no joke was found or an error occurred
+                self.jokesLabel.text = "Failed to fetch a joke. Please try again."
+            }
+        }
     }
     
+    func fetchInitialJoke() {
+        // Show a loading indicator or message to the user
+        jokesLabel.text = "Loading... 😈"
+        
+        // Fetch the initial joke
+        GameSetupManager.shared.getRandomJoke { [weak self] randomJoke in
+            DispatchQueue.main.async { // Switch to the main queue
+                if let randomJoke = randomJoke {
+                    // Update the UI with the fetched joke
+                    self?.jokesLabel.text = randomJoke
+                } else {
+                    // Handle the case where no joke was found or an error occurred
+                    self?.jokesLabel.text = "Failed to fetch a joke. Please try again."
+                }
+            }
+        }
+    }
+     
+    */
     
     //MARK: - Action Functions
     
     @IBAction func highlightSelectedButton(_ sender: UIButton) {
         
         GameSetupManager.shared.highlightSelectedButtonHelper(sender: sender, theUsersSelectedAnswer: usersSelectedAnswer, regOrSmallCorrectSignKeyFromJokesArray: correctSignKeyFromJokesArray, answerButtons: answerButtons, myStreaks: streaks, scoreLabel: scoreLabel, viewController: self)
+        
+        GameSetupManager.shared.highScoreAlert(viewController: self, scoreLabel: scoreLabel)
         
         // Set the newRoundCallback in GameSetupManager to start a new round
         // Weak catptures self to make it a weak refernce to avoid memeory leaks and then it is used again in the body as an optional to call newRound()
@@ -188,7 +263,7 @@ class GamePlayOneViewController: UIViewController, GADFullScreenContentDelegate 
     // Function to load an interstitial ad
         func loadInterstitialAd() {
             // Replace with your interstitial ad unit ID
-            let adUnitID = testAds
+            let adUnitID = wsitInterstitialAdOct2023Ads
             let request = GADRequest()
 
             GADInterstitialAd.load(withAdUnitID: adUnitID, request: request) { [weak self] ad, error in
@@ -225,9 +300,23 @@ class GamePlayOneViewController: UIViewController, GADFullScreenContentDelegate 
      
     func showAdsBasedOnUpgradeStatus() {
 
-        if GameSetupManager.shared.isUpgraded == false {
+        // Check for upgrade status
+        UpgradeManager.shared.checkForPremiumUser()
+        
+        // Retrieve isUpgraded from UserDefaults
+        if let isUpgraded = UserDefaults.standard.value(forKey: "IsUpgraded") as? Bool {
+            GameSetupManager.shared.isUpgraded = isUpgraded
+            print("User IS upgraded. They are FREE fom ads")
+            
+        } else {
+            // Default to false if the key doesn't exist in UserDefaults
+            GameSetupManager.shared.isUpgraded = false
+            
             // Start the timer to display the ad every 3 minutes
             startAdTimer()
+            
+            print("User is not upgraded. They will see ads.")
+        
         }
     }
 }

@@ -46,6 +46,7 @@ class OnboardingViewController: UIViewController {
         // If current page equals ast page
         if currentPage == slides.count-1 {
          
+                NotificationManager.shared.getNotificationAuthorizationFromuser()
                 performSegue(withIdentifier: "GoToUpgradeScreen", sender: nil)
            
         } else {

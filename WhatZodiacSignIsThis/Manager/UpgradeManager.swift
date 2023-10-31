@@ -24,7 +24,7 @@ class UpgradeManager: UIViewController {
     //MARK: - Check if user is Upgraded
     
     
-    func checkForPremiumUser(){
+    func checkForPremiumUser(viewController: UIViewController? = nil){
         
         Purchases.shared.getCustomerInfo { (customerInfo, error) in
             if let error = error {
@@ -36,8 +36,15 @@ class UpgradeManager: UIViewController {
                     GameSetupManager.shared.isUpgraded = true
                     UserDefaults.standard.set(true, forKey: "isUpgraded")
                     
+                    if let vc = viewController {
+                        vc.dismiss(animated: false)
+                    }
+                    
                 } else {
                     print("User does not have premium entitlement.")
+                    
+                    GameSetupManager.shared.isUpgraded = false
+                    UserDefaults.standard.set(false, forKey: "isUpgraded")
                 }
             }
         }
@@ -73,7 +80,7 @@ class UpgradeManager: UIViewController {
     
     //MARK: - Make Purchase
     
-    func initiateSubscription(packageIdentifier: String, viewController: UIViewController) {
+    func initiateSubscription(packageIdentifier: String, viewController: UIViewController, gameOverViewController: UIViewController? = nil) {
             if let package = packagesAvailableForPurchase.first(where: { $0.identifier == packageIdentifier }) {
                 Purchases.shared.purchase(package: package) { (transaction, purchaserInfo, error, userCancelled) in
                     if userCancelled {
@@ -109,6 +116,11 @@ class UpgradeManager: UIViewController {
                                 // Dismiss the view controller
                                 if viewController is UpgradeViewController {
                                     viewController.performSegue(withIdentifier: "GoToGamePlayOneViewController", sender: nil)
+                                    
+                                    if let gameOverVC = gameOverViewController {
+                                        gameOverVC.dismiss(animated: true)
+                                    }
+                                    
                                 } else {
                                     viewController.dismiss(animated: true)
                                 }

@@ -11,6 +11,8 @@ import AVFoundation
 import CoreData
 import StoreKit
 import RevenueCat
+import Firebase
+import FirebaseFirestore
 
 class GameSetupManager: UIViewController {
     
@@ -51,27 +53,87 @@ class GameSetupManager: UIViewController {
     //MARK: - Get Jokes Function
     
     // Fetch random joke from the jokes array of Jokes singleton Model
-    func getRandomJoke() {
+       func getRandomJoke() {
+           
+           if isUpgraded == false {
+               
+               // Grab a randon Sign/Key from the jokes array
+               // IF we can grab a random key THEN
+               if let randomSignKey = Jokes.shared.jokesArray.randomElement() {
+                   // Let's tap into the value of that random key. Value are teh arrays assicated with each key and then we grab a random one and grab a random joke. Aka let randomJoke
+                   
+                   // Capturing the random key so I can use in the getAnswers function below
+                   correctSignKeyFromJokesArray = randomSignKey.key
+                   
+                   // This handles teh case for the smaller icons in which we named them starting with "Small..."
+                   smallCorrectSignKeyFromJokesArray = "Small" + correctSignKeyFromJokesArray
+                   
+                   let randomJoke = randomSignKey.value.randomElement()
+                   // Now let's let the text of that random joke equal our jokes label so we can display the randomJoke on the screen
+                   jokesLabelText = randomJoke!
+               }
+               
+           } else if isUpgraded == true {
+               // Grab a randon Sign/Key from the UPGRADED jokes array
+               // IF we can grab a random key THEN
+               if let randomSignKey = UpgradedJokes.shared.upgradedJokesArray.randomElement() {
+                   // Let's tap into the value of that random key. Value are teh arrays assicated with each key and then we grab a random one and grab a random joke. Aka let randomJoke
+                   
+                   // Capturing the random key so I can use in the getAnswers function below
+                   correctSignKeyFromJokesArray = randomSignKey.key
+                   
+                   // This handles teh case for the smaller icons in which we named them starting with "Small..."
+                   smallCorrectSignKeyFromJokesArray = "Small" + correctSignKeyFromJokesArray
+                   
+                   let randomJoke = randomSignKey.value.randomElement()
+                   // Now let's let the text of that random joke equal our jokes label so we can display the randomJoke on the screen
+                   jokesLabelText = randomJoke!
+               }
+           }
+       }
+    
+    
+    //MARK: - Firebase Get Jokes Function
+    
+    /*
+     
+    func getRandomJoke(completion: @escaping (String?) -> Void) {
+        let db = Firestore.firestore()
         
-        // Grab a randon Sign/Key from the jokes array
-        // IF we can grab a random key THEN
-        if let randomSignKey = Jokes.shared.jokesArray.randomElement() {
-            // Let's tap into the value of that random key. Value are teh arrays assicated with each key and then we grab a random one and grab a random joke. Aka let randomJoke
-            
-            // Capturing the random key so I can use in the getAnswers function below
-            correctSignKeyFromJokesArray = randomSignKey.key
-            
-            // This handles teh case for the smaller icons in which we named them starting with "Small..."
-            smallCorrectSignKeyFromJokesArray = "Small" + correctSignKeyFromJokesArray
-            
-            let randomJoke = randomSignKey.value.randomElement()
-            // Now let's let the text of that random joke equal our jokes label so we can display the randomJoke on the screen
-            jokesLabelText = randomJoke!
+        // Define a reference to your Firestore collection
+        let jokeCollection = db.collection("JokeQuestions")
+        
+        // Generate a random number to select a random document from Firestore
+        let randomIndex = Int.random(in: 0..<3)  // Assuming you have 3 jokes
+        
+        jokeCollection.whereField("AccessLevel", isEqualTo: "1").limit(to: 3).getDocuments { (querySnapshot, error) in
+            if let error = error {
+                print("Error fetching jokes: \(error.localizedDescription)")
+                completion(nil) // Notify the caller that fetching failed
+            } else if let documents = querySnapshot?.documents, documents.count > randomIndex {
+                // Get the question and answer from the retrieved Firestore document
+                let document = documents[randomIndex]
+                let randomJoke = document["Question"] as? String ?? ""
+                let answerToJoke = document["Answer"] as? String ?? ""
+                
+                print(randomJoke)
+                print(answerToJoke)
+                
+                // Capturing the answer to the joke so I can use it in the completion handler
+                self.correctSignKeyFromJokesArray = answerToJoke
+                
+                // This handles the case for the smaller icons in which we named them starting with "Small..."
+                self.smallCorrectSignKeyFromJokesArray = "Small" + self.correctSignKeyFromJokesArray
+                
+                // Notify the caller with the fetched joke
+                completion(randomJoke)
+            } else {
+                completion(nil) // Notify the caller that no joke was found
+            }
         }
-        
     }
     
-    
+     */
     
     
     //MARK: - Get Answers Function
@@ -259,7 +321,7 @@ class GameSetupManager: UIViewController {
                  present(losePrompt, animated: true)
                  */
                 
-                GameSetupManager.shared.scoreLabelInt -= 100
+                GameSetupManager.shared.scoreLabelInt -= 10
                 scoreLabel.text = String(GameSetupManager.shared.scoreLabelInt)
                 print("Wrong answer bud!!")
                 
@@ -386,7 +448,7 @@ class GameSetupManager: UIViewController {
             // Show the incorrect answer prompt
             GameSetupManager.shared.answerPrompt(userAnswer: usersSelectedAnswer, correctOrIncorrectPopUp: "IncorrectPopUp", viewController: viewController)
 
-            GameSetupManager.shared.scoreLabelInt -= 100
+            GameSetupManager.shared.scoreLabelInt -= 10
             scoreLabel.text = String(GameSetupManager.shared.scoreLabelInt)
             print("Wrong answer, bud!")
         }
@@ -656,7 +718,7 @@ class GameSetupManager: UIViewController {
     
     //MARK: - Core Data Capture and Filter Helpher Function
     
-    func captureAndFilterFetchResults(scoreLabel: UILabel) {
+    func captureAndFilterFetchResults(scoreLabel: UILabel, viewController: UIViewController? = nil) {
         
         // ---------- CAPTURE AND FILTER FECTH RESULTS CODE ----------------
         
@@ -681,7 +743,7 @@ class GameSetupManager: UIViewController {
             if let highestScoreAbove100 = pointsNumbers.max(), highestScoreAbove100 > 100 {
                 gameCenterHighestScoreAbove100 = highestScoreAbove100
                 
-        
+               
             }
             
             // ---------- CAPTURE AND FILTER FECTH RESULTS CODE ----------------
@@ -689,6 +751,7 @@ class GameSetupManager: UIViewController {
         }
         
             currentHotStreakHelper = CoreDataManager.shared.fetchLatestStreak() ?? 0
+            print("the CURRRENT HOT STREAK IS \(currentHotStreakHelper)")
     }
     
     
@@ -706,12 +769,42 @@ class GameSetupManager: UIViewController {
         }
     }
     
+
+
     
-    func showAds(isUpgraded: Bool) {
-        // fasle by default set above in varaibles section
-        if isUpgraded {
-            print("Show ads")
+    func highScoreAlert(viewController: UIViewController, scoreLabel: UILabel) {
+     
+        let fetchedScores = CoreDataManager.shared.fetchScores()
+        let pointsNumbers = fetchedScores.map { Int($0.pointsNumber) }
+        let maxPointsNumbersScoredinHistory = pointsNumbers.max() ?? 0
+
+        print("THE MAX NUMBER SCORED IN HISTORY IS \(maxPointsNumbersScoredinHistory)")
+
+        let numScoreLabel = Int(scoreLabel.text ?? "0")
+        print("THE NUM SCORE LABEL IS \(numScoreLabel!)")
+
+        if numScoreLabel! > 100 && numScoreLabel! >= maxPointsNumbersScoredinHistory {
+            // The first time this runs, `promptWasShown` will be false
+            if UserDefaults.standard.bool(forKey: "PromptWasShown") == false {
+                print("High score achieved AT THIS MOMENT: \(numScoreLabel!)")
+                print("Highest score in history: \(pointsNumbers.max()!)")
+
+                // At this point is where we want to set the high score alert
+                let highScoreAlert = UIAlertController(title: "High Score Alert🚨", message: "Congrats your high score of \(numScoreLabel!) points! To see where you rank among your peers, check out the Charts 📊 button on the Home Screen.", preferredStyle: .alert)
+                let okay = UIAlertAction(title: "Okay", style: .default)
+
+                highScoreAlert.addAction(okay)
+
+                viewController.present(highScoreAlert, animated: true)
+
+                // Update the Game Centre Top Score
+                HomeViewController.shared.updateGameCenterScore()
+
+               
+                // Set the flag to true after showing the alert
+                UserDefaults.standard.set(true, forKey: "PromptWasShown")
+            }
         }
     }
-    
+
 }

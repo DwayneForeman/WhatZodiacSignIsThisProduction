@@ -142,6 +142,29 @@ class HomeViewController: UIViewController {
     }
     
     
+    
+    // To update the score in other view controllers without authtication as we already have that above
+    func updateGameCenterScore() {
+        let leaderboardID = "zodiacmemelords" // Replace with your actual leaderboard identifier
+        
+        // Create a GKScore object with the new score
+        let scoreReporter = GKScore(leaderboardIdentifier: leaderboardID)
+        scoreReporter.value = Int64(GameSetupManager.shared.gameCenterHighestScoreAbove100)
+        
+        // Report the score
+        GKScore.report([scoreReporter]) { error in
+            if let error = error {
+                print("Error reporting score to Game Center: \(error.localizedDescription)")
+            } else {
+                print("Score reported to Game Center successfully.")
+            }
+        }
+    }
+    
+    
+    
+    
+    
     @IBAction func anyButtonPressed(_ sender: UIButton) {
             AudioManager.shared.playSound(soundName: "ButtonSound", shouldLoop: false)
     }
