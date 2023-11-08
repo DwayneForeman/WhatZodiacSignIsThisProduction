@@ -70,10 +70,10 @@ class GamePlayTwoViewController: UIViewController {
         super.viewDidDisappear(animated)
         //AudioManager.shared.player.stop()
         print(GameSetupManager.shared.scoreLabelInt)
-        print(currentHotStreakHelper)
+       
         // Save score and streak to core data when we leave the screen
         CoreDataManager.shared.addScoreAndStreak(score: GameSetupManager.shared.scoreLabelInt, streak: CoreDataManager.shared.fetchLatestStreak()!)
-        print(currentHotStreakHelper)
+       
         
         // Retrieve isUpgraded from UserDefaults
         if let isUpgraded = UserDefaults.standard.value(forKey: "IsUpgraded") as? Bool {
