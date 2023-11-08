@@ -59,6 +59,7 @@
 		1FDFCF662AEB508400FD8704 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 1FDFCF652AEB508400FD8704 /* FirebaseMessaging */; };
 		1FDFCF682AEB508400FD8704 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 1FDFCF672AEB508400FD8704 /* FirebaseStorage */; };
 		1FDFCF6C2AECC56700FD8704 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1FDFCF6B2AECC56700FD8704 /* GoogleService-Info.plist */; };
+		1FEC3FEE2AF717BA0040AC85 /* PromoJokes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEC3FED2AF717BA0040AC85 /* PromoJokes.swift */; };
 		1FED41F72AA02E7E00E64CE1 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FED41F62AA02E7E00E64CE1 /* CoreDataManager.swift */; };
 		1FED41F92AA1651400E64CE1 /* Jokes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FED41F82AA1651400E64CE1 /* Jokes.swift */; };
 /* End PBXBuildFile section */
@@ -107,6 +108,7 @@
 		1FDEC4CA2A9AC9C200B04808 /* PopSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = PopSound.mp3; sourceTree = "<group>"; };
 		1FDFCF502AE760F800FD8704 /* UpgradeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradeManager.swift; sourceTree = "<group>"; };
 		1FDFCF6B2AECC56700FD8704 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1FEC3FED2AF717BA0040AC85 /* PromoJokes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoJokes.swift; sourceTree = "<group>"; };
 		1FED41F62AA02E7E00E64CE1 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		1FED41F82AA1651400E64CE1 /* Jokes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jokes.swift; sourceTree = "<group>"; };
 		413E6835D42C40117BF4BE04 /* Pods-WhatZodiacSignIsThis.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatZodiacSignIsThis.release.xcconfig"; path = "Target Support Files/Pods-WhatZodiacSignIsThis/Pods-WhatZodiacSignIsThis.release.xcconfig"; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 				1F032DD92A91227B00D620B1 /* WhatZodiacSignIsThis.xcdatamodeld */,
 				1FED41F82AA1651400E64CE1 /* Jokes.swift */,
 				1FCBE8F72AED7E5700139CA3 /* UpgradedJokes.swift */,
+				1FEC3FED2AF717BA0040AC85 /* PromoJokes.swift */,
 				1F30E7E22AA459D800D3AB86 /* OnBoardingSlide.swift */,
 			);
 			path = Model;
@@ -437,6 +440,7 @@
 				1FC522862ADC6FB500570BC8 /* UpgradeWithDismissViewController.swift in Sources */,
 				1FDFCF512AE760F800FD8704 /* UpgradeManager.swift in Sources */,
 				1F30E7E32AA459D800D3AB86 /* OnBoardingSlide.swift in Sources */,
+				1FEC3FEE2AF717BA0040AC85 /* PromoJokes.swift in Sources */,
 				1FCBE8FC2AEDEABE00139CA3 /* NotificationManager.swift in Sources */,
 				1F032DD32A91227B00D620B1 /* SceneDelegate.swift in Sources */,
 				1F6760022AB66DB500CC6C88 /* HomeViewController.swift in Sources */,

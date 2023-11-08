@@ -20,7 +20,7 @@ class GamePlayTwoViewController: UIViewController {
     
     @IBOutlet weak var scoreLabel: UILabel!
     
-    var currentHotStreakHelper = GameSetupManager.shared.currentHotStreakHelper
+    //var currentHotStreakHelper = GameSetupManager.shared.currentHotStreakHelper
     
     var smallCorrectSignKeyFromJokesArray: String = ""
     
@@ -99,7 +99,7 @@ class GamePlayTwoViewController: UIViewController {
            GameSetupManager.shared.scoreLabelInt = Int(scoreLabel.text!)!
            GameSetupManager.shared.getHotStreaks(streak: streaks, viewController: self)
            GameSetupManager.shared.gameOver(scoreLabel: scoreLabel, viewController: self, answerButtons: answerButtons)
-           CoreDataManager.shared.addScoreAndStreak(score: GameSetupManager.shared.scoreLabelInt, streak: currentHotStreakHelper)
+           CoreDataManager.shared.addScoreAndStreak(score: GameSetupManager.shared.scoreLabelInt, streak: GameSetupManager.shared.currentHotStreakHelper)
            GameSetupManager.shared.ballonPressed = false
            GameSetupManager.shared.highScoreAlert(viewController: self, scoreLabel: scoreLabel)
        }
@@ -160,7 +160,7 @@ class GamePlayTwoViewController: UIViewController {
     @IBAction func highlightSelectedButton(_ sender: UIButton) {
         
         
-        GameSetupManager.shared.highlightSelectedButtonHelper(sender: sender, theUsersSelectedAnswer: usersSelectedAnswer, regOrSmallCorrectSignKeyFromJokesArray: smallCorrectSignKeyFromJokesArray, answerButtons: answerButtons, myStreaks: streaks, scoreLabel: scoreLabel, viewController: self)
+        GameSetupManager.shared.highlightSelectedButtonHelper(sender: sender, theUsersSelectedAnswer: usersSelectedAnswer, regOrSmallCorrectSignKeyFromJokesArray: smallCorrectSignKeyFromJokesArray, answerButtons: answerButtons, myStreaks: GameSetupManager.shared.streaks, scoreLabel: scoreLabel, viewController: self)
         
         // Set the newRoundCallback in GameSetupManager to start a new round
         // Weak catptures self to make it a weak refernce to avoid memeory leaks and then it is used again in the body as an optional to call newRound()

@@ -59,7 +59,7 @@ class GameSetupManager: UIViewController {
                
                // Grab a randon Sign/Key from the jokes array
                // IF we can grab a random key THEN
-               if let randomSignKey = Jokes.shared.jokesArray.randomElement() {
+               if let randomSignKey = PromoJokes.shared.promoJokes.randomElement() {
                    // Let's tap into the value of that random key. Value are teh arrays assicated with each key and then we grab a random one and grab a random joke. Aka let randomJoke
                    
                    // Capturing the random key so I can use in the getAnswers function below
@@ -225,6 +225,8 @@ class GameSetupManager: UIViewController {
                 // Append every win to streaks
                 streaks.append("Win")
                 
+                print(streaks)
+                
                 let correctAnswerSoundArray = ["CorrectAnswer1", "CorrectAnswer2", "CorrectAnswer3", "CorrectAnswer4", "CorrectAnswer5"]
                 
                 let randomCorrectAnswerSound = correctAnswerSoundArray.randomElement()!
@@ -285,6 +287,8 @@ class GameSetupManager: UIViewController {
                 
                 // Append every win to streaks
                 streaks.append("Lose")
+                
+                print(streaks)
                 
                 let wrongAnswerSoundArray = ["WrongAnswer1", "WrongAnswer2", "WrongAnswer3", "WrongAnswer4"]
                 
@@ -381,6 +385,8 @@ class GameSetupManager: UIViewController {
             // Append every win to streaks
             streaks.append("Win")
 
+            print(streaks)
+            
             let correctAnswerSoundArray = ["CorrectAnswer1", "CorrectAnswer2", "CorrectAnswer3", "CorrectAnswer4", "CorrectAnswer5"]
             let randomCorrectAnswerSound = correctAnswerSoundArray.randomElement()!
             print(randomCorrectAnswerSound)
@@ -424,7 +430,9 @@ class GameSetupManager: UIViewController {
             // Handle the logic when the user loses
             // Append every loss to streaks
             streaks.append("Lose")
-
+            print(streaks)
+            
+            
             let wrongAnswerSoundArray = ["WrongAnswer1", "WrongAnswer2", "WrongAnswer3", "WrongAnswer4"]
             let randomWrongAnswerSound = wrongAnswerSoundArray.randomElement()!
 
@@ -661,10 +669,16 @@ class GameSetupManager: UIViewController {
     //MARK: - Get Hot Streaks Function
     
     func getHotStreaks(streak: [String], viewController: UIViewController) {
+        
         var consideredAHotStreak = 0
-
+        
+        
         if !streak.contains("Lose") && streak.count > 1 {
+            
             consideredAHotStreak = streak.count
+            
+            print("Current hot streak: \(currentHotStreakHelper)")
+            print("New hot streak: \(consideredAHotStreak)")
             
             // Save the new high to core data
                 CoreDataManager.shared.addScoreAndStreak(score: GameSetupManager.shared.scoreLabelInt, streak: currentHotStreakHelper)
@@ -795,7 +809,7 @@ class GameSetupManager: UIViewController {
 
                 highScoreAlert.addAction(okay)
 
-                viewController.present(highScoreAlert, animated: true)
+                //viewController.present(highScoreAlert, animated: true)
 
                 // Update the Game Centre Top Score
                 HomeViewController.shared.updateGameCenterScore()

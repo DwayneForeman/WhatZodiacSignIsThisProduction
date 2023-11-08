@@ -725,7 +725,7 @@ struct UpgradedJokes {
             "u ARE NOT HIM!! MORE LIKE HER LMFAOO",
             "It still bothers me that I didn’t cheat on my ex",
             "I make sure the s*x is trash so I can make sure u like my personality like u said u did",
-            "I NEED A RUFF NECK..BARK AT ME D DURING S*X",
+            "I NEED A RUFF NECK..BARK AT ME DURING S*X",
             "He cheated so I texted every girl he knows and told them they need to get tested.",
             "For someone who keeps saying 'it is what it is' I honestly have no idea what it actually is",
             "Even look at my dog wrong and I'll go John Wick on u’re a*s",

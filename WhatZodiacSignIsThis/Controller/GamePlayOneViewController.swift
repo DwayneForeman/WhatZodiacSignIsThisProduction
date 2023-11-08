@@ -22,7 +22,7 @@ class GamePlayOneViewController: UIViewController, GADFullScreenContentDelegate 
     
     @IBOutlet weak var scoreLabel: UILabel!
     
-    var currentHotStreakHelper = GameSetupManager.shared.currentHotStreakHelper
+    //var currentHotStreakHelper = GameSetupManager.shared.currentHotStreakHelper
     
     var correctSignKeyFromJokesArray: String = ""
     
@@ -42,6 +42,7 @@ class GamePlayOneViewController: UIViewController, GADFullScreenContentDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("Fetching view did load hotstrak from core data\(CoreDataManager.shared.fetchLatestStreak()!))")
         // Firbase Function
         //fetchInitialJoke()
         
@@ -86,7 +87,7 @@ class GamePlayOneViewController: UIViewController, GADFullScreenContentDelegate 
         // Capture, Filter and Assign to our components of this ViewController from CoreData fetch reults when teh view loads
         GameSetupManager.shared.captureAndFilterFetchResults(scoreLabel: scoreLabel)
         
-        print("view did load \(currentHotStreakHelper)")
+        print("view did load \(GameSetupManager.shared.currentHotStreakHelper)")
         
         // Start new round
         newRound()
@@ -111,10 +112,11 @@ class GamePlayOneViewController: UIViewController, GADFullScreenContentDelegate 
         super.viewDidDisappear(animated)
         //AudioManager.shared.player.stop()
         print(GameSetupManager.shared.scoreLabelInt)
-        print(currentHotStreakHelper)
+        
+        print(" CURRENT HOT STREAK HELPER FROM GAMEPLAY ONE IS...\(GameSetupManager.shared.currentHotStreakHelper)")
         // Save score and streak to core data when we leave the screen
         CoreDataManager.shared.addScoreAndStreak(score: GameSetupManager.shared.scoreLabelInt, streak: CoreDataManager.shared.fetchLatestStreak()!)
-        print(currentHotStreakHelper)
+        print(" CURRENT HOT STREAK HELPER FROM GAMEPLAY ONE IS...\(GameSetupManager.shared.currentHotStreakHelper)")
         
         // Retrieve isUpgraded from UserDefaults
         if let isUpgraded = UserDefaults.standard.value(forKey: "IsUpgraded") as? Bool {
@@ -143,9 +145,9 @@ class GamePlayOneViewController: UIViewController, GADFullScreenContentDelegate 
             jokesLabel.text = GameSetupManager.shared.jokesLabelText
             GameSetupManager.shared.getAnswers(totalAnswersToDisplay: 4, answerButtons: answerButtons, answerButtonNames: answerButtonNames, typeSmall: false)
             GameSetupManager.shared.scoreLabelInt = Int(scoreLabel.text!)!
-            GameSetupManager.shared.getHotStreaks(streak: streaks, viewController: self)
+        GameSetupManager.shared.getHotStreaks(streak: GameSetupManager.shared.streaks, viewController: self)
             GameSetupManager.shared.gameOver(scoreLabel: scoreLabel, viewController: self, answerButtons: answerButtons)
-            CoreDataManager.shared.addScoreAndStreak(score: GameSetupManager.shared.scoreLabelInt, streak: currentHotStreakHelper)
+            CoreDataManager.shared.addScoreAndStreak(score: GameSetupManager.shared.scoreLabelInt, streak: GameSetupManager.shared.currentHotStreakHelper)
             GameSetupManager.shared.ballonPressed = false
             GameSetupManager.shared.highScoreAlert(viewController: self, scoreLabel: scoreLabel)
             
@@ -210,7 +212,7 @@ class GamePlayOneViewController: UIViewController, GADFullScreenContentDelegate 
     
     @IBAction func highlightSelectedButton(_ sender: UIButton) {
         
-        GameSetupManager.shared.highlightSelectedButtonHelper(sender: sender, theUsersSelectedAnswer: usersSelectedAnswer, regOrSmallCorrectSignKeyFromJokesArray: correctSignKeyFromJokesArray, answerButtons: answerButtons, myStreaks: streaks, scoreLabel: scoreLabel, viewController: self)
+        GameSetupManager.shared.highlightSelectedButtonHelper(sender: sender, theUsersSelectedAnswer: usersSelectedAnswer, regOrSmallCorrectSignKeyFromJokesArray: correctSignKeyFromJokesArray, answerButtons: answerButtons, myStreaks: GameSetupManager.shared.streaks, scoreLabel: scoreLabel, viewController: self)
         
         GameSetupManager.shared.highScoreAlert(viewController: self, scoreLabel: scoreLabel)
         

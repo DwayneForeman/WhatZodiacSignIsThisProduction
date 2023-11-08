@@ -27,6 +27,8 @@ class CoreDataManager {
         newScore.streaksNumber = Int64(streak)
         newScore.pointsNumber = Int64(score)
         
+        print("This is the steaks number fro coreeeeeeeeee dataaaa manager \(newScore.streaksNumber)")
+        
         // Try will throw an error so we will wrap it in a do/catch block
         do {
             try context.save()

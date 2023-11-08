@@ -29,7 +29,7 @@ class GamePlayThreeViewController: UIViewController {
     
         var streaks = [String]()
     
-        var currentHotStreakHelper = GameSetupManager.shared.currentHotStreakHelper
+        //var currentHotStreakHelper = GameSetupManager.shared.currentHotStreakHelper
     
         var answerButtonNames = ["SmallAquariusButton", "SmallAriesButton", "SmallCancerButton", "SmallCapricornButton", "SmallGeminiButton", "SmallLeoButton", "SmallLibraButton", "SmallPiscesButton", "SmallSagittariusButton", "SmallScorpioButton", "SmallTaurusButton", "SmallVirgoButton"]
         
@@ -69,10 +69,10 @@ class GamePlayThreeViewController: UIViewController {
         super.viewDidDisappear(animated)
         //AudioManager.shared.player.stop()
         print(GameSetupManager.shared.scoreLabelInt)
-        print(currentHotStreakHelper)
+      
         // Save score and streak to core data when we leave the screen
         CoreDataManager.shared.addScoreAndStreak(score: GameSetupManager.shared.scoreLabelInt, streak: CoreDataManager.shared.fetchLatestStreak()!)
-        print(currentHotStreakHelper)
+      
         
         // Retrieve isUpgraded from UserDefaults
         if let isUpgraded = UserDefaults.standard.value(forKey: "IsUpgraded") as? Bool {
@@ -98,7 +98,7 @@ class GamePlayThreeViewController: UIViewController {
           GameSetupManager.shared.scoreLabelInt = Int(scoreLabel.text!)!
           GameSetupManager.shared.getHotStreaks(streak: streaks, viewController: self)
           GameSetupManager.shared.gameOver(scoreLabel: scoreLabel, viewController: self, answerButtons: answerButtons)
-          CoreDataManager.shared.addScoreAndStreak(score: GameSetupManager.shared.scoreLabelInt, streak: currentHotStreakHelper)
+          CoreDataManager.shared.addScoreAndStreak(score: GameSetupManager.shared.scoreLabelInt, streak: GameSetupManager.shared.currentHotStreakHelper)
           GameSetupManager.shared.ballonPressed = false
           GameSetupManager.shared.highScoreAlert(viewController: self, scoreLabel: scoreLabel)
         
@@ -159,7 +159,7 @@ class GamePlayThreeViewController: UIViewController {
     @IBAction func highlightSelectedButton(_ sender: UIButton) {
         
         
-        GameSetupManager.shared.highlightSelectedButtonHelper(sender: sender, theUsersSelectedAnswer: usersSelectedAnswer, regOrSmallCorrectSignKeyFromJokesArray: smallCorrectSignKeyFromJokesArray, answerButtons: answerButtons, myStreaks: streaks, scoreLabel: scoreLabel, viewController: self)
+        GameSetupManager.shared.highlightSelectedButtonHelper(sender: sender, theUsersSelectedAnswer: usersSelectedAnswer, regOrSmallCorrectSignKeyFromJokesArray: smallCorrectSignKeyFromJokesArray, answerButtons: answerButtons, myStreaks: GameSetupManager.shared.streaks, scoreLabel: scoreLabel, viewController: self)
         
         // Set the newRoundCallback in GameSetupManager to start a new round
         // Weak catptures self to make it a weak refernce to avoid memeory leaks and then it is used again in the body as an optional to call newRound()
