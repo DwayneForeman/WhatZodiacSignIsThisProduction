@@ -148,8 +148,8 @@ struct PromoJokes {
            
         ],
         "LeoButton": [
-            "So..am I the only girl you're talking to? ME: yeh, everyone is asleep already.",
-            //"Yes okay I will get over it, but I have to be dramatic first.",
+            //"So..am I the only girl you're talking to? ME: yeh, everyone is asleep already.",
+            "Yes okay I will get over it, but I have to be dramatic first.",
             //"I hate a man who knows his worth..wtf you mean I can't cheat on you."
         ],
         "VirgoButton": [
@@ -159,18 +159,14 @@ struct PromoJokes {
         ],
         "LibraButton": [
            
-            //"If he cheating, cheat back. Support ur man in everything he does.",
+            "If he cheating, cheat back. Support ur man in everything he does.",
             //"If we break up, I do not wish u well. I hope u get chased by hyenas.",
             
         ],
-//        "ScorpioButton": [
-//            "I don't go on 2nd dates..There be a flaw I might miss.",
-//            "Cute until I feel like u're gonna leave me then BOOM u ruined my life",
-//            "I say I love you when I leave people..if they die on the way home I want my last words to be nice",
-//            "Now taking compliments...I'm tired of talking about myself",
-//            "Always losing things..my mind, patience and atm cards",
-//            "I have like 7 personalities so good luck keeping up."
-//        ],
+       "ScorpioButton": [
+           "I need to control ur life so this relationship can work"
+       ],
+        
         "SagittariusButton": [
            
             "This morning I was in love, tonight I'm for the streets.",

@@ -59,7 +59,7 @@ class GameSetupManager: UIViewController {
                
                // Grab a randon Sign/Key from the jokes array
                // IF we can grab a random key THEN
-               if let randomSignKey = PromoJokes.shared.promoJokes.randomElement() {
+               if let randomSignKey = Jokes.shared.jokesArray.randomElement() {
                    // Let's tap into the value of that random key. Value are teh arrays assicated with each key and then we grab a random one and grab a random joke. Aka let randomJoke
                    
                    // Capturing the random key so I can use in the getAnswers function below
@@ -809,7 +809,7 @@ class GameSetupManager: UIViewController {
 
                 highScoreAlert.addAction(okay)
 
-                //viewController.present(highScoreAlert, animated: true)
+                viewController.present(highScoreAlert, animated: true)
 
                 // Update the Game Centre Top Score
                 HomeViewController.shared.updateGameCenterScore()
